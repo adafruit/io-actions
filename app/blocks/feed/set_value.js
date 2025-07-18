@@ -4,7 +4,7 @@ export default {
   name: "Set Feed Value",
   inputsInline: true,
   colour: 300,
-  descritpion: "Publish the specified data point to the specified Feed.",
+  description: "Publish the specified data point to the specified Feed.",
 
   mixins: ['replaceDropdownOptions'],
   extensions: ['populateFeedDropdown'],
