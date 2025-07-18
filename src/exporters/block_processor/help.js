@@ -1,10 +1,15 @@
-const processHelp = definition => {
-  // TODO: rely on project configuration for docs site location
-  const
-    docsBlocksRoot = "https://adafruit.github.io/io-actions/blocks",
-    thisBlockPredicate = definition.definitionPath.slice(0, -3)
+const
+    // TODO: rely on project configuration for docs site location
+  DOCS_BLOCKS_ROOT = "https://adafruit.github.io/io-actions/blocks",
 
-  return { helpUrl: `${docsBlocksRoot}/${thisBlockPredicate}` }
-}
+  processHelp = definition => {
+    if (!definition.definitionPath) { return {} }
+
+    const thisBlockPredicate = definition.definitionPath.slice(0, -3)
+
+    return {
+      helpUrl: `${DOCS_BLOCKS_ROOT}/${thisBlockPredicate}`
+    }
+  }
 
 export default processHelp
