@@ -39,7 +39,7 @@ export default defineConfig({
     },
 
     nav: [
-      { text: '🪏', link: '/sandbox' },
+      { text: '🧩', link: '/sandbox' },
       { text: 'Home', link: '/' },
       { text: 'Getting Started', link: '/getting-started' },
       { text: 'The Blocks', link: '/block-index' },

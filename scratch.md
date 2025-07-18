@@ -1,5 +1,4 @@
 # todo:
-- io-actions repo, gh:p deploy
 - purge legacy converters:
   - ...
 - block generator
