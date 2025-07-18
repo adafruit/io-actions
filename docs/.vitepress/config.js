@@ -34,7 +34,7 @@ export default defineConfig({
           return `https://github.com/adafruit/io-actions/edit/main/app/${jsPath}`
         }
 
-        return `https://github.com/adafruit/io-actions/edit/docs/docs/${filePath}`
+        return `https://github.com/adafruit/io-actions/edit/main/docs/${filePath}`
       }
     },
 
