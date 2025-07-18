@@ -4,7 +4,7 @@ name: Build Docs and Deploy to Pages
 on:
   workflow_dispatch:
   push:
-    branches: ["docs"]
+    branches: ["main"]
 
 # later: auto-build on version tags
 
