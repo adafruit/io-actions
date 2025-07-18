@@ -28,7 +28,8 @@ exports[`Block Snapshots > Blockly JSON > action_email 1`] = `
       "name": "BODY",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/action/email"
 }
 `;
 
@@ -47,7 +48,8 @@ exports[`Block Snapshots > Blockly JSON > action_log 1`] = `
       "name": "EXPRESSION",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/action/log"
 }
 `;
 
@@ -81,7 +83,8 @@ exports[`Block Snapshots > Blockly JSON > action_publish 1`] = `
       "name": "FEED",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/action/publish"
 }
 `;
 
@@ -130,7 +133,8 @@ exports[`Block Snapshots > Blockly JSON > action_root 1`] = `
       "align": "RIGHT"
     }
   ],
-  "mutator": "action_root"
+  "mutator": "action_root",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/root/root"
 }
 `;
 
@@ -156,7 +160,8 @@ exports[`Block Snapshots > Blockly JSON > action_sms 1`] = `
       "name": "BODY",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/action/sms"
 }
 `;
 
@@ -202,7 +207,8 @@ exports[`Block Snapshots > Blockly JSON > action_webhook 1`] = `
       "name": "BODY",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/action/webhook"
 }
 `;
 
@@ -220,7 +226,8 @@ exports[`Block Snapshots > Blockly JSON > all_days 1`] = `
       "align": "RIGHT"
     }
   ],
-  "mutator": "all_days"
+  "mutator": "all_days",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/day/all_days"
 }
 `;
 
@@ -238,7 +245,8 @@ exports[`Block Snapshots > Blockly JSON > all_hours 1`] = `
       "align": "RIGHT"
     }
   ],
-  "mutator": "all_hours"
+  "mutator": "all_hours",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/hour/all_hours"
 }
 `;
 
@@ -256,7 +264,8 @@ exports[`Block Snapshots > Blockly JSON > all_minutes 1`] = `
       "align": "RIGHT"
     }
   ],
-  "mutator": "all_minutes"
+  "mutator": "all_minutes",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/minute/all_minutes"
 }
 `;
 
@@ -274,7 +283,8 @@ exports[`Block Snapshots > Blockly JSON > all_months 1`] = `
       "align": "RIGHT"
     }
   ],
-  "mutator": "all_months"
+  "mutator": "all_months",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/month/all_months"
 }
 `;
 
@@ -292,7 +302,8 @@ exports[`Block Snapshots > Blockly JSON > day_settings 1`] = `
       "check": "cron_day",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/day/day_settings"
 }
 `;
 
@@ -352,7 +363,8 @@ exports[`Block Snapshots > Blockly JSON > days_of_week 1`] = `
       "align": "CENTRE"
     }
   ],
-  "mutator": "days_of_week"
+  "mutator": "days_of_week",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/day/days_of_week"
 }
 `;
 
@@ -369,7 +381,8 @@ exports[`Block Snapshots > Blockly JSON > delay_days 1`] = `
       "type": "input_dummy",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/root/action_settings/delay_days"
 }
 `;
 
@@ -484,7 +497,8 @@ exports[`Block Snapshots > Blockly JSON > delay_hours 1`] = `
       "type": "input_dummy",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/root/action_settings/delay_hours"
 }
 `;
 
@@ -743,7 +757,8 @@ exports[`Block Snapshots > Blockly JSON > delay_minutes 1`] = `
       "type": "input_dummy",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/root/action_settings/delay_minutes"
 }
 `;
 
@@ -760,7 +775,8 @@ exports[`Block Snapshots > Blockly JSON > delay_none 1`] = `
       "type": "input_dummy",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/root/action_settings/delay_none"
 }
 `;
 
@@ -1019,7 +1035,8 @@ exports[`Block Snapshots > Blockly JSON > delay_seconds 1`] = `
       "type": "input_dummy",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/root/action_settings/delay_seconds"
 }
 `;
 
@@ -1072,7 +1089,8 @@ exports[`Block Snapshots > Blockly JSON > delay_settings 1`] = `
       "type": "input_dummy",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/root/action_settings/delay_settings"
 }
 `;
 
@@ -1384,7 +1402,8 @@ exports[`Block Snapshots > Blockly JSON > every_days_between 1`] = `
       "align": "RIGHT"
     }
   ],
-  "mutator": "every_days_between"
+  "mutator": "every_days_between",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/day/every_days_between"
 }
 `;
 
@@ -1640,7 +1659,8 @@ exports[`Block Snapshots > Blockly JSON > every_hours_between 1`] = `
       "align": "RIGHT"
     }
   ],
-  "mutator": "every_hours_between"
+  "mutator": "every_hours_between",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/hour/every_hours_between"
 }
 `;
 
@@ -2200,7 +2220,8 @@ exports[`Block Snapshots > Blockly JSON > every_minutes_between 1`] = `
       "align": "RIGHT"
     }
   ],
-  "mutator": "every_minutes_between"
+  "mutator": "every_minutes_between",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/minute/every_minutes_between"
 }
 `;
 
@@ -2352,7 +2373,8 @@ exports[`Block Snapshots > Blockly JSON > every_months_between 1`] = `
       "align": "RIGHT"
     }
   ],
-  "mutator": "every_months_between"
+  "mutator": "every_months_between",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/month/every_months_between"
 }
 `;
 
@@ -2383,7 +2405,8 @@ exports[`Block Snapshots > Blockly JSON > feed_get_value 1`] = `
   "extensions": [
     "replaceDropdownOptions",
     "populateFeedDropdown"
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/feed/get_value"
 }
 `;
 
@@ -2414,7 +2437,8 @@ exports[`Block Snapshots > Blockly JSON > feed_selector 1`] = `
   "extensions": [
     "replaceDropdownOptions",
     "populateFeedDropdown"
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/feed/selector"
 }
 `;
 
@@ -2447,7 +2471,8 @@ exports[`Block Snapshots > Blockly JSON > feed_set_value 1`] = `
   "extensions": [
     "replaceDropdownOptions",
     "populateFeedDropdown"
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/feed/set_value"
 }
 `;
 
@@ -2465,7 +2490,8 @@ exports[`Block Snapshots > Blockly JSON > hour_settings 1`] = `
       "check": "cron_hour",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/hour/hour_settings"
 }
 `;
 
@@ -2509,7 +2535,8 @@ exports[`Block Snapshots > Blockly JSON > io_controls_if 1`] = `
       "align": "RIGHT"
     }
   ],
-  "mutator": "io_controls_if"
+  "mutator": "io_controls_if",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/controls/if"
 }
 `;
 
@@ -2540,7 +2567,8 @@ exports[`Block Snapshots > Blockly JSON > io_logic_boolean 1`] = `
       "type": "input_dummy",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/logic/boolean"
 }
 `;
 
@@ -2596,7 +2624,8 @@ exports[`Block Snapshots > Blockly JSON > io_logic_compare 1`] = `
       "name": "B",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/math/compare"
 }
 `;
 
@@ -2614,7 +2643,8 @@ exports[`Block Snapshots > Blockly JSON > io_logic_negate 1`] = `
       "name": "EXPRESSION",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/logic/negate"
 }
 `;
 
@@ -2654,7 +2684,8 @@ exports[`Block Snapshots > Blockly JSON > io_logic_operation 1`] = `
       "name": "B",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/logic/operation"
 }
 `;
 
@@ -2706,7 +2737,8 @@ exports[`Block Snapshots > Blockly JSON > io_math_arithmetic 1`] = `
       "name": "B",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/math/arithmetic"
 }
 `;
 
@@ -2733,7 +2765,8 @@ exports[`Block Snapshots > Blockly JSON > io_math_constrain 1`] = `
       "check": "range",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/math/constrain"
 }
 `;
 
@@ -2758,7 +2791,8 @@ exports[`Block Snapshots > Blockly JSON > io_math_number 1`] = `
   ],
   "extensions": [
     "validateNumbers"
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/math/number"
 }
 `;
 
@@ -2794,7 +2828,8 @@ exports[`Block Snapshots > Blockly JSON > io_math_round 1`] = `
       "name": "VALUE",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/math/round"
 }
 `;
 
@@ -2816,7 +2851,8 @@ exports[`Block Snapshots > Blockly JSON > io_text 1`] = `
       "type": "input_dummy",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/text/text"
 }
 `;
 
@@ -2842,7 +2878,8 @@ exports[`Block Snapshots > Blockly JSON > io_text_join 1`] = `
       "name": "B",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/text/join"
 }
 `;
 
@@ -2864,7 +2901,8 @@ exports[`Block Snapshots > Blockly JSON > io_text_multiline 1`] = `
       "type": "input_dummy",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/text/text_multiline"
 }
 `;
 
@@ -2885,7 +2923,8 @@ exports[`Block Snapshots > Blockly JSON > io_variables_get 1`] = `
       "type": "input_dummy",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/variables/get"
 }
 `;
 
@@ -2908,7 +2947,8 @@ exports[`Block Snapshots > Blockly JSON > io_variables_set 1`] = `
       "name": "VALUE",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/variables/set"
 }
 `;
 
@@ -2940,7 +2980,8 @@ exports[`Block Snapshots > Blockly JSON > matcher_boolean_operation 1`] = `
       "name": "B",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/matchers/matcher_boolean_operation"
 }
 `;
 
@@ -2988,7 +3029,8 @@ exports[`Block Snapshots > Blockly JSON > matcher_compare 1`] = `
       "name": "B",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/matchers/matcher_compare"
 }
 `;
 
@@ -3024,7 +3066,8 @@ exports[`Block Snapshots > Blockly JSON > matcher_text_compare 1`] = `
       "name": "B",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/matchers/matcher_text_compare"
 }
 `;
 
@@ -3067,7 +3110,8 @@ exports[`Block Snapshots > Blockly JSON > math_map 1`] = `
       "check": "range",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/math/map"
 }
 `;
 
@@ -3100,7 +3144,8 @@ exports[`Block Snapshots > Blockly JSON > math_range 1`] = `
       "type": "input_dummy",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/math/range"
 }
 `;
 
@@ -3118,7 +3163,8 @@ exports[`Block Snapshots > Blockly JSON > minute_settings 1`] = `
       "check": "cron_minute",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/minute/minute_settings"
 }
 `;
 
@@ -3136,7 +3182,8 @@ exports[`Block Snapshots > Blockly JSON > month_settings 1`] = `
       "check": "cron_month",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/month/month_settings"
 }
 `;
 
@@ -3190,7 +3237,8 @@ exports[`Block Snapshots > Blockly JSON > on_schedule 1`] = `
       "check": "cron_minute",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/on_schedule"
 }
 `;
 
@@ -3338,7 +3386,8 @@ exports[`Block Snapshots > Blockly JSON > one_day 1`] = `
       "align": "RIGHT"
     }
   ],
-  "mutator": "one_day"
+  "mutator": "one_day",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/day/one_day"
 }
 `;
 
@@ -3458,7 +3507,8 @@ exports[`Block Snapshots > Blockly JSON > one_hour 1`] = `
       "align": "RIGHT"
     }
   ],
-  "mutator": "one_hour"
+  "mutator": "one_hour",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/hour/one_hour"
 }
 `;
 
@@ -3722,7 +3772,8 @@ exports[`Block Snapshots > Blockly JSON > one_minute 1`] = `
       "align": "RIGHT"
     }
   ],
-  "mutator": "one_minute"
+  "mutator": "one_minute",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/minute/one_minute"
 }
 `;
 
@@ -3794,7 +3845,8 @@ exports[`Block Snapshots > Blockly JSON > one_month 1`] = `
       "align": "RIGHT"
     }
   ],
-  "mutator": "one_month"
+  "mutator": "one_month",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/month/one_month"
 }
 `;
 
@@ -3886,7 +3938,8 @@ exports[`Block Snapshots > Blockly JSON > some_months 1`] = `
       "align": "CENTRE"
     }
   ],
-  "mutator": "some_months"
+  "mutator": "some_months",
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/schedule/month/some_months"
 }
 `;
 
@@ -3930,7 +3983,8 @@ exports[`Block Snapshots > Blockly JSON > text_compare 1`] = `
       "name": "B",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/text/compare"
 }
 `;
 
@@ -3948,7 +4002,8 @@ exports[`Block Snapshots > Blockly JSON > text_template 1`] = `
       "name": "TEMPLATE",
       "align": "RIGHT"
     }
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/text/template"
 }
 `;
 
@@ -4100,7 +4155,8 @@ exports[`Block Snapshots > Blockly JSON > weather 1`] = `
     "replaceDropdownOptions",
     "weatherMixin",
     "prepareWeather"
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/power_ups/weather"
 }
 `;
 
@@ -4132,7 +4188,8 @@ exports[`Block Snapshots > Blockly JSON > when_data 1`] = `
   "extensions": [
     "replaceDropdownOptions",
     "populateFeedDropdown"
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/when_data"
 }
 `;
 
@@ -4166,7 +4223,8 @@ exports[`Block Snapshots > Blockly JSON > when_data_matching 1`] = `
   "extensions": [
     "replaceDropdownOptions",
     "populateFeedDropdown"
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/when_data_matching"
 }
 `;
 
@@ -4222,6 +4280,7 @@ exports[`Block Snapshots > Blockly JSON > when_data_matching_state 1`] = `
   "extensions": [
     "replaceDropdownOptions",
     "populateFeedDropdown"
-  ]
+  ],
+  "helpUrl": "https://adafruit.github.io/io-actions/blocks/triggers/when_data_matching_state"
 }
 `;
