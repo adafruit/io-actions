@@ -37,7 +37,9 @@ export default {
 
     \`{{ feeds[...].key }}\` - ...get its key
 
-    \`{{ feeds[...].value }}\` - ...get its last value
+    \`{{ feeds[...].value }}\` - ...get its current value
+
+    \`{{ feeds[...].last_value }}\` - ...get its previous value
     :::
   `,
 
