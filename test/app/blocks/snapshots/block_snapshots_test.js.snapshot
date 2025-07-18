@@ -2447,7 +2447,7 @@ exports[`Block Snapshots > Blockly JSON > feed_set_value 1`] = `
   "inputsInline": true,
   "type": "feed_set_value",
   "colour": 300,
-  "tooltip": "",
+  "tooltip": "Publish the specified data point to the specified Feed.",
   "nextStatement": "expression",
   "previousStatement": "expression",
   "message0": "Set %1 to: %2",

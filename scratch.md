@@ -7,6 +7,8 @@
 - bailouts for:
   - blockly json
   - docs markdown
+- dev server
+- clean gh:a, ensure tests run correctly
 
 
 ### Action Specification
