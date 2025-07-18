@@ -61,7 +61,7 @@ jobs:
           branchPrefix: ${{ matrix.branch != 'main' && matrix.branch || '' }}
         run: |
           npm ci
-          npm run build -- --base /blockly-tool/${branchPrefix}
+          npm run build -- --base /io-actions/${branchPrefix}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

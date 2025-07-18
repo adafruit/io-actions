@@ -1,5 +1,5 @@
 {
-  "name": "blockly-tool",
+  "name": "io-actions",
   "version": "1.0.0",
   "description": "A Blockly tooling project",
   "type": "module",
