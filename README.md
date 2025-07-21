@@ -1,68 +1,71 @@
-# Blockly Tooling
+# Adafruit IO: Block-based Actions
 
-A custom Blockly app needs to define:
-- blocks
-  - inputs
-  - fields
-  - validators
-  - generators
-  - extensions
-  - mixins
-  - mutators
-- toolboxes
-  - categories
-  - buttons
-  - labels
-- workspaces
-  - starting blocks
-  - settings
-  - plugins
+> Automation that clicks!
 
-Blockly can be difficult to work with, as given. This is a clean space to experiment.
+This repository contains the files and tooling for building the Blockly app
+that is used to create automations on Adafruit IO.
 
-**Benefits of Making a Separate Project**
-- host project stays cleaner
-- tighter code-and-fix loop
-- test in isolation
-- deploy smaller experiments for feedback
+The files are organized into directories:
+- `/app` the source files for the application
+- `/src` the tooling for developing and building the application
+- `/docs` the tooling and configuration for building the app documentation
 
-## A Framework for a custom Blockly app
+## Quick Start
 
-This is the core concept of the project: a better way of defining a custom Blockly application.
+### Setup
 
-Better?
-- expressive DSL
-- keep related implementations together (Locality of Behavior)
-- higher level idioms for common interactions
+Node v22.x is expected, but other versions may work.
 
-Check out the `/app` directory:
-- `/app/blocks`
-- `/app/toolbox`
-- `/app/workspaces`
+```sh
+git clone https://github.com/adafruit/io-actions
+cd io-actions
+npm i
+npm start
+```
 
-## Tools
+### Exporting
 
-### Transformer
+Export a Blockly application:
+```sh
+npm run export:app
+```
 
-Compiles a directory tree of DSL files into Blockly source files. This is where the main app is.
+Export the documentation site:
+```sh
+npm run docs:export
+```
 
-### Dev Environment
 
-Provides a web application to host the Blockly project under development. Combines the Transformer with Vite to automatically compile and serve the app. The expressivity and ergonomics of the DSL coupled with this environment which instantly visualize changes as they are made is the point of this project: a reaosonable Blockly dev environment.
+## Application Files
 
-- lives in `/src`
-- ingets from `/app`
-- hosts app at `http://localhost:5173` (or something)
+Our custom Blockly application lives at `/app`
 
-### Exporter
+This is where we create new workspaces, toolboxes, and blocks, as well as block
+elements like fields, inputs, mixins, validators, generators, etc.
 
-A brutal chunk of code to produce deployment-ready Blockly source files. Currently rough and ready, but effective. Lots of options should be supported but aren't.
+**TODO: info about generating, editing, and testing definition files**
 
-- lives in `/exporter`
-- ingests from `/app`
-- exports to `/export`
 
-- `/app`: custom Blockly app in development
-- `/src`: the Blockly Tool application
-- `/export`: where app files go when an export is performed
-- `/dist`: where Blockly Tool app files go when exporting this application for testing and demonstration purposes
+## Docs
+
+Our documentation site is a VitePress install that lives at `/docs`
+
+We run a task to generate the docs site markdown files based on the definition
+files from `/app`.
+
+**TODO: info about generating, testing, and deploying the docs site**
+
+
+## Developer Tooling
+
+All of our custom tooling lives at `/src`
+
+These are the files that translate and bundle our easy definition formats into
+full Blockly application bundles.
+
+Some benefits of this tooling include:
+- expressive DSL: block definitions look like the blocks they create
+- keep related things together ([Locality of Behavior](https://htmx.org/essays/locality-of-behaviour/))
+- higher-level idioms for common interactions
+
+**TODO: more info about how the dev tooling is organized and extended**
