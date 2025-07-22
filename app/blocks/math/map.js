@@ -63,7 +63,7 @@ export default {
   generators: {
     json: (block, generator) => {
       const
-        value = JSON.parse(generator.valueToCode(block, 'VALUE', 0)),
+        value = JSON.parse(generator.valueToCode(block, 'VALUE', 0) || null),
         from = JSON.parse(generator.valueToCode(block, 'FROM_RANGE', 0)),
         to = JSON.parse(generator.valueToCode(block, 'TO_RANGE', 0)),
         payload = { mapValue: { value, from, to }}

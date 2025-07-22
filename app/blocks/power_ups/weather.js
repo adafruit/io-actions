@@ -9,6 +9,11 @@ export default {
   ioPlus: true,
   description: "Fetch the current or forecast weather conditions at the specified location.",
 
+  connections: {
+    mode: "value",
+    output: "expression",
+  },
+
   mixins: [
     'replaceDropdownOptions',
     { weatherMixin }
