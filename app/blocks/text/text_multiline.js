@@ -9,7 +9,7 @@ export default {
     output: "String",
   },
 
-  template: "P %TEXT",
+  template: "¶ %TEXT",
 
   fields: {
     TEXT: {
