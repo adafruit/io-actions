@@ -42,8 +42,8 @@ export default defineConfig({
       { text: '🧩', link: '/sandbox' },
       { text: 'Home', link: '/' },
       { text: 'Getting Started', link: '/getting-started' },
-      { text: 'The Blocks', link: '/block-index' },
-      { text: 'Examples', link: '/automation-examples' }
+      { text: 'Block List', link: '/block-index' },
+      // { text: 'Examples', link: '/automation-examples' }
     ],
 
     sidebar: {

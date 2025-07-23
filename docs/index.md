@@ -5,17 +5,14 @@ layout: home
 hero:
   name: "IO Actions:"
   text: "Block Reference"
-  tagline: Automation that clicks!
+  tagline: Automation that clicks, for <a href="https://io.adafruit.com">Adafruit IO</a>
   actions:
     - theme: brand
       text: Getting Started
       link: /getting-started.md
     - theme: alt
-      text: The Blocks
+      text: Block List
       link: /block-index.md
-    - theme: alt
-      text: Automation Examples
-      link: /automation-examples.md
 
 features:
   - icon: 📚

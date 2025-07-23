@@ -53,9 +53,6 @@ ${ renderDescription(definition) }
 
 ${ renderIOPlusAlert(definition) }
 
-## Workspace
-${ renderWorkspace(definition) }
-
 ## Fields
 ${ renderFields(definition) }
 
