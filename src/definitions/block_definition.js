@@ -154,12 +154,16 @@ BlockDefinition.parseRawDefinition = function(rawBlockDefinition, definitionPath
   if(!blockDef.name) {
     // if no name given, humanize the type property as a default
     blockDef.name = rawBlockDefinition.type.split(/[\W_]+/).map(capitalize).join(" ").replace(/^io /i, "")
-    console.warn(`Warning: [${rawBlockDefinition.type}] No "name" property provided, defaulted to: "${blockDef.name}"`)
+    console.warn(`Warning: [${blockDef.type}] No "name" property provided, defaulted to: "${blockDef.name}"`)
+  }
+
+  if(!blockDef.connections) {
+    console.warn(`Warning: [${blockDef.type}] No "connections" property provided, no defaults.`)
   }
 
   forEach(blockDef.inputs, (input, inputName) => {
-    if(!input.check) {
-      console.warn(`Warning: [${blockDef.type}] Input is unchecked: ${inputName}`)
+    if(!input.check && input.type !== 'label') {
+      console.warn(`Warning: [${blockDef.type}] Input is unchecked: ${inputName} ${input.type}`)
     }
   })
 
