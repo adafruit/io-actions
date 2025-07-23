@@ -43,6 +43,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Getting Started', link: '/getting-started' },
       { text: 'Block List', link: '/block-index' },
+      { text: 'Contributing', link: '/contributing' },
       // { text: 'Examples', link: '/automation-examples' }
     ],
 

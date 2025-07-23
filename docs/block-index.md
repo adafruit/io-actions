@@ -1,7 +1,7 @@
 ---
-title: The Blocks
+title: Block List
 ---
 
-# The Blocks
+# Block List
 
 Coming soon...
