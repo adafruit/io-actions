@@ -20,6 +20,7 @@ export default {
   inputs: {
     VALUE: {
       description: "The value to publish to the Feed.",
+      check: "expression",
       shadow: 'io_text'
     }
   },

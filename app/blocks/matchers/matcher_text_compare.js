@@ -13,6 +13,7 @@ export default {
   inputs: {
     B: {
       description: "The string to compare with the Feed value.",
+      check: "expression",
       shadow: 'io_text'
     }
   },

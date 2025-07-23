@@ -6,16 +6,23 @@ export default {
   inputsInline: true,
   description: "Numerically compare two given values using the selected math operation.",
 
+  connections: {
+    mode: "value",
+    output: "expression",
+  },
+
   template: `%A %OP %B`,
 
   inputs: {
     A: {
       description: "The left side of the comparison. Will be coerced to a number",
+      check: "expression",
       shadow: 'io_math_number'
     },
 
     B: {
       description: "The right side of the comparison. Will be coerced to a number",
+      check: "expression",
       shadow: 'io_math_number'
     },
   },

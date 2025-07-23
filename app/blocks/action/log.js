@@ -16,6 +16,7 @@ export default {
   inputs: {
     EXPRESSION: {
       description: "A Block diagram you'd like to see the resolved value and type of.",
+      check: "expression",
       shadow: 'io_text'
     }
   },

@@ -36,11 +36,13 @@ export default {
   inputs: {
     IF0: {
       description: "Runs the given block tree and checks whether it resolve true or false. If true, executes the 'do' branch, otherwise moves onto the next if (if present), or the final else (if present.)",
+      check: "expression",
       shadow: 'io_logic_boolean'
     },
 
     THEN0: {
       description: "The block diagram to execute when the preceding 'if' clause resolves to true",
+      check: "expression",
       type: 'statement',
     },
 

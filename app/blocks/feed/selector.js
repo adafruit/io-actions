@@ -9,6 +9,11 @@ export default {
   mixins: ['replaceDropdownOptions'],
   extensions: ['populateFeedDropdown'],
 
+  connections: {
+    mode: "value",
+    output: "expression",
+  },
+
   template: "Feed: %FEED_KEY",
 
   fields: {

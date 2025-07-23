@@ -14,6 +14,7 @@ export default {
     VALUE: {
       description: "A value you'd like to round to a whole number. Will be coerced to a number.",
       bytecodeProperty: "value",
+      check: "expression",
       shadow: "io_math_number"
     }
   },

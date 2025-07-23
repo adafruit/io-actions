@@ -17,6 +17,7 @@ export default {
 
   inputs: {
     VALUE: {
+      check: "expression",
       shadow: "io_math_number"
     },
 

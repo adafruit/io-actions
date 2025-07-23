@@ -17,12 +17,14 @@ export default {
   inputs: {
     FROM: {
       description: "The lower bound of the range.",
+      check: "expression",
       bytecodeProperty: "from",
       shadow: "io_math_number"
     },
 
     TO: {
       description: "The upper bound of the range.",
+      check: "expression",
       bytecodeProperty: "to",
       shadow: "io_math_number"
     },

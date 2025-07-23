@@ -6,16 +6,23 @@ export default {
   inputsInline: true,
   description: "Compare two chunks of text for equality, inequality, or inclusion.",
 
+  connections: {
+    mode: "value",
+    output: "expression",
+  },
+
   template: `%A %OP %B`,
 
   inputs: {
     A: {
       description: "The left side of the comparison. Will be coerced to a string",
+      check: "expression",
       shadow: 'io_text'
     },
 
     B: {
       description: "The right side of the comparison. Will be coerced to a string",
+      check: "expression",
       shadow: 'io_text'
     },
   },

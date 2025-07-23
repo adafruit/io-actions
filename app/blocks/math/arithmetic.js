@@ -6,16 +6,23 @@ export default {
   inputsInline: true,
   description: "Perform the specified arithmetic operation on two specified operands.",
 
+  connections: {
+    mode: "value",
+    output: "expression",
+  },
+
   template: `%A %OP %B`,
 
   inputs: {
     A: {
       description: "The left side of the operation. Will be coerced to a number",
+      check: "expression",
       shadow: 'io_math_number'
     },
 
     B: {
       description: "The right side of the operation. Will be coerced to a number",
+      check: "expression",
       shadow: 'io_math_number'
     },
   },

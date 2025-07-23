@@ -6,16 +6,23 @@ export default {
   inputsInline: true,
   description: "Join two pieces of text into one.",
 
+  connections: {
+    mode: "value",
+    output: "expression",
+  },
+
   template: "%A + %B",
 
   inputs: {
     A: {
       description: "The first string of text",
+      check: "expression",
       shadow: "io_text"
     },
 
     B: {
       description: "The last string of text",
+      check: "expression",
       shadow: "io_text"
     },
   },

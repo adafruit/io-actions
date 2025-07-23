@@ -49,7 +49,10 @@ export default {
   template: "{{ %TEMPLATE",
 
   inputs: {
-    TEMPLATE: { shadow: 'io_text_multiline' }
+    TEMPLATE: {
+      check: "expression",
+      shadow: 'io_text_multiline'
+    }
   },
 
   generators: {

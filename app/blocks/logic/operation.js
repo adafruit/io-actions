@@ -6,16 +6,23 @@ export default {
   colour: 60,
   description: "Perform the specifed boolean logic operation on two operands.",
 
+  connections: {
+    mode: "value",
+    output: "expression",
+  },
+
   template: `%A %OP %B`,
 
   inputs: {
     A: {
       description: "A block diagram that will be resolved to a truthy/falsy value",
+      check: "expression",
       shadow: 'io_logic_boolean'
     },
 
     B: {
       description: "A block diagram that will be resolved to a truthy/falsy value",
+      check: "expression",
       shadow: 'io_logic_boolean'
     }
   },

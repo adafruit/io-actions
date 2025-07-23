@@ -5,11 +5,17 @@ export default {
   colour: 60,
   description: "Swaps a truthy value to `false`, or a falsy value to `true`.",
 
+  connections: {
+    mode: "value",
+    output: "expression",
+  },
+
   template: "not %EXPRESSION",
 
   inputs: {
     EXPRESSION: {
       description: "Block diagram that will be resolved, then have its truthiness flipped.",
+      check: "expression",
       shadow: 'io_logic_boolean'
     }
   },

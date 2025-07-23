@@ -27,6 +27,7 @@ export default {
   inputs: {
     B: {
       description: "The value to compare with the Feed value.",
+      check: "expression",
       shadow: 'io_math_number'
     }
   },

@@ -21,11 +21,13 @@ export default {
   inputs: {
     VALUE: {
       description: "The value to write to the Feed.",
+      check: "expression",
       shadow: 'io_text'
     },
 
     FEED: {
       description: "The Feed to write to.",
+      check: "expression",
       shadow: 'feed_selector'
     },
   },

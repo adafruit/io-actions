@@ -25,6 +25,7 @@ export default {
   inputs: {
     URL: {
       description:  "A valid web location to send a POST request to.",
+      check: "expression",
       shadow: {
         type: 'io_text',
         fields: { TEXT: 'https://...' }
@@ -33,6 +34,7 @@ export default {
 
     BODY: {
       description: "A JSON template to render and POST",
+      check: "expression",
       shadow: multilineLineTemplate
     }
   },

@@ -23,6 +23,7 @@ export default {
   inputs: {
     BODY: {
       description: "A template for generating the SMS body",
+      check: "expression",
       shadow: multilineLineTemplate
     }
   },

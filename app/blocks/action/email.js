@@ -18,12 +18,14 @@ export default {
   inputs: {
     SUBJECT: {
       description: "a template for generating the email subject",
+      check: "expression",
       bytecodeProperty: "subjectTemplate",
       shadow: singleLineTemplate,
     },
 
     BODY: {
       description: "a multi-line template for generating the email body",
+      check: "expression",
       bytecodeProperty: "bodyTemplate",
       shadow: multilineLineTemplate,
     }

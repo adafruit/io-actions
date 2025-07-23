@@ -21,6 +21,7 @@ export default {
 
   inputs: {
     B: {
+      check: "expression",
       shadow: 'io_logic_boolean'
     }
   },
