@@ -17,7 +17,6 @@ class BlockDefinition {
 
   description = ''
   ioPlus = false
-  docBlocks = null
 
   colour = null
   color = null
@@ -135,7 +134,6 @@ BlockDefinition.parseRawDefinition = function(rawBlockDefinition, definitionPath
   blockDef.description = rawBlockDefinition.description
     ? niceTemplate(rawBlockDefinition.description)
     : ""
-  blockDef.docBlocks = rawBlockDefinition.docBlocks
   blockDef.ioPlus = rawBlockDefinition.ioPlus
   blockDef.tooltip = blockDef.description.split("\n")[0]
   blockDef.disabled = !!rawBlockDefinition.disabled

@@ -21,8 +21,8 @@
                   x: 20,
                   y: 20
                 },
-                ...blocks.map((docBlock, idx) => ({
-                  ...docBlock,
+                ...blocks.map((otherBlock, idx) => ({
+                  ...otherBlock,
                   x: 180,
                   y: idx*30 + 20
                 }))

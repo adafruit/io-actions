@@ -5,16 +5,6 @@ export default {
   color: 120,
   description: "Round a value to the nearest whole number via round, floor, or ceiling functions",
 
-  docBlocks: [
-    {
-      type: 'io_math_number',
-      fields: { NUM: 1.45 }
-    }, {
-      type: 'io_text',
-      fields: { TEXT: "1.55" }
-    }
-  ],
-
   connections: {
     mode: "value",
     output: "expression",

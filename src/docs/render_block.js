@@ -21,16 +21,6 @@ This Block requires an IO+ subscription to use. [Learn more about IO+](https://i
 
   renderIOPlusAlert = ({ ioPlus }) => ioPlus ? IO_PLUS_ALERT : "",
 
-  renderWorkspace = definition => {
-    const workspaceProps = JSON.stringify({
-      toolbox: false,
-      block: definition.toBlocklyInstanceJSON(),
-      blocks: definition.docBlocks || []
-    })
-
-    return `<BlocklyWorkspace v-bind='${ workspaceProps }' />`
-  },
-
   renderOutput = definition => {
     return capitalize(definition.connections?.output || "Unspecified")
   },
