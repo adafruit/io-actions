@@ -19,6 +19,7 @@ export default {
 
   inputs: {
     VALUE: {
+      check: "expression",
       bytecodeProperty: "value",
       shadow: 'io_math_number'
     },

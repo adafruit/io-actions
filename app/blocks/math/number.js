@@ -7,7 +7,7 @@ export default {
 
   connections: {
     mode: "value",
-    output: "number",
+    output: [ "expression", "number" ],
   },
 
   extensions: {

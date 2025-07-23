@@ -7,7 +7,7 @@ export default {
 
   connections: {
     mode: 'value',
-    output: "String",
+    output: "expression",
   },
 
   template: "Get variable %VAR",

@@ -41,6 +41,11 @@ export default {
     :::
   `,
 
+  connections: {
+    mode: "value",
+    output: [ "expression", "string" ],
+  },
+
   template: "{{ %TEMPLATE",
 
   inputs: {
