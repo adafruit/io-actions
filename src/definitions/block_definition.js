@@ -1,4 +1,4 @@
-import { capitalize, filter, isString, map, isEmpty, keyBy, mapValues, reduce, forEach, pickBy, identity } from 'lodash-es'
+import { capitalize, filter, isString, isEmpty, mapValues, forEach, pickBy, identity } from 'lodash-es'
 
 import BlockExporter from "#src/exporters/block_exporter.js"
 import { niceTemplate } from '#src/util.js'
@@ -155,10 +155,15 @@ BlockDefinition.parseRawDefinition = function(rawBlockDefinition, definitionPath
   // warnings on any data that's missing, ugly, etc
   if(!blockDef.name) {
     // if no name given, humanize the type property as a default
-    // TODO: make a setting for this and re-enable
-    // console.warn(`No "name" property provided for block: "${rawBlockDefinition.type}" (${definitionPath})`)
     blockDef.name = rawBlockDefinition.type.split(/[\W_]+/).map(capitalize).join(" ").replace(/^io /i, "")
+    console.warn(`Warning: [${rawBlockDefinition.type}] No "name" property provided, defaulted to: "${blockDef.name}"`)
   }
+
+  forEach(blockDef.inputs, (input, inputName) => {
+    if(!input.check) {
+      console.warn(`Warning: [${blockDef.type}] Input is unchecked: ${inputName}`)
+    }
+  })
 
   return blockDef
 }
