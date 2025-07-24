@@ -123,9 +123,17 @@ class BlockDefinition {
 }
 
 const
-  definitionPropsToInputs = ({ inputValue, block, shadow }) => {
+  definitionPropsToInputs = input => {
+    const { block, shadow, type } = input
+
+    // bail unless this is a statement or value input
+    // (undefined implies value, for now)
+    if(![undefined, 'statement', 'value'].includes(type)) {
+      return
+    }
+
     if(!block && !shadow) {
-      console.warn("Warning: no block or shadow specified for", inputValue)
+      console.warn("Warning: no block or shadow specified for input:", input)
       return
     }
 
