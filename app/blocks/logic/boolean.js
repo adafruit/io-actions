@@ -6,7 +6,7 @@ export default {
 
   connections: {
     mode: "value",
-    output: "boolean",
+    output: [ "expression", "boolean" ],
   },
 
   template: "%BOOL",
