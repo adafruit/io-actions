@@ -4,6 +4,8 @@ import BlockExporter from "#src/exporters/block_exporter.js"
 import { niceTemplate } from '#src/util.js'
 
 
+const UNCATEGORIZED_PATH = "uncategorized"
+
 class BlockDefinition {
   definitionSet = null
 
@@ -49,6 +51,42 @@ class BlockDefinition {
           contents.includes(this) || usesBlocks.includes(this.type)
         )
       : [])
+  }
+
+  getPrimaryCategory() {
+    const categories = this.getCategories()
+
+    // doesn't appear in a category
+    if(!categories.length) {
+      // why specify a primary? warn
+      if(this.primaryCategory) {
+        console.warn(`Warning [${this.type}]: No category found, but did have "primaryCategory" key: "${this.primaryCategory}"`)
+      }
+
+      return UNCATEGORIZED_PATH
+    }
+
+    const firstCategoryName = categories[0].name
+
+    // appears in multiple categories
+    if(categories.length > 1) {
+      // doesn't specify a primary! this is bad, unsure what menu and URL it will fall under, warn
+      if(!this.primaryCategory) {
+        console.warn(`Warning [${this.type}]: Multiple categories but no "primaryCategory" declaration, using "${firstCategoryName}"`)
+      } else {
+        return this.primaryCategory
+      }
+    }
+
+    return firstCategoryName
+  }
+
+  documentationPath() {
+    const
+      blockMdFilename = this.definitionPath.split("/").at(-1).replace(/.js$/, '.md'),
+      primaryCategory = this.getPrimaryCategory()
+
+    return `blocks/${primaryCategory}/${blockMdFilename}`.toLowerCase()
   }
 
   toBlocklyJSON() {

@@ -33,6 +33,7 @@ export default definition =>
 `---
 title: "Block: ${definition.name}"
 editLink: true
+definitionPath: ${ definition.definitionPath }
 ---
 
 # Block: ${ renderBlockTitle(definition) }

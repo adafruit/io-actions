@@ -24,14 +24,13 @@ export default defineConfig({
     },
 
     editLink: {
+      text: "Suggest an edit to this page",
       // runs on the frontend, must be a pure function!
-      pattern: ({ filePath }) => {
+      pattern: ({ filePath, frontmatter }) => {
         // special handling for block pages
         if(filePath.match(/^blocks\//)) {
-          // docs come from the js, md is not the true source
-          const jsPath = filePath.replace(/.md$/, '.js')
-          // and we want to link to the main branch, not docs
-          return `https://github.com/adafruit/io-actions/edit/main/app/${jsPath}`
+          // block pages have their source paths in their frontmatter
+          return `https://github.com/adafruit/io-actions/edit/main/app/blocks/${frontmatter.definitionPath}`
         }
 
         return `https://github.com/adafruit/io-actions/edit/main/docs/${filePath}`

@@ -29,17 +29,10 @@ export default class SidebarExporter {
 
 
     forEach(this.definitionSet.blocks, blockDefinition => {
-      // skip disabled blocks
-      if(blockDefinition.disabled) { return }
-
-      const docPath = blockDefinition.definitionPath.replace(/.js$/, '.md')
-
-      const
-        blockSidebarPath = `/blocks/${docPath.slice(0, -3)}`,
-        sidebarEntry = {
-          text: blockDefinition.name,
-          link: blockSidebarPath
-        }
+      const sidebarEntry = {
+        text: blockDefinition.name,
+        link: blockDefinition.documentationPath()
+      }
 
       // add links to each sidebar category we're a part of
       forEach(blockDefinition.getCategories(), category => {

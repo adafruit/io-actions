@@ -1,6 +1,6 @@
 import { mkdirSync, writeFileSync } from 'fs'
 import { dirname } from 'path'
-import { forEach } from 'lodash-es'
+import { forEach, identity, pickBy } from 'lodash-es'
 
 import toBlockMarkdown from "#src/docs/render_block.js"
 
@@ -18,14 +18,13 @@ export default class BlockPageExporter {
     const
       options = {
         toFile: false,
-        filenameFunc: null,
+        filenameFunc: blockDef => blockDef.documentationPath(),
         ...givenOptions
       }
 
     forEach(this.definitionSet.blocks, blockDefinition => {
       const
-        docPath = options.filenameFunc?.(blockDefinition)
-          || blockDefinition.definitionPath.replace(/.js$/, '.md'),
+        docPath = options.filenameFunc(blockDefinition),
         fullPath = `${this.destination}/${docPath}`
 
       mkdirSync(dirname(fullPath), { recursive: true })
@@ -34,6 +33,11 @@ export default class BlockPageExporter {
   }
 
   exportToFile = (filenameFunc, toFile=true) => {
-    this.export({ toFile, filenameFunc })
+    const exportOptions = {
+      toFile,
+      // no filenameFunc if absent/falsy
+      ...pickBy({ filenameFunc }, identity)
+    }
+    this.export(exportOptions)
   }
 }
