@@ -3,6 +3,7 @@ import ToolboxExporter from "./toolbox_exporter.js"
 import WorkspaceExporter from "./workspace_exporter.js"
 import ScriptExporter from "./script_exporter.js"
 import SidebarExporter from "./sidebar_exporter.js"
+import BlockIndexExporter from "./block_index_exporter.js"
 import BlockPageExporter from "./block_page_exporter.js"
 
 
@@ -24,6 +25,7 @@ export const exportTo = async (destination, definitions, exportFunc) => {
     script: new ScriptExporter(definitions, destination).exportToFile,
     // docs exporters
     sidebar: new SidebarExporter(definitions, destination).exportToFile,
+    blockIndex: new BlockIndexExporter(definitions, destination).exportToFile,
     blockPages: new BlockPageExporter(definitions, destination).exportToFile,
   }
 

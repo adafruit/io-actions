@@ -36,6 +36,7 @@ const
 
       await exportTo("docs", definitions, exportItem => {
         exportItem.sidebar("blocks/_blocks_sidebar.json")
+        exportItem.blockIndex("blocks/index.md")
         exportItem.blockPages()
         // exportItem.blockExamples(block => "blocks/${block.definitionPath}/examples.json")
       })

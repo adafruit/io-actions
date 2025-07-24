@@ -12,7 +12,7 @@ hero:
       link: /getting-started.md
     - theme: alt
       text: Block List
-      link: /block-index.md
+      link: /blocks/index.md
 
 features:
   - icon: 📚

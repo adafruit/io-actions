@@ -41,14 +41,14 @@ export default defineConfig({
       { text: '🧩', link: '/sandbox' },
       { text: 'Home', link: '/' },
       { text: 'Getting Started', link: '/getting-started' },
-      { text: 'Block List', link: '/block-index' },
+      { text: 'Block List', link: '/blocks/index' },
       { text: 'Contributing', link: '/contributing' },
       // { text: 'Examples', link: '/automation-examples' }
     ],
 
     sidebar: {
-      // covers /blocks/* and /block-index
-      "/block": [ blocksSidebar ],
+      // block index and pages
+      "/blocks/": [ blocksSidebar ],
 
       // devtools for the sandbox
       "/sandbox": [
