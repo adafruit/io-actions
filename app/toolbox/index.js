@@ -1,3 +1,4 @@
+import AirQuality from './air_quality.js'
 import Feeds from './feeds.js'
 import Logic from './logic.js'
 import Math from './math.js'
@@ -19,5 +20,6 @@ export default [
   Feeds,
   Notifications,
   Weather,
+  AirQuality,
   Utility
 ]
