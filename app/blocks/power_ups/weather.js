@@ -1,6 +1,12 @@
 import weatherMixin from "./weather_mixin.js"
 
 
+
+const
+  { keyToLabel, HELP_TEXT_BY_PROP: propText } = weatherMixin,
+  propLines = (prefix, props) =>
+    props.map(prop => `${prefix}- \`${keyToLabel(prop)}\`: ${propText[prop].description}`).join("")
+
 export default {
   type: "weather",
   bytecodeKey: "weather",
@@ -66,14 +72,12 @@ export default {
 
   fields: {
     POWER_UP_ID: {
-      description: "Select a location from those defined by the Weather Power-Up",
       options: [
         [ "Loading locations...", "" ],
       ]
     },
 
     WEATHER_TIME: {
-      description: "Select which kind of forecast to query",
       options: [
         [ "Now", "current" ],
         [ "In 5 minutes", "forecast_minutes_5" ],
@@ -98,13 +102,42 @@ export default {
     },
 
     WEATHER_PROPERTY: {
-      description: "Select which metric of the forecast to use.",
       label: ""
     },
 
     WEATHER_PROPERTY_HELP: {
       label: ""
     },
+  },
+
+  docOverrides: {
+    fields: `
+      ### \`Location\`
+      The list of weather locations defined in the Weather Power-Up. Select
+      the location you would like weather information for.
+
+      ### \`Forecast\` and \`Metric\`
+      A list a weather forecasts to choose from. The weather metrics available
+      are different based on the chosen forecast.
+
+      :::details \`Now\` Metrics` + propLines(`
+      `, weatherMixin.CURRENT_PROPS) + `
+      :::
+
+      :::details \`In X minutes\` Metrics` + propLines(`
+      `, weatherMixin.MINUTE_PROPS) + `
+      :::
+
+      :::details \`In X hours\` Metrics` + propLines(`
+      `, weatherMixin.HOUR_PROPS) + `
+      :::
+
+      :::details \`In X days\` Metrics
+      **Some daily metrics can be narrowed to just the daytime or overnight portions.**
+      ` + propLines(`
+      `, weatherMixin.DAY_PROPS) + `
+      :::
+    `
   },
 
   generators: {

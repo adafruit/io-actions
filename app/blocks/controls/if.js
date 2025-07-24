@@ -8,12 +8,6 @@ export default {
   description: "Execute different block diagrams based on the outcome of conditional checks.",
   colour: 60,
 
-      // "if - the first value to check for truthiness",
-      // "do - the commands to execute if the first check was true",
-      // "else if - (optional, repeating) an extra value to check for truthiness",
-      // "do - the commands to execute if the previous check was true",
-      // "else - (optional) the commands to execute if no checks were true",
-
   connections: {
     mode: "statement",
     output: "expression",
@@ -29,21 +23,28 @@ export default {
     else %ELSE_LABEL
   `,
 
-  // TODO: open a way to send raw documentation for the inputs section
-  // the conditional block has a lot of dynamic behavior that is harder to
-  // document plainly alongside the data definitions
-
   inputs: {
     IF0: {
-      description: "Runs the given block tree and checks whether it resolve true or false. If true, executes the 'do' branch, otherwise moves onto the next if (if present), or the final else (if present.)",
       check: "expression",
       shadow: 'io_logic_boolean'
     },
 
     THEN0: {
-      description: "The block diagram to execute when the preceding 'if' clause resolves to true",
       check: "expression",
       type: 'statement',
+      shadow: {
+        type:'action_log',
+        inputs: {
+          EXPRESSION: {
+            shadow: {
+              type: 'io_text',
+              fields: {
+                TEXT: 'conditional was true!'
+              }
+            }
+          }
+        }
+      }
     },
 
     ELSE_IF_LABEL: {
@@ -53,6 +54,33 @@ export default {
     ELSE_LABEL: {
       type: 'label',
     }
+  },
+
+  docOverrides: {
+    inputs: `
+      ### \`If\`
+      This block tree will always be run. If it resolve to \`true\`, the blocks
+      under the next 'do' section will be executed. Otherwise, execution moves
+      to the next "else if" (if present), or the final "else" (if present.)
+
+      ### \`Do\`
+      The block diagram to execute when the preceding "if" or "else if" clause
+      resolves to \`true\`.
+
+      ### \`Else if\`
+      **Optional:** "else if" only appears after clicking "+ else if", and can be
+      removed by clicking the "-" next to it.
+
+      Another "if" to check, only if every prior if has executed and none
+      resolved to \`true\`.
+
+      ### \`Else\`
+      **Optional:** "else" only appears after clicking "+ else", and can be removed
+      by clicking "-" next to it.
+
+      This section will execute if all "if"s and "else-if"s have been executed and
+      all resolved to \`false\`.
+    `
   },
 
   generators: {
