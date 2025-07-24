@@ -1,5 +1,5 @@
 import { writeFileSync } from 'fs'
-import { forEach, isString } from 'lodash-es'
+import { forEach, isString, without } from 'lodash-es'
 
 
 export default class BlockIndexExporter {
@@ -19,6 +19,7 @@ export default class BlockIndexExporter {
         ...givenOptions
       },
       categories = this.definitionSet.getCategories(),
+      categorized = [],
       index = []
 
     index.push(`---
@@ -27,7 +28,7 @@ editLink: false
 ---
 
 # Block List`)
-    // index.push(`All available blocks`)
+    index.push(`${this.definitionSet.blocks.length} blocks and counting`)
 
     categories.forEach(category => {
       index.push(`## ${category.name}`)
@@ -35,18 +36,23 @@ editLink: false
       index.push(
         this.definitionSet.blocks.reduce((acc, def) => {
           if(category.contents?.includes(def) || category.usesBlocks?.includes(def.type)) {
-            // block name and link
-            acc.push(`### [${ def.name }](/${ def.documentationPath() })`)
-            // block image
-            // acc.push(``) // TODO
-            // block short description
-            acc.push(`_${def.tooltip}_`)
+            acc.push(definitionToIndexLines(def))
+            categorized.push(def)
           }
 
           return acc
         }, []).join("\n")
       )
     })
+
+    // Special "Uncategorized" category
+    const uncategorized = without(this.definitionSet.blocks, ...categorized)
+    index.push(`## Uncategorized`)
+    index.push("These blocks do not appear in the toolbox directly. They may appear in gear menus, as sub-blocks, etc.")
+
+    index.push(
+      uncategorized.map(def => definitionToIndexLines(def)).join("\n")
+    )
 
     const finalMarkdown = index.join("\n\n")
 
@@ -64,4 +70,19 @@ editLink: false
   exportToFile = (toFile=true) => {
     this.export({ toFile })
   }
+}
+
+const definitionToIndexLines = def => {
+  const indexLines = []
+
+  // block name and link
+  indexLines.push(`### [${ def.name }](/${ def.documentationPath() })`)
+
+  // block image // TODO
+  // indexLines.push(``)
+
+  // block short description
+  indexLines.push(`_${def.tooltip}_`)
+
+  return indexLines.join("\n")
 }
