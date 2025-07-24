@@ -1,10 +1,14 @@
-import { capitalize, map, mapValues, values } from 'lodash-es'
+import { capitalize, keys, map, mapValues, pickBy, values } from 'lodash-es'
 
 import { niceTemplate } from '#src/util.js'
 
 
 const
   renderFields = definition => {
+    if(definition.docOverrides?.fields) {
+      return renderOverridenFields(definition)
+    }
+
     const fields = values(mapValues(definition.fields, (newField, name) => {
       newField.field = name
       return newField
@@ -13,6 +17,22 @@ const
     if(!fields.length) { return "This block has no form fields." }
 
     return fields.map(renderField).join("\n\n")
+  },
+
+  renderOverridenFields = definition => {
+    // warn if any inputs have descriptions that won't be rendered
+    const
+      { fields } = definition.docOverrides,
+      missedFields = keys(pickBy(definition.fields, "description")).join(", ")
+
+    if(missedFields) {
+      console.warn(`Warning [${definition.type}]: Inputs doc is overriden, input descriptions will not be seen for: ${missedFields}`)
+    }
+
+    // determine if the override is a function to call
+    return niceTemplate(typeof fields === 'string'
+      ? fields
+      : fields(definition))
   },
 
   renderField = field => {

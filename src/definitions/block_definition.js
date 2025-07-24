@@ -18,6 +18,7 @@ class BlockDefinition {
   name = null
 
   description = ''
+  docOverrides = {}
   ioPlus = false
 
   colour = null
@@ -178,6 +179,7 @@ BlockDefinition.parseRawDefinition = function(rawBlockDefinition, definitionPath
   blockDef.type = rawBlockDefinition.type
   blockDef.name = rawBlockDefinition.name
   blockDef.primaryCategory = rawBlockDefinition.primaryCategory
+  blockDef.docOverrides = rawBlockDefinition.docOverrides
   blockDef.description = rawBlockDefinition.description
     ? niceTemplate(rawBlockDefinition.description)
     : ""

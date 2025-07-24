@@ -1,12 +1,38 @@
-import { capitalize, forEach, keys } from 'lodash-es'
+import { capitalize, pickBy, forEach, keys } from 'lodash-es'
+
+import { niceTemplate } from '#src/util.js'
 
 
 const
   renderInputs = definition => {
+    if(definition.docOverrides?.inputs) {
+      return renderOverridenInputs(definition)
+    }
+
     if(!keys(definition.inputs).length) {
       return "This block has no inputs"
     }
 
+    return renderEachInput(definition)
+  },
+
+  renderOverridenInputs = definition => {
+    // warn if any inputs have descriptions that won't be rendered
+    const
+      { inputs } = definition.docOverrides,
+      missedInputs = keys(pickBy(definition.inputs, "description")).join(", ")
+
+    if(missedInputs) {
+      console.warn(`Warning [${definition.type}]: Inputs doc is overriden, input descriptions will not be seen for: ${missedInputs}`)
+    }
+
+    // determine if the override is a function to call
+    return niceTemplate(typeof inputs === 'string'
+      ? inputs
+      : inputs(definition))
+  },
+
+  renderEachInput = definition => {
     const lines = []
     forEach(definition.inputs, (input, inputName) => {
       if(input.type === 'label') { return }
