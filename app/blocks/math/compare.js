@@ -4,6 +4,7 @@ export default {
   name: "Compare Numbers",
   colour: 120,
   inputsInline: true,
+  primaryCategory: "Math",
   description: "Numerically compare two given values using the selected math operation.",
 
   connections: {

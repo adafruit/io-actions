@@ -4,6 +4,7 @@ export default {
   name: "Compare Text",
   colour: 180,
   inputsInline: true,
+  primaryCategory: "Logic",
   description: "Compare two chunks of text for equality, inequality, or inclusion.",
 
   connections: {

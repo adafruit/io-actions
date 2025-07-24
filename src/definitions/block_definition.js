@@ -40,7 +40,7 @@ class BlockDefinition {
 
   disabled = false
 
-  categories = []
+  primaryCategory = null
 
 
   getCategories() {
@@ -131,6 +131,7 @@ BlockDefinition.parseRawDefinition = function(rawBlockDefinition, definitionPath
   blockDef.definitionJS = rawBlockDefinition
   blockDef.type = rawBlockDefinition.type
   blockDef.name = rawBlockDefinition.name
+  blockDef.primaryCategory = rawBlockDefinition.primaryCategory
   blockDef.description = rawBlockDefinition.description
     ? niceTemplate(rawBlockDefinition.description)
     : ""
