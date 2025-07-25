@@ -1,6 +1,6 @@
 const
     // TODO: rely on project configuration for docs site location
-  DOCS_BLOCKS_ROOT = "https://io.adafruitcom/actions-docs",
+  DOCS_BLOCKS_ROOT = "https://io.adafruit.com/actions-docs",
 
   processHelp = definition => {
     if (!definition.definitionPath) { return {} }
