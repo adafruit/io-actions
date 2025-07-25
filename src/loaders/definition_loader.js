@@ -11,6 +11,7 @@ const
   EXTENSION_LOCATION = `extensions/`,
   MIXIN_LOCATION = `mixins/`,
   MUTATOR_LOCATION = `mutators/`,
+  REGENERATOR_LOCATION = `regenerators/`,
   TOOLBOX_LOCATION = `toolbox/`,
   WORKSPACE_LOCATION = `workspace/`,
 
@@ -62,6 +63,23 @@ export const DefinitionLoader = {
     ))
   },
 
+  loadRegenerators: async (appLocation=APP_LOCATION) => {
+    const jsfiles = await glob(`./${appLocation}/${REGENERATOR_LOCATION}**/*.js`, { ignore: EXAMPLE_FILES })
+
+    // loads app/regenerators/*.js into object like:
+    // { blockType: { json: Function }}
+    let regenerators = {}
+    await Promise.all(jsfiles.map( async filePath => {
+      const regeneratorsFromFile = (await import(`${PROJECT_ROOT}/${filePath}`)).default
+      regenerators = {
+        ...regenerators,
+        ...regeneratorsFromFile
+      }
+    }))
+
+    return regenerators
+  },
+
   loadBlocks: async (appLocation=APP_LOCATION) => {
     // get the file listing
     const
@@ -101,6 +119,7 @@ export const DefinitionLoader = {
       mutators: await DefinitionLoader.loadMutators(options.source),
       mixins: await DefinitionLoader.loadMixins(options.source),
       extensions: await DefinitionLoader.loadExtensions(options.source),
+      regenerators: await DefinitionLoader.loadRegenerators(options.source),
       blocks: await DefinitionLoader.loadBlocks(options.source),
       toolboxes: await DefinitionLoader.loadToolboxes(options.source),
       workspaces: await DefinitionLoader.loadWorkspaces(options.source),

@@ -60,14 +60,23 @@ DefinitionSet.load = async function(appLocation) {
     enabledBlocks = reject(rawDefinitions.blocks, "definition.disabled"),
     definitionSet = new DefinitionSet()
 
-  // TODO: fields
-  // TODO: shadows
-  // TODO: inputs
+  // TODO: process fields
+  // TODO: process shadows
+  // TODO: process inputs
 
+  // process mixins
   definitionSet.mixins = rawDefinitions.mixins
+  // process extensions
   definitionSet.extensions = rawDefinitions.extensions
+  // process mutators
   definitionSet.mutators = rawDefinitions.mutators
 
+  // process standalone regenerators
+  forEach(rawDefinitions.regenerators, (regenerators, blockType) => {
+    definitionSet.regenerators[blockType] = regenerators
+  })
+
+  // process blocks
   forEach(enabledBlocks, ({ definition, path }) => {
     const blockDef = BlockDefinition.parseRawDefinition(definition, path, definitionSet)
     definitionSet.blocks.push(blockDef)
@@ -110,15 +119,24 @@ DefinitionSet.load = async function(appLocation) {
       definitionSet.mutators[blockDef.type] = mutator
     }
 
+    if(definitionSet.generators[blockDef.type]) {
+      throw new Error(`Generator already present for block: ${blockDef.type}`)
+    }
     definitionSet.generators[blockDef.type] = blockDef.generators
+
+    if(definitionSet.regenerators[blockDef.type]) {
+      throw new Error(`Regenerator already present for block: ${blockDef.type}`)
+    }
     definitionSet.regenerators[blockDef.type] = blockDef.regenerators
   })
 
+  // process toolbox
   forEach(rawDefinitions.toolboxes, rawToolboxDef => {
     const toolboxDef = ToolboxDefinition.parseRawDefinition(rawToolboxDef, definitionSet)
     definitionSet.toolboxes.push(toolboxDef)
   })
 
+  // process workspace
   forEach(rawDefinitions.workspaces, rawWorkspaceDef => {
     const workspaceDef = WorkspaceDefinition.parseRawDefinition(rawWorkspaceDef, definitionSet)
     definitionSet.workspaces.push(workspaceDef)

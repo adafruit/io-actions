@@ -30,13 +30,15 @@ const BYTECODE_BLOCK_TYPE_MAP = {
   negate: 'io_logic_negate',
   setVariable: 'io_variables_set',
   getVariable: 'io_variables_get',
-  feed: 'feed_selector',
   getFeedValue: 'feed_get_value',
   setFeedValue: 'feed_set_value',
-  publishAction: 'action_publish',
   webhookAction: 'action_webhook',
   emailAction: 'action_email',
   smsAction: 'action_sms',
+  // removed blocks that have migration regenerators
+  // see: app/regenerators/migrations.js
+  feed: 'feed_selector',
+  publishAction: 'action_publish',
 }
 
 const lookupRegenerator = expressionName => {
