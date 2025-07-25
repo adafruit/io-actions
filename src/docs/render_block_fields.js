@@ -14,7 +14,7 @@ const
       return newField
     }))
 
-    if(!fields.length) { return "This block has no form fields." }
+    if(!fields.length) { return }
 
     return fields.map(renderField).join("\n\n")
   },

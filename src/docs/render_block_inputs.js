@@ -9,9 +9,7 @@ const
       return renderOverridenInputs(definition)
     }
 
-    if(!keys(definition.inputs).length) {
-      return "This block has no inputs"
-    }
+    if(!keys(definition.inputs).length) { return }
 
     return renderEachInput(definition)
   },
