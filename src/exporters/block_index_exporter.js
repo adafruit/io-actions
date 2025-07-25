@@ -1,5 +1,5 @@
 import { writeFileSync } from 'fs'
-import { forEach, isString, without } from 'lodash-es'
+import { isString, without } from 'lodash-es'
 
 
 export default class BlockIndexExporter {
