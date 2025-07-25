@@ -31,7 +31,7 @@ exports[`Block Snapshots > Blockly JSON > action_email 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/notifications/email"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/notifications/email"
 }
 `;
 
@@ -52,44 +52,7 @@ exports[`Block Snapshots > Blockly JSON > action_log 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/utility/log"
-}
-`;
-
-exports[`Block Snapshots > Blockly JSON > action_publish 1`] = `
-{
-  "inputsInline": false,
-  "type": "action_publish",
-  "colour": "0",
-  "tooltip": "Sends the given value to the specified Feed.",
-  "nextStatement": "expression",
-  "previousStatement": "expression",
-  "message0": "📈 Publish %1",
-  "args0": [
-    {
-      "type": "input_dummy",
-      "align": "CENTRE"
-    }
-  ],
-  "message1": "...value: %1",
-  "args1": [
-    {
-      "type": "input_value",
-      "name": "VALUE",
-      "check": "expression",
-      "align": "RIGHT"
-    }
-  ],
-  "message2": "...to: %1",
-  "args2": [
-    {
-      "type": "input_value",
-      "name": "FEED",
-      "check": "expression",
-      "align": "RIGHT"
-    }
-  ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/publish"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/utility/log"
 }
 `;
 
@@ -139,7 +102,7 @@ exports[`Block Snapshots > Blockly JSON > action_root 1`] = `
     }
   ],
   "mutator": "action_root",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/root"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/root"
 }
 `;
 
@@ -167,7 +130,7 @@ exports[`Block Snapshots > Blockly JSON > action_sms 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/notifications/sms"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/notifications/sms"
 }
 `;
 
@@ -216,7 +179,7 @@ exports[`Block Snapshots > Blockly JSON > action_webhook 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/notifications/webhook"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/notifications/webhook"
 }
 `;
 
@@ -235,7 +198,7 @@ exports[`Block Snapshots > Blockly JSON > all_days 1`] = `
     }
   ],
   "mutator": "all_days",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/all_days"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/all_days"
 }
 `;
 
@@ -254,7 +217,7 @@ exports[`Block Snapshots > Blockly JSON > all_hours 1`] = `
     }
   ],
   "mutator": "all_hours",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/all_hours"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/all_hours"
 }
 `;
 
@@ -273,7 +236,7 @@ exports[`Block Snapshots > Blockly JSON > all_minutes 1`] = `
     }
   ],
   "mutator": "all_minutes",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/all_minutes"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/all_minutes"
 }
 `;
 
@@ -292,7 +255,7 @@ exports[`Block Snapshots > Blockly JSON > all_months 1`] = `
     }
   ],
   "mutator": "all_months",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/all_months"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/all_months"
 }
 `;
 
@@ -311,7 +274,7 @@ exports[`Block Snapshots > Blockly JSON > day_settings 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/day_settings"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/day_settings"
 }
 `;
 
@@ -372,7 +335,7 @@ exports[`Block Snapshots > Blockly JSON > days_of_week 1`] = `
     }
   ],
   "mutator": "days_of_week",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/days_of_week"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/days_of_week"
 }
 `;
 
@@ -390,7 +353,7 @@ exports[`Block Snapshots > Blockly JSON > delay_days 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/delay_days"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/delay_days"
 }
 `;
 
@@ -506,7 +469,7 @@ exports[`Block Snapshots > Blockly JSON > delay_hours 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/delay_hours"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/delay_hours"
 }
 `;
 
@@ -766,7 +729,7 @@ exports[`Block Snapshots > Blockly JSON > delay_minutes 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/delay_minutes"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/delay_minutes"
 }
 `;
 
@@ -784,7 +747,7 @@ exports[`Block Snapshots > Blockly JSON > delay_none 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/delay_none"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/delay_none"
 }
 `;
 
@@ -1044,7 +1007,7 @@ exports[`Block Snapshots > Blockly JSON > delay_seconds 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/delay_seconds"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/delay_seconds"
 }
 `;
 
@@ -1098,7 +1061,7 @@ exports[`Block Snapshots > Blockly JSON > delay_settings 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/delay_settings"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/delay_settings"
 }
 `;
 
@@ -1411,7 +1374,7 @@ exports[`Block Snapshots > Blockly JSON > every_days_between 1`] = `
     }
   ],
   "mutator": "every_days_between",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/every_days_between"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/every_days_between"
 }
 `;
 
@@ -1668,7 +1631,7 @@ exports[`Block Snapshots > Blockly JSON > every_hours_between 1`] = `
     }
   ],
   "mutator": "every_hours_between",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/every_hours_between"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/every_hours_between"
 }
 `;
 
@@ -2229,7 +2192,7 @@ exports[`Block Snapshots > Blockly JSON > every_minutes_between 1`] = `
     }
   ],
   "mutator": "every_minutes_between",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/every_minutes_between"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/every_minutes_between"
 }
 `;
 
@@ -2382,7 +2345,7 @@ exports[`Block Snapshots > Blockly JSON > every_months_between 1`] = `
     }
   ],
   "mutator": "every_months_between",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/every_months_between"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/every_months_between"
 }
 `;
 
@@ -2414,39 +2377,7 @@ exports[`Block Snapshots > Blockly JSON > feed_get_value 1`] = `
     "replaceDropdownOptions",
     "populateFeedDropdown"
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/feeds/get_value"
-}
-`;
-
-exports[`Block Snapshots > Blockly JSON > feed_selector 1`] = `
-{
-  "inputsInline": false,
-  "type": "feed_selector",
-  "colour": 300,
-  "tooltip": "The last value of this feed or component, always a String",
-  "output": "expression",
-  "message0": "Feed: %1 %2",
-  "args0": [
-    {
-      "name": "FEED_KEY",
-      "type": "field_dropdown",
-      "options": [
-        [
-          "Loading Feeds...",
-          ""
-        ]
-      ]
-    },
-    {
-      "type": "input_dummy",
-      "align": "RIGHT"
-    }
-  ],
-  "extensions": [
-    "replaceDropdownOptions",
-    "populateFeedDropdown"
-  ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/selector"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/feeds/get_value"
 }
 `;
 
@@ -2481,7 +2412,7 @@ exports[`Block Snapshots > Blockly JSON > feed_set_value 1`] = `
     "replaceDropdownOptions",
     "populateFeedDropdown"
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/feeds/set_value"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/feeds/set_value"
 }
 `;
 
@@ -2500,7 +2431,7 @@ exports[`Block Snapshots > Blockly JSON > hour_settings 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/hour_settings"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/hour_settings"
 }
 `;
 
@@ -2547,7 +2478,7 @@ exports[`Block Snapshots > Blockly JSON > io_controls_if 1`] = `
     }
   ],
   "mutator": "io_controls_if",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/logic/if"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/logic/if"
 }
 `;
 
@@ -2582,7 +2513,7 @@ exports[`Block Snapshots > Blockly JSON > io_logic_boolean 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/logic/boolean"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/logic/boolean"
 }
 `;
 
@@ -2641,7 +2572,7 @@ exports[`Block Snapshots > Blockly JSON > io_logic_compare 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/math/compare"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/math/compare"
 }
 `;
 
@@ -2661,7 +2592,7 @@ exports[`Block Snapshots > Blockly JSON > io_logic_negate 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/logic/negate"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/logic/negate"
 }
 `;
 
@@ -2704,7 +2635,7 @@ exports[`Block Snapshots > Blockly JSON > io_logic_operation 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/logic/operation"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/logic/operation"
 }
 `;
 
@@ -2759,7 +2690,7 @@ exports[`Block Snapshots > Blockly JSON > io_math_arithmetic 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/math/arithmetic"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/math/arithmetic"
 }
 `;
 
@@ -2788,7 +2719,7 @@ exports[`Block Snapshots > Blockly JSON > io_math_constrain 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/math/constrain"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/math/constrain"
 }
 `;
 
@@ -2817,7 +2748,7 @@ exports[`Block Snapshots > Blockly JSON > io_math_number 1`] = `
   "extensions": [
     "validateNumbers"
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/math/number"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/math/number"
 }
 `;
 
@@ -2855,7 +2786,7 @@ exports[`Block Snapshots > Blockly JSON > io_math_round 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/math/round"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/math/round"
 }
 `;
 
@@ -2881,7 +2812,7 @@ exports[`Block Snapshots > Blockly JSON > io_text 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/text/text"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/text/text"
 }
 `;
 
@@ -2910,7 +2841,7 @@ exports[`Block Snapshots > Blockly JSON > io_text_join 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/text/join"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/text/join"
 }
 `;
 
@@ -2936,7 +2867,7 @@ exports[`Block Snapshots > Blockly JSON > io_text_multiline 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/text/text_multiline"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/text/text_multiline"
 }
 `;
 
@@ -2958,7 +2889,7 @@ exports[`Block Snapshots > Blockly JSON > io_variables_get 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/variables/get"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/variables/get"
 }
 `;
 
@@ -2983,41 +2914,7 @@ exports[`Block Snapshots > Blockly JSON > io_variables_set 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/variables/set"
-}
-`;
-
-exports[`Block Snapshots > Blockly JSON > matcher_boolean_operation 1`] = `
-{
-  "inputsInline": true,
-  "type": "matcher_boolean_operation",
-  "colour": 60,
-  "tooltip": "Perform a logic operation between the triggering Feed value and a block diagram.",
-  "output": "matcher",
-  "message0": "is true %1 %2",
-  "args0": [
-    {
-      "name": "OP",
-      "type": "field_dropdown",
-      "options": [
-        [
-          "and",
-          "AND"
-        ],
-        [
-          "or",
-          "OR"
-        ]
-      ]
-    },
-    {
-      "type": "input_value",
-      "name": "B",
-      "check": "expression",
-      "align": "RIGHT"
-    }
-  ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/matcher_boolean_operation"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/variables/set"
 }
 `;
 
@@ -3067,7 +2964,7 @@ exports[`Block Snapshots > Blockly JSON > matcher_compare 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/triggers/matcher_compare"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/triggers/matcher_compare"
 }
 `;
 
@@ -3105,7 +3002,7 @@ exports[`Block Snapshots > Blockly JSON > matcher_text_compare 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/triggers/matcher_text_compare"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/triggers/matcher_text_compare"
 }
 `;
 
@@ -3150,7 +3047,7 @@ exports[`Block Snapshots > Blockly JSON > math_map 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/math/map"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/math/map"
 }
 `;
 
@@ -3186,7 +3083,7 @@ exports[`Block Snapshots > Blockly JSON > math_range 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/range"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/range"
 }
 `;
 
@@ -3205,7 +3102,7 @@ exports[`Block Snapshots > Blockly JSON > minute_settings 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/minute_settings"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/minute_settings"
 }
 `;
 
@@ -3224,7 +3121,7 @@ exports[`Block Snapshots > Blockly JSON > month_settings 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/month_settings"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/month_settings"
 }
 `;
 
@@ -3279,7 +3176,7 @@ exports[`Block Snapshots > Blockly JSON > on_schedule 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/triggers/on_schedule"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/triggers/on_schedule"
 }
 `;
 
@@ -3428,7 +3325,7 @@ exports[`Block Snapshots > Blockly JSON > one_day 1`] = `
     }
   ],
   "mutator": "one_day",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/one_day"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/one_day"
 }
 `;
 
@@ -3549,7 +3446,7 @@ exports[`Block Snapshots > Blockly JSON > one_hour 1`] = `
     }
   ],
   "mutator": "one_hour",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/one_hour"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/one_hour"
 }
 `;
 
@@ -3814,7 +3711,7 @@ exports[`Block Snapshots > Blockly JSON > one_minute 1`] = `
     }
   ],
   "mutator": "one_minute",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/one_minute"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/one_minute"
 }
 `;
 
@@ -3887,7 +3784,7 @@ exports[`Block Snapshots > Blockly JSON > one_month 1`] = `
     }
   ],
   "mutator": "one_month",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/one_month"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/one_month"
 }
 `;
 
@@ -3980,7 +3877,7 @@ exports[`Block Snapshots > Blockly JSON > some_months 1`] = `
     }
   ],
   "mutator": "some_months",
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/uncategorized/some_months"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/uncategorized/some_months"
 }
 `;
 
@@ -4027,7 +3924,7 @@ exports[`Block Snapshots > Blockly JSON > text_compare 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/logic/compare"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/logic/compare"
 }
 `;
 
@@ -4050,7 +3947,7 @@ exports[`Block Snapshots > Blockly JSON > text_template 1`] = `
       "align": "RIGHT"
     }
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/text/template"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/text/template"
 }
 `;
 
@@ -4203,7 +4100,7 @@ exports[`Block Snapshots > Blockly JSON > weather 1`] = `
     "weatherMixin",
     "prepareWeather"
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/weather/weather"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/weather/weather"
 }
 `;
 
@@ -4236,7 +4133,7 @@ exports[`Block Snapshots > Blockly JSON > when_data 1`] = `
     "replaceDropdownOptions",
     "populateFeedDropdown"
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/triggers/when_data"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/triggers/when_data"
 }
 `;
 
@@ -4271,7 +4168,7 @@ exports[`Block Snapshots > Blockly JSON > when_data_matching 1`] = `
     "replaceDropdownOptions",
     "populateFeedDropdown"
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/triggers/when_data_matching"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/triggers/when_data_matching"
 }
 `;
 
@@ -4328,6 +4225,6 @@ exports[`Block Snapshots > Blockly JSON > when_data_matching_state 1`] = `
     "replaceDropdownOptions",
     "populateFeedDropdown"
   ],
-  "helpUrl": "https://io.adafruitcom/actions-docs/blocks/triggers/when_data_matching_state"
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/triggers/when_data_matching_state"
 }
 `;
