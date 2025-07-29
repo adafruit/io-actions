@@ -35,6 +35,7 @@
   "devDependencies": {
     "@eslint/js": "^9.2.0",
     "chai": "^5.1.2",
+    "cypress": "^14.5.3",
     "eslint": "^8.57.0",
     "esm-reload": "^1.0.1",
     "glob": "^10.4.2",
