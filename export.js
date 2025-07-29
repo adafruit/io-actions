@@ -106,3 +106,6 @@ await exporter()
 const elapsed = Date.now() - startTime
 console.log("=======================")
 console.log(`🏁 Done. Wrote ${totalBytesWritten.toFixed(3)}k in ${elapsed}ms 🏁`)
+
+
+process.exit(0)
