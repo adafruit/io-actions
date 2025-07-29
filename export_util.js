@@ -8,7 +8,7 @@ export const
     if(fs.existsSync(dirName)) {
       fs.rmSync(dirName, { recursive: true, force: true })
     }
-    fs.mkdirSync(dirName)
+    fs.mkdirSync(dirName, { recursive: true, force: true })
     console.log(`/${dirName}: clean`)
   },
 
