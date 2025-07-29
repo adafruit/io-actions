@@ -2,6 +2,8 @@
   import { onMounted, onUnmounted } from 'vue'
   import { dispose, inject } from "../blockly/blockly_app.js"
   import initialWorkspace from "../blockly/workspace.json"
+  import { imageExportRegistryItems } from '#src/image_exporter.js'
+
 
   const
     { block, blocks=[], width="100%", height="200px", toolbox=true } = defineProps(
@@ -10,6 +12,30 @@
     injectOptions = {},
     options = {
       injectOptions,
+      contextMenu: {
+        register: [ ...imageExportRegistryItems ]
+      },
+      // TODO: specify dummy extension data with the block defs
+      extensionData: {
+        feedOptions: [
+          ["Group A Feed 1", "group-a.feed-1"],
+          ["Group A Feed 2", "group-a.feed-2"],
+          ["Group B Feed 1", "group-b.feed-1"],
+          ["Group C Feed 1", "group-C.feed-1"],
+        ],
+        weatherLocationOptions: [
+          [ "Industry City", "1" ],
+          [ "Varick", "2" ],
+          [ "Shenzhen", "3" ],
+        ],
+        currentWeatherByLocation: {
+          1: {
+            current: {
+              cloudCover: "5.4321",
+            }
+          }
+        }
+      },
       workspaceJson: block
         ? {
             blocks: {
