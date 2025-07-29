@@ -5,7 +5,7 @@ export default {
   type: "action_root",
   name: "Root",
   colour: "0",
-  description: "Add Triggers to determine when this Action runs.\nAdd Actions to determine what this Action does.",
+  description: "Add Triggers to determine when this Action runs. Add Actions to determine what this Action does.",
 
   connections: {},
 
