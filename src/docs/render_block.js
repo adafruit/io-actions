@@ -4,7 +4,7 @@ import renderFields from './render_block_fields.js'
 import renderInputs from './render_block_inputs.js'
 
 
-const
+export const
   IO_PLUS_ALERT = `
 ::: tip :warning: IO+ Required
 This Block requires an IO+ subscription to use. [Learn more about IO+](https://io.adafruit.com/plus)
@@ -16,6 +16,9 @@ This Block requires an IO+ subscription to use. [Learn more about IO+](https://i
 
     return trim(`${name} ${ioPlusBadge}`)
   },
+
+  // ![alt](url "title")
+  renderBlockImage = ({ name, type }) => `![the ${name} block](/block_images/${type}.png "${name}")`,
 
   renderDescription = ({ description }) => description || "No docs for this block, yet.",
 
@@ -69,6 +72,8 @@ definitionPath: ${ definition.definitionPath }
 # Block: ${ renderBlockTitle(definition) }
 
 Type: \`${definition.type}\`
+
+${ renderBlockImage(definition) }
 
 ${ renderDescription(definition) }
 
