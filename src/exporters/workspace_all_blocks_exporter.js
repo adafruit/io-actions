@@ -23,6 +23,7 @@ export default class WorkspaceExporter {
           languageVersion: 0,
           blocks: allBlocks.map((block, index) => ({
             ...block,
+            id: `block-type-${block.type}`,
             x: 50,
             y: 50*index
           }))
