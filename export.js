@@ -75,10 +75,18 @@ const
 
       // extract the screenshots
       console.log('Generating screenshots...')
-      spawnSync("npx", ["cypress", "run", "--config", `downloadsFolder=${destination}/images`])
+      spawnSync("npx", ["cypress", "run",
+        "--config", `downloadsFolder=${destination}/images`,
+        "--config-file", `cypress/cypress.config.js`,
+      ])
+      console.log('Generation complete.')
 
       // kill the server
-      viteProcess.kill()
+      if(!viteProcess.kill()) {
+        console.log("Vite failed to exit gracefully")
+        process.exit(1)
+      }
+      console.log('Server closed.')
     }
   },
   exporterNames = Object.keys(exporters)
