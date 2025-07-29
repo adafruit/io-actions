@@ -10,7 +10,8 @@ export const imageExportRegistryItems = [
     scopeType: Blockly.ContextMenuRegistry.ScopeType.BLOCK,
     preconditionFn: scope => "enabled",
     callback: (scope, menuOpenEvent, menuSelectEvent, location) => {
-      downloadBlockAsSVG(scope.block.id)
+      const { id, type } = scope.block
+      downloadBlockAsSVG(id, type)
     }
   }, {
     id: "block-png",
@@ -19,7 +20,8 @@ export const imageExportRegistryItems = [
     scopeType: Blockly.ContextMenuRegistry.ScopeType.BLOCK,
     preconditionFn: scope => "enabled",
     callback: (scope, menuOpenEvent, menuSelectEvent, location) => {
-      downloadBlockAsPNG(scope.block.id)
+      const { id, type } = scope.block
+      downloadBlockAsPNG(id, type)
     }
   }
 ]
@@ -75,13 +77,13 @@ const
     URL.revokeObjectURL(element.href)
   },
 
-  downloadBlockAsSVG = blockId => {
+  downloadBlockAsSVG = (blockId, blockType) => {
     const svgObjectURL = blockToSVGBlob(blockId)
 
-    download(svgObjectURL, 'block.svg')
+    download(svgObjectURL, `${blockType}.svg`)
   },
 
-  downloadBlockAsPNG = blockId => {
+  downloadBlockAsPNG = (blockId, blockType) => {
     const
       svgObjectURL = blockToSVGBlob(blockId),
       img = new Image()
@@ -95,7 +97,7 @@ const
 
       // extract a png object url from the canvas and download it
       const pngObjectURL = canvas.toDataURL("image/png")
-      download(pngObjectURL, 'block.png')
+      download(pngObjectURL, `${blockType}.png`)
     }
 
     img.src = svgObjectURL
