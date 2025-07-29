@@ -149,7 +149,14 @@ const
       }
 
     } else if(shadow) {
-      return shadowToInput(shadow)
+      const shadowJson = shadowToInput(shadow)
+
+      return {
+        // also copy the shadow into a real block
+        // TODO: nested shadow blocks
+        block: shadowJson.shadow,
+        ...shadowJson
+      }
     }
   },
 
