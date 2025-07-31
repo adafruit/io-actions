@@ -38,6 +38,7 @@ describe("DefinitionSet", function() {
     it("has mixins, including inline mixins from blocks", function() {
       assert.isAbove(Object.keys(this.definitionSet.mixins).length, 1)
       assert.exists(this.definitionSet.mixins.weatherMixin, "Expected an inline mixin to be present")
+      assert.exists(this.definitionSet.mixins.airQualityMixin, "Expected air quality inline mixin to be present")
     })
 
     it("has extensions, including inline extensions from blocks", function() {

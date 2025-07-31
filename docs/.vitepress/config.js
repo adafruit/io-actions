@@ -64,6 +64,10 @@ export default defineConfig({
               "link": "#"
             },
             {
+              "text": "Air Quality Locations",
+              "link": "#"
+            },
+            {
               "text": "IO Bytecode Explorer",
               "link": "#"
             },
