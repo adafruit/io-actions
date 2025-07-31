@@ -1,7 +1,8 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: 'io_math_number',
   name: "Number",
-  colour: 120,
+  color: 120,
 
   description: "A numeric value, whole or decimal.",
 
@@ -13,6 +14,8 @@ export default {
   extensions: {
     validateNumbers: ({ block }) => {
       const numField = block.getField("NUM")
+
+      if(!numField) { throw new Error("NUM field missing on io_math_number?") }
 
       numField.setValidator(newValue => {
         const parsed = Number(newValue)
