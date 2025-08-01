@@ -78,9 +78,11 @@
  *   this property determines which menu this block will appear under in the
  *   docs.
  * @prop {boolean=} ioPlus Indicates this block requires an IO+ account.
+ * @prop {boolean=} disabled Marks this block for exclusion from all app and
+ *   docs builds.
  * @prop {string} description Markdown documentation for this block. The first
  *   line will be automatically set as the Block's tooltip.
- * @prop {BlockConnections} connections
+ * @prop {BlockConnections=} connections
  * @prop {BlockExtensions=} extensions
  * @prop {object=} mutator
  * @prop {BlockMixins=} mixins

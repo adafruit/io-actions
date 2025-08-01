@@ -1,3 +1,4 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: 'io_text_multiline',
   name: "Multiline Text",

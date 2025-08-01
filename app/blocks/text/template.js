@@ -1,3 +1,4 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: 'text_template',
   bytecodeKey: "textTemplate",
