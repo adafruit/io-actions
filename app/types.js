@@ -48,6 +48,7 @@
  * @typedef {object} BlockRegeneratorHelpers
  * @property {function} expressionToBlock
  * @property {function} arrayToStatements
+ * @property {function} registerVariable
  */
 
 /**

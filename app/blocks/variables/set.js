@@ -1,3 +1,4 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: 'io_variables_set',
   bytecodeKey: "setVariable",
@@ -36,6 +37,7 @@ export default {
       const
         defaultedValue = value
           ? JSON.parse(value)
+          // TODO: is this !== 0 check superfluous?
           : (value !== 0 && value !== null) && null,
         blockPayload = JSON.stringify({
           setVariable: {
