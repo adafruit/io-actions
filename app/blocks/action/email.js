@@ -1,6 +1,7 @@
 import { singleLineTemplate, multilineLineTemplate } from "#app/blocks/shadows.js"
 
 
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "action_email",
   bytecodeKey: "emailAction",

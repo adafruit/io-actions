@@ -1,3 +1,4 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "feed_get_value",
   bytecodeKey: "getFeedValue",

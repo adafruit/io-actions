@@ -1,6 +1,7 @@
 import mutator from './if/mutator.js'
 
 
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: 'io_controls_if',
   bytecodeKey: "conditional",
