@@ -1,3 +1,4 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "delay_settings",
   name: "Delay Settings",
@@ -5,7 +6,6 @@ export default {
   description: "Causes a delay between this Action's trigger and its execution",
 
   connections: { },
-
 
   template: `
     Delay Settings |CENTER
@@ -33,9 +33,6 @@ export default {
   },
 
   generators: {
-    json: (block, generator) => {
-
-      return [ {}, 0 ]
-    }
+    json: () => [ {}, 0 ]
   }
 }

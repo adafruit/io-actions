@@ -1,6 +1,7 @@
 import { makeOptions } from "#app/util/fields.js"
 
 
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "delay_hours",
   name: "Delay Hours",
@@ -28,8 +29,6 @@ export default {
   },
 
   generators: {
-    json: () => {
-
-    }
+    json: () => {}
   }
 }

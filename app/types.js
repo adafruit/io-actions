@@ -4,8 +4,8 @@
 
 /**
  * @typedef {object} BlockConnections
- * @prop {string} mode "value", "statement"
- * @prop {string|string[]} output what kinds of blocks can be inserted here?
+ * @prop {string=} mode "value", "statement"
+ * @prop {string|string[]=} output what kinds of blocks can be inserted here?
  */
 
 /**
@@ -45,6 +45,7 @@
 /**
  * @typedef {object} BlockRegeneratorHelpers
  * @property {function} expressionToBlock
+ * @property {function} arrayToStatements
  */
 
 /**
@@ -81,6 +82,7 @@
  *   line will be automatically set as the Block's tooltip.
  * @prop {BlockConnections} connections
  * @prop {BlockExtensions=} extensions
+ * @prop {object=} mutator
  * @prop {BlockMixins=} mixins
  * @prop {string} template
  * @prop {object=} fields

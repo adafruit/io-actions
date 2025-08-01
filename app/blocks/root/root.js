@@ -1,6 +1,7 @@
 import mutator from './action_settings/mutator.js'
 
 
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "action_root",
   name: "Root",
@@ -55,7 +56,9 @@ export default {
       }
 
       const
+        // @ts-ignore
         seconds = block.delaySeconds,
+        // @ts-ignore
         mode = block.delayMode,
         delay = (seconds > 0)
           ? { seconds, mode }
