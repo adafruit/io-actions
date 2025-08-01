@@ -7,6 +7,7 @@
 export default {
   // becomes feed_set_value
   action_publish: {
+    /** @type {import('#types').BlockRegenerator} */
     json: (blockObject, helpers) => {
       const payload = blockObject.publishAction
 
@@ -24,6 +25,7 @@ export default {
 
   // becomes feed_get_value
   feed_selector: {
+    /** @type {import('#types').BlockRegenerator} */
     json: blockObject => {
       const payload = blockObject.feed
 
