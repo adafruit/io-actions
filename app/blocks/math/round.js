@@ -1,3 +1,4 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "io_math_round",
   bytecodeKey: "round",

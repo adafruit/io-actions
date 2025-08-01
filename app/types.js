@@ -63,6 +63,9 @@
  * @prop {(number|string)=} color A number or string from 0-360 that specifies a
  *   color in Blockly's radial color space
  * @prop {(number|string)=} colour Alias for "color"
+ * @prop {string=} primaryCategory For blocks appearing in multiple categories,
+ *   this property determines which menu this block will appear under in the
+ *   docs.
  * @prop {string} description Markdown documentation for this block. The first
  *   line will be automatically set as the Block's tooltip.
  * @prop {BlockConnections} connections
