@@ -1,3 +1,4 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "month_settings",
   name: "Month Settings",
@@ -16,6 +17,6 @@ export default {
   },
 
   generators: {
-    json: block => { }
+    json: () => { }
   }
 }

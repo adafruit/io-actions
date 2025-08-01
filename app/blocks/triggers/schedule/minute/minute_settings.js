@@ -1,3 +1,4 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "minute_settings",
   name: "Minute Settings",
@@ -16,6 +17,6 @@ export default {
   },
 
   generators: {
-    json: block => { }
+    json: () => { }
   }
 }

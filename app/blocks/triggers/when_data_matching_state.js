@@ -1,3 +1,4 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "when_data_matching_state",
   bytecodeKey: "whenDataMatchStateChanged",

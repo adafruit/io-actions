@@ -1,6 +1,7 @@
 import mutator from "./day_mutator.js"
 
 
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "days_of_week",
   name: "Days of the Week",

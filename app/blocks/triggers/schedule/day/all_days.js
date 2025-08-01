@@ -1,6 +1,7 @@
 import mutator from "./day_mutator.js"
 
 
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "all_days",
   name: "All Days",
@@ -17,8 +18,6 @@ export default {
   template: "Every day",
 
   generators: {
-    json: block => {
-      return [ '*', 0 ]
-    }
+    json: () => [ '*', 0 ]
   }
 }

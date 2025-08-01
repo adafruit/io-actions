@@ -1,6 +1,7 @@
 import mutator from './month_mutator.js'
 
 
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "all_months",
   name: "All Months",
@@ -17,8 +18,6 @@ export default {
   template: "Every month",
 
   generators: {
-    json: block => {
-      return [ '*', 0 ]
-    }
+    json: () => [ '*', 0 ]
   }
 }

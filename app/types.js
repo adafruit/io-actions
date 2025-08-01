@@ -4,7 +4,9 @@
 
 /**
  * @typedef {object} BlockConnections
- * @prop {string=} mode "value", "statement"
+ * @prop {("value"|"statement")=} mode Is this block a value or statement?
+ * @prop {string=} next Limits the blocks that can connect to the bottom of
+ *   this statement block.
  * @prop {string|string[]=} output what kinds of blocks can be inserted here?
  */
 
@@ -21,7 +23,7 @@
  */
 
 /**
- * @typedef {Object.<string, BlockExtensionFunction>} BlockExtensions
+ * @typedef {string[]|Object.<string, BlockExtensionFunction>} BlockExtensions
  */
 
 /**

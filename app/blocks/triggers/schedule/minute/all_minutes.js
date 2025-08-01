@@ -1,6 +1,7 @@
 import mutator from './minute_mutator.js'
 
 
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "all_minutes",
   name: "All Minutes",
@@ -17,8 +18,6 @@ export default {
   template: "Every minute",
 
   generators: {
-    json: block => {
-      return [ '*', 0 ]
-    }
+    json: () => [ '*', 0 ]
   }
 }

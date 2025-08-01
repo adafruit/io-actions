@@ -1,3 +1,4 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "on_schedule",
   bytecodeKey: "onSchedule",
@@ -68,13 +69,13 @@ export default {
   },
 
   regenerators: {
-    json: (blockObject, helpers) => {
+    json: (blockObject) => {
       const
         EVERY_REGEX = /^(\d{1,2})(-(\d{1,2}))?\/(\d{1,2})$/m,
         isEveryBetween = cron => EVERY_REGEX.test(cron),
 
         everyBetweenToBlock = (everyBetweenCron, blockType) => {
-          const [ skip1, START, skip2, END, FREQUENCY ] = everyBetweenCron.match(EVERY_REGEX)
+          const [ , START, , END, FREQUENCY ] = everyBetweenCron.match(EVERY_REGEX)
 
           return { block: {
             type: blockType,
