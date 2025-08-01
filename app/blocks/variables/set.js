@@ -35,9 +35,10 @@ export default {
         value = generator.valueToCode(block, 'VALUE', 0)
 
       const
+        // TODO: this is suspect, try valueToCode() || null, above
         defaultedValue = value
           ? JSON.parse(value)
-          // TODO: is this !== 0 check superfluous?
+          // @ts-ignore
           : (value !== 0 && value !== null) && null,
         blockPayload = JSON.stringify({
           setVariable: {
