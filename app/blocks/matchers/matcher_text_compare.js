@@ -1,3 +1,4 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: 'matcher_text_compare',
   bytecodeKey: "matcherTextCompare",
