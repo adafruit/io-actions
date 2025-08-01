@@ -1,12 +1,12 @@
 import weatherMixin from "./weather_mixin.js"
 
 
-
 const
   { keyToLabel, HELP_TEXT_BY_PROP: propText } = weatherMixin,
   propLines = (prefix, props) =>
     props.map(prop => `${prefix}- \`${keyToLabel(prop)}\`: ${propText[prop].description}`).join("")
 
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "weather",
   bytecodeKey: "weather",
@@ -36,6 +36,7 @@ export default {
         weatherLocationOptions.unshift([ "Select Location", "" ])
       }
 
+      // @ts-ignore
       block.replaceDropdownOptions("POWER_UP_ID", weatherLocationOptions)
 
       // skip the rest if we're in the toolbox
@@ -46,16 +47,16 @@ export default {
         // nope out for insertion markers
         if(block.isInsertionMarker()) { return }
 
-        // auto-disable block, if necessary
+        // @ts-ignore auto-disable block, if necessary
         block.setEnabledByLocation()
 
         // react to incoming forecast data
         const unobserve = observeData('currentWeatherByLocation', (newData = {}) => {
           // if this block is disposed, clean up this listener
           if (block.isDisposed()) { unobserve(); return }
-          // update the reference to the injected/updated extension data
+          // @ts-ignore update the reference to the injected/updated extension data
           block.currentWeatherByLocation = newData
-          // re-run the things that use the data
+          // @ts-ignore re-run the things that use the data
           block.refreshPropertyOptions({})
         })
       }, 1)

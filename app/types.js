@@ -11,6 +11,8 @@
 /**
  * @typedef {object} BlockExtensionFunctionInjectable
  * @prop {Blockly.Block} block
+ * @prop {function} observeData
+ * @prop {object} data
  */
 
 /**
@@ -20,6 +22,14 @@
 
 /**
  * @typedef {Object.<string, BlockExtensionFunction>} BlockExtensions
+ */
+
+/**
+ * @typedef {string|object} BlocklyMixin
+ */
+
+ /**
+ * @typedef {BlocklyMixin[]} BlockMixins
  */
 
 /**
@@ -66,13 +76,16 @@
  * @prop {string=} primaryCategory For blocks appearing in multiple categories,
  *   this property determines which menu this block will appear under in the
  *   docs.
+ * @prop {boolean=} ioPlus Indicates this block requires an IO+ account.
  * @prop {string} description Markdown documentation for this block. The first
  *   line will be automatically set as the Block's tooltip.
  * @prop {BlockConnections} connections
  * @prop {BlockExtensions=} extensions
+ * @prop {BlockMixins=} mixins
  * @prop {string} template
  * @prop {object=} fields
  * @prop {object=} inputs
  * @prop {BlockGenerators=} generators
  * @prop {BlockRegenerators=} regenerators
+ * @prop {object=} docOverrides
  */
