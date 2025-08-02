@@ -61,7 +61,7 @@ exports[`Block Snapshots > Blockly JSON > action_root 1`] = `
   "inputsInline": false,
   "type": "action_root",
   "colour": "0",
-  "tooltip": "Add Triggers to determine when this Action runs.",
+  "tooltip": "Add Triggers to determine when this Action runs. Add Actions to determine what this Action does.",
   "message0": "Triggers: %1",
   "args0": [
     {
