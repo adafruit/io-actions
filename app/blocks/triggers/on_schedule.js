@@ -4,7 +4,7 @@ export default {
   bytecodeKey: "onSchedule",
   name: "Schedule",
   colour: 30,
-  description: "A schedule to run the action, from every minute to once a year.",
+  description: "Create a time-based trigger that runs actions automatically at specific times, dates, or intervals (e.g., 'Every weekday at 9 AM', 'Every 15 minutes', or 'On the 1st of every month').",
 
   connections: {
     mode: "statement",
@@ -22,21 +22,25 @@ export default {
 
   inputs: {
     MONTH: {
+      description: "Which months to run the schedule (e.g., 'All months', 'January only', or 'Every 3 months starting in March').",
       check: "cron_month",
       block: "all_months",
     },
 
     DAY: {
+      description: "Which days to run the schedule - either specific days of the month (1-31) or days of the week (Monday, Tuesday, etc.).",
       check: "cron_day",
       block: "all_days"
     },
 
     HOUR: {
+      description: "Which hours to run the schedule (0-23 in 24-hour format, e.g., '14' for 2 PM or 'Every 4 hours').",
       check: "cron_hour",
       block: "all_hours"
     },
 
     MINUTE: {
+      description: "Which minutes to run the schedule (0-59, e.g., 'At 15 minutes past the hour' or 'Every 30 minutes').",
       check: "cron_minute",
       block: {
         type: "one_minute",
