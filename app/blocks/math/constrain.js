@@ -5,24 +5,22 @@ export default {
   name: "Constrain",
   colour: 120,
   description: "Constrain a given number to fall within a given range.",
-
   connections: {
     mode: "value",
     output: "number",
   },
-
   template: `
     Constrain %VALUE
     to %RANGE
   `,
-
   inputs: {
     VALUE: {
+      description: "The number to constrain within the specified range limits.",
       check: "expression",
       shadow: "io_math_number"
     },
-
     RANGE: {
+      description: "The minimum and maximum bounds to limit the value within (values outside this range will be clamped to the nearest boundary).",
       check: 'range',
       shadow: {
         type: "math_range",
@@ -39,18 +37,15 @@ export default {
       }
     }
   },
-
   generators: {
     json: (block, generator) => {
       const
         value = JSON.parse(generator.valueToCode(block, 'VALUE', 0)),
         range = JSON.parse(generator.valueToCode(block, 'RANGE', 0)),
         payload = { constrain: { value, range } }
-
       return [ JSON.stringify(payload), 0 ]
     }
   },
-
   regenerators: {
     json: (blockObject, helpers) => {
       const
@@ -73,7 +68,6 @@ export default {
             }
           }),
         }
-
       return { type: 'io_math_constrain', inputs }
     }
   }
