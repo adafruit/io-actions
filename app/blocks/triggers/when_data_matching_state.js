@@ -5,22 +5,18 @@ export default {
   name: "Data Match Changing",
   colour: 30,
   inputsInline: true,
-  description: "Run this Action when the specified Feed receives a data point that compares to its previous data point in the specified way.",
-
+  description: "Advanced trigger that watches for changes in how your feed data matches a condition over time. Unlike basic triggers that just check if data equals a value, this compares the current data point with the previous one to detect when conditions START being true, STOP being true, or CONTINUE being true. Perfect for detecting state changes like 'temperature just went above 80°' or 'door just closed after being open'.",
   connections: {
     mode: "statement",
     output: "trigger",
     next: "trigger"
   },
-
   mixins: [ 'replaceDropdownOptions' ],
   extensions: [ "populateFeedDropdown" ],
-
   template: "When %FEED_KEY gets data that %MATCH_STATE matching %MATCHER",
-
   inputs: {
     MATCHER: {
-      description: "Attach a Matcher block to apply to both data points to make the specified comparison",
+      description: "The condition to test against both the previous and current data points. For example: 'equals 1', 'greater than 80', or 'contains \"open\"'. This same condition is applied to both the old and new values to determine the state change.",
       check: 'matcher',
       shadow: {
         type: 'matcher_compare',
@@ -30,27 +26,24 @@ export default {
       }
     }
   },
-
   fields: {
     FEED_KEY: {
-      description: "Select a Feed to watch for new data",
+      description: "Choose which feed to monitor for incoming data. Each new data point will be compared against the previous one using your matcher condition.",
       align: "LEFT",
       options: [
         [ "Loading Feeds...", ""]
       ]
     },
-
     MATCH_STATE: {
-      description: "Select the kind of change to watch for:",
+      description: "Select what kind of change pattern you want to detect between the previous and current data points:",
       options: [
-        ["starts", "starts", "the last data point DID NOT match, but this one DOES"],
-        ["stops", "stops", "the last data point DID match, but this one DOES NOT"],
-        ["keeps", "keeps", "both data points DO match"],
-        ["keeps not", "avoids", "both data points DO NOT match"],
+        ["starts", "starts", "Triggers when the condition becomes true for the first time (previous data didn't match, but new data does). Example: temperature was below 80°, now it's above 80°."],
+        ["stops", "stops", "Triggers when the condition stops being true (previous data matched, but new data doesn't). Example: door was open, now it's closed."],
+        ["keeps", "keeps", "Triggers when the condition remains true (both previous and current data match). Example: temperature stays above 80° for multiple readings."],
+        ["keeps not", "avoids", "Triggers when the condition remains false (both previous and current data don't match). Example: temperature stays below 80° for multiple readings."],
       ]
     }
   },
-
   generators: {
     json: (block, generator) => {
       const
@@ -62,15 +55,12 @@ export default {
             feed, matcher, state
           }
         })
-
       return payload
     }
   },
-
   regenerators: {
     json: (blockObject, helpers) => {
       const { feed, matcher, state } = blockObject.whenDataMatchStateChanged
-
       return {
         type: "when_data_matching_state",
         fields: {
