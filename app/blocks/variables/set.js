@@ -5,35 +5,31 @@ export default {
   name: "Set Variable",
   inputsInline: true,
   colour: 240,
-  description: "Set a variable to a value",
-
+  description: "Store a value in a named variable for later use in your Action. Variables let you remember feed values, calculation results, or any data to use in subsequent action blocks.",
   connections: {
     mode: 'statement',
     output: "expression",
     next: "expression",
   },
-
   template: "Set variable %VAR = %VALUE",
-
   inputs: {
     VALUE: {
+      description: "The value to store in the variable. This can be text, numbers, feed values, calculation results, or data from other blocks.",
       check: "expression",
       shadow: "io_text",
     }
   },
-
   fields: {
     VAR: {
+      description: "Choose or create a variable name to store the value. Use descriptive names like 'temperature_reading' or 'user_count' to make your Actions easier to understand.",
       type: 'field_variable'
     }
   },
-
   generators: {
     json: (block, generator) => {
       const
         variableName = block.getField('VAR').getText(),
         value = generator.valueToCode(block, 'VALUE', 0)
-
       const
         // TODO: this is suspect, try valueToCode() || null, above
         defaultedValue = value
@@ -46,17 +42,14 @@ export default {
             value: defaultedValue
           }
         })
-
       return blockPayload
     }
   },
-
   regenerators: {
     json: (blockObject, helpers) => {
       const
         { name, value } = blockObject.setVariable,
         id = helpers.registerVariable(name)
-
       return {
         type: "io_variables_set",
         fields: {
