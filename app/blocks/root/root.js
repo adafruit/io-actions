@@ -12,7 +12,7 @@ export default {
     %TRIGGERS
     Actions: |LEFT
     %EXPRESSIONS
-    \u3164
+    \u00A0
   `,
   inputs: {
     TRIGGERS: {
