@@ -55,7 +55,7 @@ export default {
         fields = {
           OP: comparator?.toUpperCase()
         },
-        inputs: {
+        inputs = {
           A: helpers.expressionToBlock(left, { shadow: 'io_logic_boolean' }),
           B: helpers.expressionToBlock(right, { shadow: 'io_logic_boolean' }),
         }
