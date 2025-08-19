@@ -7,7 +7,7 @@ export default {
   description: "Keep any number within specified minimum and maximum boundaries. If the input value is below the minimum, it becomes the minimum. If above the maximum, it becomes the maximum. Perfect for ensuring values stay within expected ranges, creating percentage bounds, or limiting user input to acceptable values.",
   connections: {
     mode: "value",
-    output: "number",
+    output: [ "expression", "number" ],
   },
   template: `
     Constrain %VALUE

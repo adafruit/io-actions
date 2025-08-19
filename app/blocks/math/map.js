@@ -7,7 +7,7 @@ export default {
   description: "Transform sensor readings and data values by scaling them from one number range to another. Essential for IoT projects that need to convert raw sensor data (like 0-1023 from Arduino analog pins) into meaningful units (like 0-100% humidity), or translate between different measurement systems. Perfect for normalizing data, creating percentage values, or adapting sensor outputs to match your specific needs.",
   connections: {
     mode: "value",
-    output: "number",
+    output: [ "expression", "number" ],
   },
   template: `
     Map
