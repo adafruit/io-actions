@@ -1,35 +1,28 @@
 import mutator from './if/mutator.js'
-
-
 /** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: 'io_controls_if',
   bytecodeKey: "conditional",
   name: "Conditional",
-  description: "Execute different block diagrams based on the outcome of conditional checks.",
+  description: "Create smart decision-making logic for your IoT Actions using if/then/else statements. Perfect for building automation like 'if temperature > 80°F then turn on fan, else if temperature < 60°F then turn on heater, else turn off both'. Essential for creating intelligent responses based on sensor data, time conditions, or any combination of factors.",
   colour: 60,
-
   connections: {
     mode: "statement",
     output: "expression",
     next: 'expression'
   },
-
   mutator,
-
   template: `
     if %IF0
     do %THEN0
     else if %ELSE_IF_LABEL
     else %ELSE_LABEL
   `,
-
   inputs: {
     IF0: {
       check: "expression",
       shadow: 'io_logic_boolean'
     },
-
     THEN0: {
       check: "expression",
       type: 'statement',
@@ -47,93 +40,85 @@ export default {
         }
       }
     },
-
     ELSE_IF_LABEL: {
       type: 'label',
     },
-
     ELSE_LABEL: {
       type: 'label',
     }
   },
-
   docOverrides: {
     inputs: `
       ### \`If\`
-      This block tree will always be run. If it resolve to \`true\`, the blocks
-      under the next 'do' section will be executed. Otherwise, execution moves
-      to the next "else if" (if present), or the final "else" (if present.)
+      This condition will always be checked first. Connect comparison blocks, sensor checks, or any logic that results in true/false. If it evaluates to \`true\`, the actions in the corresponding 'do' section will execute, and the rest of the conditional block will be skipped. If \`false\`, execution moves to the next "else if" (if present), or the final "else" (if present).
+
+      **Examples:**
+      - \`temperature > 80\` - Check if it's hot
+      - \`motion detected AND time after sunset\` - Security logic
+      - \`battery level < 15%\` - Low power warning
 
       ### \`Do\`
-      The block diagram to execute when the preceding "if" or "else if" clause
-      resolves to \`true\`.
+      The actions to execute when the preceding "if" or "else if" condition is \`true\`. Connect any action blocks like sending emails, controlling devices, publishing to feeds, or logging data. These actions only run if their corresponding condition evaluates to true.
+
+      **Examples:**
+      - Send alert email + turn on cooling fan
+      - Log warning message + publish backup data
+      - Turn on lights + send notification
 
       ### \`Else if\`
-      **Optional:** "else if" only appears after clicking "+ else if", and can be
-      removed by clicking the "-" next to it.
+      **Optional:** Add additional conditions to test if the main "if" was false. Click the gear icon and select "+ else if" to add more branches. Each "else if" is only checked if all previous conditions were false. Perfect for handling multiple scenarios like different temperature ranges, various alert levels, or time-based alternatives.
 
-      Another "if" to check, only if every prior if has executed and none
-      resolved to \`true\`.
+      **Examples:**
+      - \`else if temperature < 60\` → turn on heater
+      - \`else if battery < 50%\` → reduce power consumption  
+      - \`else if motion detected\` → different security response
 
       ### \`Else\`
-      **Optional:** "else" only appears after clicking "+ else", and can be removed
-      by clicking "-" next to it.
+      **Optional:** The fallback section that executes when ALL "if" and "else if" conditions are false. Click the gear icon and select "+ else" to add this section. Perfect for default actions, error handling, or "normal operation" behavior.
 
-      This section will execute if all "if"s and "else-if"s have been executed and
-      all resolved to \`false\`.
+      **Examples:**
+      - Turn off all climate control (temperature is in normal range)
+      - Send "all systems normal" status update
+      - Resume regular power consumption mode
     `
   },
-
   generators: {
     json: (block, generator) => {
       const payload = {
         conditional: {}
       }
-
       let index = 0
       while(block.getInput(`IF${index}`)) {
         const
           ifClause = generator.valueToCode(block, `IF${index}`, 0) || 'null',
           thenClause = generator.statementToCode(block, `THEN${index}`) || ''
-
         payload.conditional[`if${index}`] = JSON.parse(ifClause)
         payload.conditional[`then${index}`] = JSON.parse(`[ ${thenClause} ]`)
-
         index += 1
       }
-
       if(block.getInput('ELSE')) {
         const elseClause = generator.statementToCode(block, 'ELSE') || ''
-
         payload.conditional.else = JSON.parse(`[${ elseClause }]`)
       }
-
       return JSON.stringify(payload)
     }
   },
-
   regenerators: {
     json: (bytecode, helpers) => {
       const payload = bytecode.conditional
-
       if(!payload) {
         throw new Error("No data for io_controls_if regenerator")
       }
-
       const inputs = {}
-
       let index = 0
       while(payload[`if${index}`] || payload[`then${index}`]) {
         inputs[`IF${index}`] = helpers.expressionToBlock(payload[`if${index}`], { shadow: 'io_logic_boolean' })
         inputs[`THEN${index}`] = helpers.arrayToStatements(payload[`then${index}`])
-
         index += 1
       }
-
       if(payload.else) {
         inputs.ELSE = helpers.arrayToStatements(payload.else)
       }
-
       return {
         type: "io_controls_if",
         inputs,
