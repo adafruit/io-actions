@@ -36,7 +36,7 @@ const
       if(input.type === 'label') { return }
 
       lines.push(`### \`${ capitalize(inputName) }\``)
-      lines.push(input.description)
+      if(input.description) { lines.push(niceTemplate(input.description)) }
     })
 
     return lines.join("\n\n")

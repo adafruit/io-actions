@@ -6,6 +6,7 @@ export default {
   colour: 180,
   inputsInline: true,
   description: `
+    ::: v-pre
     Create dynamic, personalized messages by combining static text with live data from your IoT system. Perfect for intelligent notifications like "Hello {{ user.name }}, your temperature sensor read {{ feeds['sensors.temperature'].value }}°F" or automated reports that include current sensor values, user information, and real-time data. Uses the powerful Liquid templating language for advanced formatting and logic.
     
     ## What is a Text Template?
@@ -15,7 +16,6 @@ export default {
     ## How It Works
     
     This block renders (processes) a text template, replacing special placeholders with actual values.
-    ::: v-pre
     Anything surrounded by {{ double curly braces }} gets replaced with real data when your action runs.
     
     For example:
@@ -177,7 +177,17 @@ export default {
   template: "{{ %TEMPLATE",
   inputs: {
     TEMPLATE: {
-      description: "Create your template text with static content and dynamic {{ variable }} placeholders. Examples: 'Alert: {{ feeds['temp.kitchen'].value }}°F detected' or 'Daily Report for {{ user.name }}: Battery at {{ vars.battery_level }}%'. Use {{ }} to insert live data into your message.",
+      description: `
+        ::: v-pre
+        Create your template text with static content and dynamic {{ variable }} placeholders.
+
+        Examples:
+        - 'Alert: {{ feeds['temp.kitchen'].value }}°F detected'
+        - 'Daily Report for {{ user.name }}: Battery at {{ vars.battery_level }}%'
+
+        Use {{ }} to insert live data into your message.
+        :::
+      `,
       check: "expression",
       shadow: 'io_text_multiline'
     }
