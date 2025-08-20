@@ -6,9 +6,9 @@ export default {
   colour: 180,
   inputsInline: true,
   description: `
-    ::: v-pre
-    Create dynamic, personalized messages by combining static text with live data from your IoT system. Perfect for intelligent notifications like "Hello {{ user.name }}, your temperature sensor read {{ feeds['sensors.temperature'].value }}°F" or automated reports that include current sensor values, user information, and real-time data. Uses the powerful Liquid templating language for advanced formatting and logic.
+    Create dynamic, personalized messages by combining static text with live data from your IoT system. <span v-pre>Perfect for intelligent notifications like "Hello {{ user.name }}, your temperature sensor read {{ feeds['sensors.temperature'].value }}°F" or automated reports that include current sensor values, user information, and real-time data. Uses the powerful Liquid templating language for advanced formatting and logic.</span>
     
+    ::: v-pre
     ## What is a Text Template?
     
     Think of a text template like a form letter where you leave blanks to fill in with specific information. Instead of writing "Dear _____", you write "Dear {{ user.name }}" and the system automatically fills in the actual name when the message is sent.
