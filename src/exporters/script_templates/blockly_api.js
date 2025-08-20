@@ -49,45 +49,52 @@ export const
     // do normal Blockly injection here
     currentWorkspace = Blockly.inject(blocklyDivId, blocklyInjectOptions)
 
-    // shortcut to make the outside data available everywhere/global
-    // consider if this could be done other ways, less global
-    currentWorkspace.extensionData = options.extensionData
+    try {
+      // shortcut to make the outside data available everywhere/global
+      // consider if this could be done other ways, less global
+      currentWorkspace.extensionData = options.extensionData
 
-    registerToolboxCallbacks(currentWorkspace)
+      registerToolboxCallbacks(currentWorkspace)
 
-    if(options.disableOrphans) {
-      currentWorkspace.addChangeListener(Blockly.Events.disableOrphans)
-    }
+      if(options.disableOrphans) {
+        currentWorkspace.addChangeListener(Blockly.Events.disableOrphans)
+      }
 
-    if(options.workspaceData) {
-      const workspaceJson = jsonToWorkspace(options.workspaceData)
-      Blockly.serialization.workspaces.load(workspaceJson, currentWorkspace)
+      if(options.workspaceData) {
+        const workspaceJson = jsonToWorkspace(options.workspaceData)
+        Blockly.serialization.workspaces.load(workspaceJson, currentWorkspace)
 
-    } else if(options.workspaceJson) {
-      Blockly.serialization.workspaces.load(options.workspaceJson, currentWorkspace)
+      } else if(options.workspaceJson) {
+        Blockly.serialization.workspaces.load(options.workspaceJson, currentWorkspace)
 
-    } else {
-      Blockly.serialization.workspaces.load(initialWorkspace, currentWorkspace)
-    }
+      } else {
+        Blockly.serialization.workspaces.load(initialWorkspace, currentWorkspace)
+      }
 
-    if(options.onJsonUpdated || options.onJsonError) {
-      // auto-regenerate code
-      currentWorkspace.addChangeListener(e => {
-        if(e.isUiEvent || // no UI events
-           e.type == Blockly.Events.FINISHED_LOADING || // no on-load
-           currentWorkspace.isDragging()) // not while dragging
-        { return }
+      if(options.onJsonUpdated || options.onJsonError) {
+        // auto-regenerate code
+        currentWorkspace.addChangeListener(e => {
+          if(e.isUiEvent || // no UI events
+            e.type == Blockly.Events.FINISHED_LOADING || // no on-load
+            currentWorkspace.isDragging()) // not while dragging
+          { return }
 
-        // generate next cycle so orphans get disabled first
-        setTimeout(() => {
-          try {
-            const json = workspaceToJson(currentWorkspace)
-            options.onJsonUpdated?.(json)
-          } catch(error) {
-            options.onJsonError?.(error)
-          }
+          // generate next cycle so orphans get disabled first
+          setTimeout(() => {
+            try {
+              const json = workspaceToJson(currentWorkspace)
+              options.onJsonUpdated?.(json)
+            } catch(error) {
+              options.onJsonError?.(error)
+            }
+          })
         })
-      })
+      }
+    } catch(error) {
+      // clean things up
+      dispose()
+      // rethrow exception
+      throw error
     }
 
     return currentWorkspace
