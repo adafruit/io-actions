@@ -191,7 +191,10 @@ BlockDefinition.parseRawDefinition = function(rawBlockDefinition, definitionPath
     ? niceTemplate(rawBlockDefinition.description)
     : ""
   blockDef.ioPlus = rawBlockDefinition.ioPlus
-  blockDef.tooltip = blockDef.description.split("\n")[0]
+  // take the first line of the description
+  // blockDef.tooltip = blockDef.description.split("\n")[0]
+  // take the first sentence of the description
+  blockDef.tooltip = blockDef.description.split(/\.(\s|$)/)[0] + "."
   blockDef.disabled = !!rawBlockDefinition.disabled
   blockDef.connections = rawBlockDefinition.connections
   blockDef.template = rawBlockDefinition.template
