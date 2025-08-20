@@ -39,10 +39,23 @@ export default {
   keyToLabel: function(key) {
     // Handle special cases first
     const specialCases = {
-      'european_aqi': 'European AQI',
-      'us_aqi': 'US AQI',
+      'aqi': 'AQI',
+      'category_key': 'Category Key',
+      'category_label': 'Category',
+      'category_color': 'Category Color',
+      'category_min': 'Category Min',
+      'category_max': 'Category Max',
+      'health_description': 'Health Description',
+      'health_recommendation': 'Health Recommendation',
+      'health_sensitive_groups': 'Sensitive Groups',
+      'primary_pollutant': 'Primary Pollutant',
+      'pm2_5': 'PM2.5',
       'pm10': 'PM10',
-      'pm2_5': 'PM2.5'
+      'o3': 'Ozone (O3)',
+      'no2': 'Nitrogen Dioxide (NO2)',
+      'so2': 'Sulfur Dioxide (SO2)',
+      'co': 'Carbon Monoxide (CO)',
+      'reporting_area': 'Reporting Area'
     }
 
     if (specialCases[key]) {
@@ -144,129 +157,125 @@ export default {
     helpField.setValue(current)
   },
 
-  // a placeholder for the incoming preview data from live open-meteo requests
+  // a placeholder for the incoming preview data from live air quality requests
   currentAirQualityByLocation: {},
 
   CURRENT_PROPS: [
-    'european_aqi',
-    'us_aqi',
-    'pm10',
+    'aqi',
+    'category_key',
+    'category_label',
+    'category_color',
+    'category_min',
+    'category_max',
+    'health_description',
+    'health_recommendation',
+    'health_sensitive_groups',
     'pm2_5',
-    'carbon_monoxide',
-    'nitrogen_dioxide',
-    'sulphur_dioxide',
-    'ozone',
-    'aerosol_optical_depth',
-    'dust',
-    'uv_index',
-    'uv_index_clear_sky',
-    'ammonia',
-    'alder_pollen',
-    'birch_pollen',
-    'grass_pollen',
-    'mugwort_pollen',
-    'olive_pollen',
-    'ragweed_pollen'
+    'pm10',
+    'o3',
+    'no2',
+    'so2',
+    'co',
+    'primary_pollutant',
+    'reporting_area',
+    'state',
+    'latitude',
+    'longitude'
   ],
 
   DAILY_PROPS: [
-    'european_aqi',
-    'us_aqi',
-    'pm10',
-    'pm2_5',
-    'carbon_monoxide',
-    'nitrogen_dioxide',
-    'sulphur_dioxide',
-    'ozone',
-    'aerosol_optical_depth',
-    'dust',
-    'uv_index',
-    'uv_index_clear_sky',
-    'ammonia',
-    'alder_pollen',
-    'birch_pollen',
-    'grass_pollen',
-    'mugwort_pollen',
-    'olive_pollen',
-    'ragweed_pollen'
+    'aqi',
+    'category_key',
+    'category_label',
+    'category_color',
+    'category_min',
+    'category_max',
+    'health_description',
+    'health_recommendation',
+    'health_sensitive_groups',
+    'primary_pollutant'
   ],
 
   HELP_TEXT_BY_PROP: {
-    european_aqi: {
-      example: "25",
-      description: "European Air Quality Index. Ranges from 0-20 (good), 20-40 (fair), 40-60 (moderate), 60-80 (poor), 80-100 (very poor) and exceeds 100 for extremely poor conditions."
+    aqi: {
+      example: "75",
+      description: "Air Quality Index value. Ranges from 0-50 (good), 51-100 (moderate), 101-150 (unhealthy for sensitive groups), 151-200 (unhealthy), 201-300 (very unhealthy) and 301-500 (hazardous)."
     },
-    us_aqi: {
-      example: "45",
-      description: "United States Air Quality Index. Ranges from 0-50 (good), 51-100 (moderate), 101-150 (unhealthy for sensitive groups), 151-200 (unhealthy), 201-300 (very unhealthy) and 301-500 (hazardous)."
+    category_key: {
+      example: "moderate",
+      description: "Category key for the air quality level (e.g., good, moderate, unhealthy_sensitive, unhealthy, very_unhealthy, hazardous)."
     },
-    pm10: {
-      example: "15.2",
-      description: "Particulate matter with diameter smaller than 10 µm (PM10) close to surface (10 meter above ground), measured in μg/m³."
+    category_label: {
+      example: "Moderate",
+      description: "Human-readable category label for the air quality level."
+    },
+    category_color: {
+      example: "#ffff00",
+      description: "Hex color code representing the air quality category for visual display."
+    },
+    category_min: {
+      example: "51",
+      description: "Minimum AQI value for this air quality category."
+    },
+    category_max: {
+      example: "100",
+      description: "Maximum AQI value for this air quality category."
+    },
+    health_description: {
+      example: "Air quality is acceptable...",
+      description: "General health description for the current air quality conditions."
+    },
+    health_recommendation: {
+      example: "Unusually sensitive people should consider...",
+      description: "Health recommendations for the current air quality conditions."
+    },
+    health_sensitive_groups: {
+      example: "Children, Older adults",
+      description: "Groups of people who are more sensitive to the current air quality conditions."
+    },
+    primary_pollutant: {
+      example: "pm2_5",
+      description: "The primary pollutant contributing to the air quality index (e.g., pm2_5, pm10, o3, no2, so2, co)."
     },
     pm2_5: {
-      example: "8.7",
-      description: "Particulate matter with diameter smaller than 2.5 µm (PM2.5) close to surface (10 meter above ground), measured in μg/m³."
+      example: "15.2",
+      description: "Fine particulate matter with diameter smaller than 2.5 micrometers, measured in μg/m³. Major health concern for respiratory and cardiovascular systems."
     },
-    carbon_monoxide: {
-      example: "245.8",
-      description: "Carbon monoxide (CO) concentration close to surface (10 meter above ground), measured in μg/m³."
+    pm10: {
+      example: "23.1",
+      description: "Particulate matter with diameter smaller than 10 micrometers, measured in μg/m³. Can cause respiratory irritation and reduced lung function."
     },
-    nitrogen_dioxide: {
+    o3: {
+      example: "45.0",
+      description: "Ground-level ozone concentration, measured in μg/m³. Can cause breathing problems, especially during physical activity outdoors."
+    },
+    no2: {
       example: "12.4",
-      description: "Nitrogen dioxide (NO2) concentration close to surface (10 meter above ground), measured in μg/m³."
+      description: "Nitrogen dioxide concentration, measured in μg/m³. Can aggravate respiratory diseases and reduce lung function."
     },
-    sulphur_dioxide: {
+    so2: {
       example: "3.1",
-      description: "Sulphur dioxide (SO2) concentration close to surface (10 meter above ground), measured in μg/m³."
+      description: "Sulfur dioxide concentration, measured in μg/m³. Can cause respiratory symptoms and worsen asthma and heart disease."
     },
-    ozone: {
-      example: "98.5",
-      description: "Ozone (O3) concentration close to surface (10 meter above ground), measured in μg/m³."
+    co: {
+      example: "0.8",
+      description: "Carbon monoxide concentration, measured in ppm. Reduces oxygen delivery to organs and tissues."
     },
-    aerosol_optical_depth: {
-      example: "0.15",
-      description: "Aerosol optical depth at 550 nm of the entire atmosphere to indicate haze. Dimensionless value."
+    reporting_area: {
+      example: "Boston",
+      description: "The geographic area or city where this air quality data was measured."
     },
-    dust: {
-      example: "2.3",
-      description: "Saharan dust particles close to surface level (10 meter above ground), measured in μg/m³."
+    state: {
+      example: "MA",
+      description: "The state or region abbreviation where this air quality measurement was taken."
     },
-    uv_index: {
-      example: "6",
-      description: "UV index considering clouds. See ECMWF UV Index recommendation for more information."
+    latitude: {
+      example: "42.3601",
+      description: "Latitude coordinate of the monitoring station location."
     },
-    uv_index_clear_sky: {
-      example: "8",
-      description: "UV index for clear sky conditions (no clouds). See ECMWF UV Index recommendation for more information."
-    },
-    ammonia: {
-      example: "1.8",
-      description: "Ammonia (NH3) concentration close to surface (10 meter above ground), measured in μg/m³. Only available for Europe."
-    },
-    alder_pollen: {
-      example: "12",
-      description: "Alder pollen concentration, measured in grains/m³. Only available in Europe during pollen season with 4 days forecast."
-    },
-    birch_pollen: {
-      example: "45",
-      description: "Birch pollen concentration, measured in grains/m³. Only available in Europe during pollen season with 4 days forecast."
-    },
-    grass_pollen: {
-      example: "78",
-      description: "Grass pollen concentration, measured in grains/m³. Only available in Europe during pollen season with 4 days forecast."
-    },
-    mugwort_pollen: {
-      example: "5",
-      description: "Mugwort pollen concentration, measured in grains/m³. Only available in Europe during pollen season with 4 days forecast."
-    },
-    olive_pollen: {
-      example: "23",
-      description: "Olive pollen concentration, measured in grains/m³. Only available in Europe during pollen season with 4 days forecast."
-    },
-    ragweed_pollen: {
-      example: "8",
-      description: "Ragweed pollen concentration, measured in grains/m³. Only available in Europe during pollen season with 4 days forecast."
+    longitude: {
+      example: "-71.0589",
+      description: "Longitude coordinate of the monitoring station location."
     }
   }
 }
