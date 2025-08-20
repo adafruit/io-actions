@@ -1,3 +1,4 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "delay_none",
   name: "No Delay",
@@ -12,8 +13,6 @@ export default {
   template: "No Delay",
 
   generators: {
-    json: () => {
-
-    }
+    json: () => {}
   }
 }

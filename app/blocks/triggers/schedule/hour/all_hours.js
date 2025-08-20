@@ -1,6 +1,7 @@
 import mutator from "./hour_mutator.js"
 
 
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "all_hours",
   name: "All Hours",
@@ -17,8 +18,6 @@ export default {
   template: "Every hour",
 
   generators: {
-    json: block => {
-      return [ '*', 0 ]
-    }
+    json: () => [ '*', 0 ]
   }
 }

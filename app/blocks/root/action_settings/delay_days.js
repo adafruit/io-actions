@@ -1,3 +1,4 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "delay_days",
   name: "Delay Days",
@@ -12,8 +13,6 @@ export default {
   template: "1 day",
 
   generators: {
-    json: () => {
-
-    }
+    json: () => {}
   }
 }

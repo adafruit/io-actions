@@ -1,9 +1,14 @@
+import { spawn, spawnSync } from 'node:child_process'
+import { copyFileSync, cpSync } from 'node:fs'
+
 import { cleanDir, write, totalBytesWritten } from "./export_util.js"
 import DefinitionSet from '#src/definitions/definition_set.js'
 import { exportTo } from '#src/exporters/index.js'
 
 
-const toExport = process.argv[2]
+const
+  toExport = process.argv[2],
+  taskArgs = process.argv.slice(3)
 
 if(!toExport) {
   console.error(`Export Error: Missing export name!\nUsage: node export.js [export name]`)
@@ -30,8 +35,15 @@ const
     },
 
     "docs": async () => {
-      await exporters.app("docs/blockly")
+      // allow option to skip image generation
+      const skipImages = taskArgs.includes("skipImages")
+      if(!skipImages) {
+        await exporters.blockImages()
+        cleanDir("docs/block_images")
+        cpSync("tmp/block_images/images", "docs/block_images", { recursive: true })
+      }
 
+      await exporters.app("docs/blockly")
       cleanDir("docs/blocks")
 
       await exportTo("docs", definitions, exportItem => {
@@ -41,6 +53,41 @@ const
         // exportItem.blockExamples(block => "blocks/${block.definitionPath}/examples.json")
       })
     },
+
+    "blockImages": async () => {
+      const destination = "tmp/block_images"
+      cleanDir(destination)
+      cleanDir(`${destination}/images`)
+
+      // export a special app with no toolbox, all blocks on workspace
+      await exportTo(destination, definitions, exportItem => {
+        exportItem.workspaceAllBlocks("workspace.json")
+        write(`${destination}/toolbox.json`, "null")
+        exportItem.blocks("blocks.json")
+        exportItem.script("blockly_app.js")
+        // TODO: make a DocumentExporter for generating html wrappers
+        copyFileSync("src/exporters/document_templates/blockly_workspace.template.html", `${destination}/index.html`)
+      })
+
+      // serve it
+      console.log('Serving workspace for screenshots...')
+      const viteProcess = spawn("npx", ["vite", "serve", destination])
+
+      // extract the screenshots
+      console.log('Generating screenshots...')
+      spawnSync("npx", ["cypress", "run",
+        "--config", `downloadsFolder=${destination}/images`,
+        "--config-file", `cypress/cypress.config.js`,
+      ])
+      console.log('Generation complete.')
+
+      // kill the server
+      if(!viteProcess.kill()) {
+        console.log("Vite failed to exit gracefully")
+        process.exit(1)
+      }
+      console.log('Server closed.')
+    }
   },
   exporterNames = Object.keys(exporters)
 
@@ -59,3 +106,6 @@ await exporter()
 const elapsed = Date.now() - startTime
 console.log("=======================")
 console.log(`🏁 Done. Wrote ${totalBytesWritten.toFixed(3)}k in ${elapsed}ms 🏁`)
+
+
+process.exit(0)

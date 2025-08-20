@@ -5,6 +5,7 @@
     "target": "es2022",
     "paths": {
       "#app/*.js": ["./app/*.js"],
+      "#types": ["./app/types.js"],
       "#src/*.js": ["./src/*.js"],
       "#test/*.js": ["./test/*.js"]
     }

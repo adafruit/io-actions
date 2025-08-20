@@ -2,7 +2,9 @@
 .ds_store
 
 # Blockly exports
+tmp
 export
+docs/block_images
 
 # Logs
 logs

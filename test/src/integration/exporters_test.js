@@ -81,8 +81,8 @@ describe("Exporting Blockly Files", () => {
       assert.exists(trunkObject)
       assert.hasAllKeys(trunkObject, ["type", "inputs"])
       assert.hasAllKeys(trunkObject.inputs, ["SUBJECT", "PREDICATE"])
-      assert.hasAllKeys(trunkObject.inputs.SUBJECT, ["shadow"])
-      assert.hasAllKeys(trunkObject.inputs.PREDICATE, ["shadow"])
+      assert.hasAllKeys(trunkObject.inputs.SUBJECT, ["shadow", "block"])
+      assert.hasAllKeys(trunkObject.inputs.PREDICATE, ["shadow", "block"])
     })
 
     it("export other block trees by name", { skip: true }, () => {

@@ -1,4 +1,4 @@
-import { compact, forOwn, keys, isString, isFunction, isArray, isNumber, isNull, isObject, isUndefined, map, isRegExp, sortBy } from 'lodash-es'
+import { compact, forOwn, keys, isBoolean, isString, isFunction, isArray, isNumber, isNull, isObject, isUndefined, map, isRegExp, sortBy } from 'lodash-es'
 
 
 const
@@ -13,7 +13,10 @@ const quotedKey = key =>
     : key
 
 const renderValue = (value, tab=TAB) => {
-  if (isString(value)) {
+  if (isBoolean(value)) {
+    return renderBoolean(value)
+
+  } else if (isString(value)) {
     return renderString(value)
 
   } else if (isRegExp(value) || isNull(value) || isNumber(value) || isUndefined(value) || value === false) {
@@ -46,6 +49,10 @@ const renderString = stringValue => {
   }
 
   return `"${stringValue}"`
+}
+
+const renderBoolean = boolValue => {
+  return `${boolValue}`
 }
 
 const renderFunction = (func, indentation=TAB) => {

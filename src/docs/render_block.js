@@ -1,10 +1,10 @@
-import { capitalize, trim } from 'lodash-es'
+import { trim } from 'lodash-es'
 
 import renderFields from './render_block_fields.js'
 import renderInputs from './render_block_inputs.js'
 
 
-const
+export const
   IO_PLUS_ALERT = `
 ::: tip :warning: IO+ Required
 This Block requires an IO+ subscription to use. [Learn more about IO+](https://io.adafruit.com/plus)
@@ -17,16 +17,49 @@ This Block requires an IO+ subscription to use. [Learn more about IO+](https://i
     return trim(`${name} ${ioPlusBadge}`)
   },
 
+  // ![alt](url "title")
+  renderBlockImage = ({ name, type }) => `![the ${name} block](/block_images/${type}.png "${name}")`,
+
   renderDescription = ({ description }) => description || "No docs for this block, yet.",
 
   renderIOPlusAlert = ({ ioPlus }) => ioPlus ? IO_PLUS_ALERT : "",
 
+  renderFieldsSection = definition => {
+    const fieldsMarkdown = renderFields(definition)
+
+    return fieldsMarkdown
+     ? `## Fields\n\n${ fieldsMarkdown }`
+     : ""
+  },
+
+  renderInputsSection = definition => {
+    const inputsMarkdown = renderInputs(definition)
+
+    return inputsMarkdown
+     ? `## Inputs\n\n${ inputsMarkdown }`
+     : ""
+  },
+
   renderOutput = definition => {
-    return capitalize(definition.connections?.output || "Unspecified")
+    return ''
+
+    // TODO: re-enable when we have something meanginful to show the user
+    // const defaultedOutput = capitalize(definition.connections?.output || "Unspecified")
+
+    // return `
+    //   ## Output
+    //   ${ defaultedOutput }
+    // `
   },
 
   renderExamples = definition => {
-    return "Coming soon..."
+    return ""
+
+    // TODO: re-enable conditionally when we have examples
+    // return `
+    //   ## Examples
+    //   Coming soon...
+    // `
   }
 
 export default definition =>
@@ -40,19 +73,17 @@ definitionPath: ${ definition.definitionPath }
 
 Type: \`${definition.type}\`
 
+${ renderBlockImage(definition) }
+
 ${ renderDescription(definition) }
 
 ${ renderIOPlusAlert(definition) }
 
-## Fields
-${ renderFields(definition) }
+${ renderFieldsSection(definition) }
 
-## Inputs
-${ renderInputs(definition) }
+${ renderInputsSection(definition) }
 
-## Output
 ${ renderOutput(definition) }
 
-## Examples
 ${ renderExamples(definition) }
 `

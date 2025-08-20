@@ -18,6 +18,7 @@ class BlockDefinition {
   name = null
 
   description = ''
+  docOverrides = {}
   ioPlus = false
 
   colour = null
@@ -148,7 +149,14 @@ const
       }
 
     } else if(shadow) {
-      return shadowToInput(shadow)
+      const shadowJson = shadowToInput(shadow)
+
+      return {
+        // also copy the shadow into a real block
+        // TODO: nested shadow blocks
+        block: shadowJson.shadow,
+        ...shadowJson
+      }
     }
   },
 
@@ -178,11 +186,15 @@ BlockDefinition.parseRawDefinition = function(rawBlockDefinition, definitionPath
   blockDef.type = rawBlockDefinition.type
   blockDef.name = rawBlockDefinition.name
   blockDef.primaryCategory = rawBlockDefinition.primaryCategory
+  blockDef.docOverrides = rawBlockDefinition.docOverrides
   blockDef.description = rawBlockDefinition.description
     ? niceTemplate(rawBlockDefinition.description)
     : ""
   blockDef.ioPlus = rawBlockDefinition.ioPlus
-  blockDef.tooltip = blockDef.description.split("\n")[0]
+  // take the first line of the description
+  // blockDef.tooltip = blockDef.description.split("\n")[0]
+  // take the first sentence of the description
+  blockDef.tooltip = blockDef.description.split(/\.(\s|$)/)[0] + "."
   blockDef.disabled = !!rawBlockDefinition.disabled
   blockDef.connections = rawBlockDefinition.connections
   blockDef.template = rawBlockDefinition.template

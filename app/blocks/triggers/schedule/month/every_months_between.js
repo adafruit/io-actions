@@ -2,6 +2,7 @@ import { makeOptions } from "#app/util/fields.js"
 import mutator from './month_mutator.js'
 
 
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "every_months_between",
   name: "Every X Months",

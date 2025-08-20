@@ -1,8 +1,10 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   disabled: true,
   type: 'io_logic_ternary',
   name: "Ternary",
   colour: 60,
+  description: "Simpler conditional, inline if/then/else",
 
   template: `
     if %IF

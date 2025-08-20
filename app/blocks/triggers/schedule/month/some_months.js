@@ -1,6 +1,7 @@
 import mutator from './month_mutator.js'
 
 
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: 'some_months',
   name: "Some Months",

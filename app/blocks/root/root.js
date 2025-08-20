@@ -1,45 +1,37 @@
 import mutator from './action_settings/mutator.js'
-
-
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "action_root",
   name: "Root",
   colour: "0",
-  description: "Add Triggers to determine when this Action runs.\nAdd Actions to determine what this Action does.",
-
+  description: "The foundation of every Adafruit IO Action. Connect Triggers (like 'when temperature > 80°F' or 'every morning at 8 AM') to define when your Action runs, then attach Action blocks (like 'send email', 'publish to feed', or 'if/then logic') to define what happens when triggered.",
   connections: {},
-
   mutator,
-
   template: `
     Triggers: |LEFT
     %TRIGGERS
-
     Actions: |LEFT
     %EXPRESSIONS
-    \u3164
+    \u00A0
   `,
-
   inputs: {
     TRIGGERS: {
+      description: "Connect trigger blocks here to define WHEN your Action should run. Choose from Reactive triggers (respond to feed updates), Scheduled triggers (run at specific times), or Timer triggers (delayed responses). Multiple triggers can be chained together.",
       type: 'statement',
       check: 'trigger'
     },
-
     EXPRESSIONS: {
+      description: "Connect action blocks here to define WHAT happens when your triggers activate. This can include sending emails, publishing values to feeds, conditional if/then logic, mathematical operations, or webhook calls. Actions execute in sequence from top to bottom.",
       type: 'statement',
       check: 'expression'
     }
   },
-
   generators: {
     json: (block, generator) => {
       const parseStatementToCodeAsJson = statementInputName => {
         let expressions = []
-
         try {
           let expressionsJson = generator.statementToCode(block, statementInputName)
-
           try {
             expressions = JSON.parse(`[${expressionsJson}]`)
           } catch(e) {
@@ -50,17 +42,16 @@ export default {
           console.error(`Error calling statementToCode on root input ${statementInputName}:`)
           console.error(e)
         }
-
         return expressions
       }
-
       const
+        // @ts-ignore
         seconds = block.delaySeconds,
+        // @ts-ignore
         mode = block.delayMode,
         delay = (seconds > 0)
           ? { seconds, mode }
           : undefined
-
       return JSON.stringify({
         version: "1.0.0-beta.1",
         settings: { delay },
@@ -69,11 +60,9 @@ export default {
       }, null, 2)
     }
   },
-
   regenerators: {
     json: (blockObject, helpers) => {
       const { triggers, expressions, settings } = blockObject
-
       return {
         type: "action_root",
         movable: false,

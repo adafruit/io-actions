@@ -1,9 +1,10 @@
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "on_schedule",
   bytecodeKey: "onSchedule",
   name: "Schedule",
   colour: 30,
-  description: "A schedule to run the action, from every minute to once a year.",
+  description: "Create powerful time-based automation that runs your Actions on a schedule - from simple daily reminders to complex patterns like 'every 15 minutes during weekdays' or 'first Monday of each quarter'. Works like a smart alarm clock for your IoT devices, automatically triggering actions without any manual intervention. Perfect for turning lights on/off, sending regular reports, or controlling devices based on time patterns.",
 
   connections: {
     mode: "statement",
@@ -21,21 +22,25 @@ export default {
 
   inputs: {
     MONTH: {
+      description: "Choose which months to run the schedule. Options include 'All months' for year-round automation, specific months like 'January only' for seasonal control, or patterns like 'Every 3 months starting in March' for quarterly tasks.",
       check: "cron_month",
       block: "all_months",
     },
 
     DAY: {
+      description: "Select which days to trigger your schedule. You can choose specific calendar dates (1-31) for monthly events like 'every 15th', or days of the week (Monday-Sunday) for weekly patterns like 'every Tuesday and Thursday'. Cannot mix both date and weekday options.",
       check: "cron_day",
       block: "all_days"
     },
 
     HOUR: {
+      description: "Set the hour(s) when your Action should run, using 24-hour format (0-23). Examples: '9' for 9 AM, '14' for 2 PM, '21' for 9 PM, or 'Every 4 hours' for repeated intervals throughout the day.",
       check: "cron_hour",
       block: "all_hours"
     },
 
     MINUTE: {
+      description: "Specify the exact minute(s) within the hour to run your Action (0-59). Examples: '0' for on-the-hour (like 9:00), '15' for quarter-past (like 9:15), '30' for half-past, or 'Every 15 minutes' for frequent automation.",
       check: "cron_minute",
       block: {
         type: "one_minute",
@@ -68,13 +73,13 @@ export default {
   },
 
   regenerators: {
-    json: (blockObject, helpers) => {
+    json: (blockObject) => {
       const
         EVERY_REGEX = /^(\d{1,2})(-(\d{1,2}))?\/(\d{1,2})$/m,
         isEveryBetween = cron => EVERY_REGEX.test(cron),
 
         everyBetweenToBlock = (everyBetweenCron, blockType) => {
-          const [ skip1, START, skip2, END, FREQUENCY ] = everyBetweenCron.match(EVERY_REGEX)
+          const [ , START, , END, FREQUENCY ] = everyBetweenCron.match(EVERY_REGEX)
 
           return { block: {
             type: blockType,

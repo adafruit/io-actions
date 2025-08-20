@@ -2,6 +2,7 @@ import { makeOptions } from "#app/util/fields.js"
 import mutator from "./hour_mutator.js"
 
 
+/** @type {import('#types').BlockDefinitionRaw} */
 export default {
   type: "one_hour",
   name: "One Hour",

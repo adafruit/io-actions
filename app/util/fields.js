@@ -9,10 +9,6 @@ const makeUpTo = (from, target, step) => {
   return range(from, target, step)
 }
 
-const stringifyOptions = (options) => {
-
-}
-
 /**
 *
 * @param {Object} options
@@ -22,7 +18,7 @@ const stringifyOptions = (options) => {
 * @param {number} [options.step]
 * @param {boolean} [options.reverse]
 * @param {Function} [options.valueFunc]
-* @returns {Array}
+* @returns {[string,string][]}
 */
 export const makeOptions = (options = {}) => {
   let optionValues

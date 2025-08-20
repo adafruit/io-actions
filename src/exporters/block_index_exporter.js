@@ -1,5 +1,7 @@
 import { writeFileSync } from 'fs'
-import { forEach, isString, without } from 'lodash-es'
+import { isString, without } from 'lodash-es'
+
+import { renderBlockImage } from '../docs/render_block.js'
 
 
 export default class BlockIndexExporter {
@@ -78,11 +80,11 @@ const definitionToIndexLines = def => {
   // block name and link
   indexLines.push(`### [${ def.name }](/${ def.documentationPath() })`)
 
-  // block image // TODO
-  // indexLines.push(``)
-
   // block short description
   indexLines.push(`_${def.tooltip}_`)
+
+  // block image
+  indexLines.push(renderBlockImage(def))
 
   return indexLines.join("\n")
 }

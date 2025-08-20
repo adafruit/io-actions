@@ -25,17 +25,30 @@ export default class SidebarExporter {
           collapsed: true,
           items: []
         }))
+      },
+      uncategorizedCategory = {
+        text: "Uncategorized",
+        collapsed: true,
+        items: []
       }
 
+    blockSidebar.items.push(uncategorizedCategory)
 
     forEach(this.definitionSet.blocks, blockDefinition => {
-      const sidebarEntry = {
-        text: blockDefinition.name,
-        link: blockDefinition.documentationPath()
+      const
+        sidebarEntry = {
+          text: blockDefinition.name,
+          link: blockDefinition.documentationPath()
+        },
+        blockCategories = blockDefinition.getCategories()
+
+      // put into Uncategorized if no category
+      if(!blockCategories.length) {
+        uncategorizedCategory.items.push(sidebarEntry)
       }
 
       // add links to each sidebar category we're a part of
-      forEach(blockDefinition.getCategories(), category => {
+      forEach(blockCategories, category => {
         // if category contains this block, add to its sidebar
         const sidebarCategory = find(blockSidebar.items, { text: category.name })
 
