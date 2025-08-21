@@ -52,72 +52,72 @@ export default {
     ### 🏷️ Creating Labels with Values
     
     **Temperature Label:**
-    ```js
+    \`\`\`js
     A: "Kitchen Temp: "
     B: {{ feeds['sensors.kitchen_temp'].value }}
     // Output: "Kitchen Temp: 72.5"
-    ```
+    \`\`\`
     
     **Device Status:**
-    ```js
+    \`\`\`js
     A: "Door is "
     B: {{ feeds['security.door'].value }}
     // Output: "Door is OPEN" or "Door is CLOSED"
-    ```
+    \`\`\`
     
     ### 📊 Building Status Messages
     
     **Battery Level:**
-    ```js
+    \`\`\`js
     A: "Battery at "
     B: {{ vars.battery_percent }}%
     // Output: "Battery at 85%"
-    ```
+    \`\`\`
     
     **Sensor with Units:**
-    ```js
+    \`\`\`js
     A: {{ feeds['sensors.humidity'].value }}
     B: "% humidity"
     // Output: "65% humidity"
-    ```
+    \`\`\`
     
     ### 👤 Personalizing Messages
     
     **Welcome Message:**
-    ```js
+    \`\`\`js
     A: "Welcome back, "
     B: {{ user.name }}
     // Output: "Welcome back, John Smith"
-    ```
+    \`\`\`
     
     **Custom Greeting:**
-    ```js
+    \`\`\`js
     A: {{ vars.greeting }}
     B: {{ user.username }}
     // Output: "Hello, jsmith123"
-    ```
+    \`\`\`
     
     ### 🔗 Creating URLs and Paths
     
     ::: code-group
-    
-    ```js [API Endpoint]
+
+    \`\`\`js [API Endpoint]
     A: "https://api.example.com/sensors/"
     B: {{ vars.sensor_id }}
     // Output: "https://api.example.com/sensors/temp_01"
-    ```
+    \`\`\`
     
-    ```js [File Path]
+    \`\`\`js [File Path]
     A: "/data/"
     B: {{ vars.filename }}
     // Output: "/data/readings_2024.csv"
-    ```
+    \`\`\`
     
     :::
     
     ### 🎨 Formatting with Symbols
     
-    ```js
+    \`\`\`js
     // Arrow Indicators
     A: "Temperature "
     B: "↑ Rising"
@@ -127,7 +127,7 @@ export default {
     A: "🔋 "
     B: {{ vars.battery_status }}
     // Output: "🔋 Charging" or "🔋 Full"
-    ```
+    \`\`\`
     
     ## Advanced Patterns
     
@@ -135,7 +135,7 @@ export default {
     Sometimes you need to combine more than two pieces of text. Use multiple Join Text blocks:
     
     **Three-Part Message:**
-    ```js
+    \`\`\`js
     // First Join
     A: "Hello, "
     B: {{ user.name }}
@@ -145,12 +145,12 @@ export default {
     A: [First Join Output]
     B: "! Welcome back."
     // Final Output: "Hello, John! Welcome back."
-    ```
+    \`\`\`
     :::
     
     ::: details Building Complex Messages
     **Multi-Line Status Report (using \\n for line breaks):**
-    ```js
+    \`\`\`js
     // First Join
     A: "System Status\\n"
     B: "Temperature: OK\\n"
@@ -169,16 +169,16 @@ export default {
     Humidity: OK
     Battery: Low
     */
-    ```
+    \`\`\`
     :::
     
     ::: details Conditional Text Building
     Combine with logic blocks to build different messages:
-    ```js
+    \`\`\`js
     A: "Sensor "
     B: [If temperature > 80 then "⚠️ HOT" else "✓ Normal"]
     // Output: "Sensor ⚠️ HOT" or "Sensor ✓ Normal"
-    ```
+    \`\`\`
     :::
     
     ## Common Patterns & Tips
@@ -186,31 +186,32 @@ export default {
     ::: details 1. Don't Forget Spaces!
     ::: danger Common Mistake
     Forgetting to add spaces is the #1 beginner error!
-    :::
     
     **Wrong:** 
-    ```js
+    \`\`\`js
     A: "Hello"
     B: "World"
     // Output: "HelloWorld" ❌
-    ```
+    \`\`\`
     
     **Right:**
-    ```js
+    \`\`\`js
     A: "Hello "  // Space at the end
     B: "World"
     // Output: "Hello World" ✅
-    ```
+    \`\`\`
     
     **Also Right:**
-    ```js
+    \`\`\`js
     A: "Hello"
     B: " World"  // Space at the beginning
     // Output: "Hello World" ✅
-    ```
+    \`\`\`
     :::
     
     ::: details 2. Adding Separators
+    ::: v-pre
+
     | Separator | Input A | Input B | Output |
     |-----------|---------|---------|--------|
     | **Comma** | \`{{ vars.city }}\` | \`", USA"\` | \`"Boston, USA"\` |
@@ -219,7 +220,7 @@ export default {
     :::
     
     ::: details 3. Building Lists
-    ```js
+    \`\`\`js
     // Bullet Point
     A: "• "
     B: {{ vars.item_name }}
@@ -229,12 +230,12 @@ export default {
     A: "1. "
     B: {{ vars.first_step }}
     // Output: "1. Check connections"
-    ```
+    \`\`\`
     :::
     
     ::: details 4. Combining Numbers and Text
     When joining numbers with text, the number is automatically converted:
-    ```js
+    \`\`\`js
     A: "Count: "
     B: {{ vars.sensor_count }}
     // Output: "Count: 5"
@@ -242,12 +243,12 @@ export default {
     A: {{ feeds['sensor'].value }}
     B: " degrees"
     // Output: "72.5 degrees"
-    ```
+    \`\`\`
     :::
     
     ::: details 5. Empty String Handling
     If one input is empty, you get just the other input:
-    ```js
+    \`\`\`js
     A: "Hello"
     B: ""
     // Output: "Hello"
@@ -255,14 +256,14 @@ export default {
     A: ""
     B: "World"
     // Output: "World"
-    ```
+    \`\`\`
     :::
     
     ## Working with Other Blocks
     
     ::: details Join + Text Template
     Use Join Text to prepare strings for templates:
-    ```js
+    \`\`\`js
     // Join to create feed key
     A: "sensor."
     B: {{ vars.location }}
@@ -270,29 +271,29 @@ export default {
     
     // Then use in template
     {{ feeds['[Join Output]'].value }}
-    ```
+    \`\`\`
     :::
     
     ::: details Join + Variables
     Store joined text in a variable for reuse:
-    ```js
+    \`\`\`js
     // Join
     A: "Alert: "
     B: {{ vars.message }}
     
     // Store result in variable: "formatted_alert"
     // Use later in multiple places
-    ```
+    \`\`\`
     :::
     
     ::: details Join + Conditionals
     Build different messages based on conditions:
-    ```js
+    \`\`\`js
     A: "Status: "
     B: [If block result]
     // Where If block returns "Online" or "Offline"
     // Output: "Status: Online" or "Status: Offline"
-    ```
+    \`\`\`
     :::
     
     ## Troubleshooting
@@ -304,12 +305,14 @@ export default {
     :::
     
     ::: details Problem: Getting [object Object] in output
+    ::: v-pre
     **Solution:** Make sure you're passing text/string values, not complex objects. Use the .value or .name property of feeds:
     - Wrong: \`B: {{ feeds['sensor.temp'] }}\`
     - Right: \`B: {{ feeds['sensor.temp'].value }}\`
     :::
     
     ::: details Problem: Numbers not displaying correctly
+    ::: v-pre
     **Solution:** Numbers are automatically converted to text. For formatting, use a Text Template block first:
     - Basic: \`A: "Price: $"  B: {{ vars.price }}\` → \`"Price: $9.99"\`
     - Formatted: Use template with \`{{ vars.price | round: 2 }}\` first
