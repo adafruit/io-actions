@@ -23,6 +23,14 @@ npm i
 npm start
 ```
 
+Now 2 processes should be running:
+- a builder process that:
+    - does a full build of the docs from the app files
+    - watches app files for changes and updates matching docs
+- the docs dev server where you can see your changes rendered live as you save them
+
+When you're done working simply press `CTRL + C` to terminate the processes.
+
 ### Exporting
 
 Export a Blockly application:
