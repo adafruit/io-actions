@@ -12,16 +12,17 @@
   "main": "index.js",
   "scripts": {
     "start": "node dev_server.js",
+
     "test": "node --test",
     "test-watch": "node --test --watch",
     "test-snapshots": "node --test test/app/blocks/snapshots/block_snapshots_test.js",
     "test-update-snapshots": "node --test --test-update-snapshots test/app/blocks/snapshots/block_snapshots_test.js",
     "lint": "eslint src/",
     "lint-export": "eslint export/",
+
     "export:app": "node export.js app",
-    "build": "npm run export:app && vite build",
-    "build-all-branches": "node build_all_branches.js",
-    "preview": "npm run build && vite preview",
+    "export:block-images": "node export.js blockImages",
+
     "docs:export": "node export.js docs",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
