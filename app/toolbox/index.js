@@ -4,6 +4,7 @@ import Math from './math.js'
 import Notifications from './notifications.js'
 import Weather from './weather.js'
 import Text from './text.js'
+import Time from './time.js'
 import Triggers from './triggers.js'
 import Utility from './utility.js'
 import Variables from './variables.js'
@@ -15,6 +16,7 @@ export default [
   Logic,
   Math,
   Text,
+  Time,
   Variables,
   Feeds,
   Notifications,
