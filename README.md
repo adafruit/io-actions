@@ -20,6 +20,7 @@ Node v22.x is expected, but other versions may work.
 git clone https://github.com/adafruit/io-actions
 cd io-actions
 npm i
+npm run export:block-images # run once, and whenever images need updating
 npm start
 ```
 
