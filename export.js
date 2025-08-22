@@ -54,6 +54,25 @@ const
       })
     },
 
+    "docs-incremental": async () => {
+      // allow option to skip image generation
+      // const skipImages = taskArgs.includes("skipImages")
+      // if(!skipImages) {
+      //   await exporters.blockImages()
+      //   cleanDir("docs/block_images")
+      //   cpSync("tmp/block_images/images", "docs/block_images", { recursive: true })
+      // }
+
+      // await exporters.app("docs/blockly")
+      // cleanDir("docs/blocks")
+
+      await exportTo("docs", definitions, exportItem => {
+        exportItem.blockIndex("blocks/index.md")
+        exportItem.blockPages()
+        exportItem.sidebar("blocks/_blocks_sidebar.json")
+      })
+    },
+
     "blockImages": async () => {
       const destination = "tmp/block_images"
       cleanDir(destination)

@@ -6,6 +6,10 @@ const REPO = 'https://github.com/adafruit/io-actions'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  vite: {
+    clearScreen: false
+  },
+
   title: "IO Actions: Block Reference",
   description: "Documentation for Adafruit IO's block-based Actions",
 

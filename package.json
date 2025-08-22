@@ -11,7 +11,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "vite --force",
+    "start": "node dev_server.js",
     "test": "node --test",
     "test-watch": "node --test --watch",
     "test-snapshots": "node --test test/app/blocks/snapshots/block_snapshots_test.js",

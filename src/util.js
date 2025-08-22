@@ -1,5 +1,20 @@
+import { dirname } from 'path'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
+import { createHash } from 'crypto'
+
 import { map } from 'lodash-es'
 
+
+const getStringHash = stringToHash => {
+  const hash = createHash('sha256')
+  hash.update(stringToHash)
+  return hash.digest('hex')
+}
+
+const getFileHash = filePath => {
+  if(!existsSync(filePath)) { return '' }
+  return getStringHash(readFileSync(filePath))
+}
 
 export const
   niceTemplate = tplString => {
@@ -19,4 +34,16 @@ export const
     // TODO: support niceties for markdown, double-newlines, escaping, etc
 
     return tplString
+  },
+
+  writeFileIfDifferent = (filename, content) => {
+    const
+      fileHash = getFileHash(filename),
+      contentHash = getStringHash(content)
+
+    if(fileHash !== contentHash) {
+      console.log("writing", filename)
+      mkdirSync(dirname(filename), { recursive: true })
+      writeFileSync(filename, content)
+    }
   }
