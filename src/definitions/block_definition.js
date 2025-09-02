@@ -194,7 +194,8 @@ BlockDefinition.parseRawDefinition = function(rawBlockDefinition, definitionPath
   // take the first line of the description
   // blockDef.tooltip = blockDef.description.split("\n")[0]
   // take the first sentence of the description
-  blockDef.tooltip = blockDef.description.split(/\.(\s|$)/)[0] + "."
+  blockDef.tooltip = blockDef.description.split(/\.(\s|$)/)[0]
+  if(!blockDef.tooltip.endsWith("?")) { blockDef.tooltip += "." }
   blockDef.disabled = !!rawBlockDefinition.disabled
   blockDef.connections = rawBlockDefinition.connections
   blockDef.template = rawBlockDefinition.template

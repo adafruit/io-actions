@@ -1,5 +1,6 @@
-import { writeFileSync } from 'fs'
-import { find, forEach, isString, map } from 'lodash-es'
+import { find, forEach, isString, map, sortBy } from 'lodash-es'
+
+import { writeFileIfDifferent } from '#src/util.js'
 
 
 export default class SidebarExporter {
@@ -34,7 +35,7 @@ export default class SidebarExporter {
 
     blockSidebar.items.push(uncategorizedCategory)
 
-    forEach(this.definitionSet.blocks, blockDefinition => {
+    forEach(sortBy(this.definitionSet.blocks, 'type'), blockDefinition => {
       const
         sidebarEntry = {
           text: blockDefinition.name,
@@ -69,7 +70,7 @@ export default class SidebarExporter {
       ? options.toFile
       : `_blocks_sidebar.json`
 
-    writeFileSync(`${this.destination}/${filename}`, JSON.stringify(blockSidebar, null, 2))
+    writeFileIfDifferent(`${this.destination}/${filename}`, JSON.stringify(blockSidebar, null, 2))
   }
 
   exportToFile = (toFile=true) => {

@@ -20,8 +20,17 @@ Node v22.x is expected, but other versions may work.
 git clone https://github.com/adafruit/io-actions
 cd io-actions
 npm i
+npm run export:block-images # run once, and whenever images need updating
 npm start
 ```
+
+Now 2 processes should be running:
+- a builder process that:
+    - does a full build of the docs from the app files
+    - watches app files for changes and updates matching docs
+- the docs dev server where you can see your changes rendered live as you save them
+
+When you're done working simply press `CTRL + C` to terminate the processes.
 
 ### Exporting
 
