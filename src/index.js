@@ -89,7 +89,7 @@ const workspace = inject('blocklyDiv', {
     currentAirQualityByLocation: {
       1: {
         current: {
-          european_aqi: "25",
+          aqi: "25",
         }
       }
     }
