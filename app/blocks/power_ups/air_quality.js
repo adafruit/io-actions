@@ -44,9 +44,9 @@ export default {
         block.setEnabledByLocation()
 
         // react to incoming forecast data
-        const unobserve = observeData('currentAirQualityByLocation', (newData = {}) => {
+        const unobserveAQI = observeData('currentAirQualityByLocation', (newData = {}) => {
           // if this block is disposed, clean up this listener
-          if (block.isDisposed()) { unobserve(); return }
+          if (block.isDisposed()) { unobserveAQI(); return }
           // update the reference to the injected/updated extension data
           block.currentAirQualityByLocation = newData
           // re-run the things that use the data
