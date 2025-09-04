@@ -40,46 +40,41 @@ export default {
     }
   },
 
-  // helper to humanize camelCase and snake_case strings
+  KEY_LABEL_MAP = {
+    aqi: "AQI",
+    category_key: "Category Key",
+    category_label: "Category Label",
+    category_color: "Category Color",
+    category_min: "Category Min",
+    category_max: "Category Max",
+    health_description: "Health Description",
+    health_recommendation: "Health Recommendation",
+    health_sensitive_groups: "Health Sensitive Groups",
+    pm2_5: "PM2.5",
+    pm10: "PM10",
+    o3: "Ozone",
+    no2: "Nitrogen Dioxide",
+    so2: "Sulfur Dioxide",
+    co: "Carbon Monoxide",
+    primary_pollutant: "Primary Pollutant",
+    reporting_area: "Reporting Area",
+    state: "State",
+    latitude: "Latitude",
+    longitude: "Longitude",
+    timestamp: "Timestamp",
+    provider: "Provider",
+    date: "Date",
+    min: "Min AQI",
+    max: "Max AQI",
+    avg: "Average AQI"
+  },
+
   keyToLabel: function(key) {
-    // Handle special cases first
-    const specialCases = {
-      'aqi': 'AQI',
-      'category_key': 'Category Key',
-      'category_label': 'Category',
-      'category_color': 'Category Color',
-      'category_min': 'Category Min',
-      'category_max': 'Category Max',
-      'health_description': 'Health Description',
-      'health_recommendation': 'Health Recommendation',
-      'health_sensitive_groups': 'Sensitive Groups',
-      'primary_pollutant': 'Primary Pollutant',
-      'pm2_5': 'PM2.5',
-      'pm10': 'PM10',
-      'o3': 'Ozone (O3)',
-      'no2': 'Nitrogen Dioxide (NO2)',
-      'so2': 'Sulfur Dioxide (SO2)',
-      'co': 'Carbon Monoxide (CO)',
-      'reporting_area': 'Reporting Area'
-    }
-
-    if (specialCases[key]) {
-      return specialCases[key]
-    }
-
-    const label = key
-      // replace underscores with spaces
-      .replaceAll('_', '\u00A0')
-      // capitalize the first letter of each word (handles both spaces and non-breaking spaces)
-      .replace(/(^|[\s\u00A0])[a-z]/g, (match) => match.toUpperCase())
-
-    return label
+    return this.KEY_LABEL_MAP[key] || key
   },
 
   keyToHelpObject: function(key) {
-    const keyWithoutDayPart = key.split(":").pop()
-
-    return this.HELP_TEXT_BY_PROP[keyWithoutDayPart] || {}
+    return this.HELP_TEXT_BY_PROP[key] || {}
   },
 
   keyToTooltip: function(key) {
@@ -166,39 +161,46 @@ export default {
   currentAirQualityByLocation: {},
 
   CURRENT_PROPS: [
-    'aqi',
-    'category_key',
-    'category_label',
-    'category_color',
-    'category_min',
-    'category_max',
-    'health_description',
-    'health_recommendation',
-    'health_sensitive_groups',
-    'pm2_5',
-    'pm10',
-    'o3',
-    'no2',
-    'so2',
-    'co',
-    'primary_pollutant',
-    'reporting_area',
-    'state',
-    'latitude',
-    'longitude'
+    "aqi",
+    "category_key",
+    "category_label",
+    "category_color",
+    "category_min",
+    "category_max",
+    "health_description",
+    "health_recommendation",
+    "health_sensitive_groups",
+    "pm2_5",
+    "pm10",
+    "o3",
+    "no2",
+    "so2",
+    "co",
+    "primary_pollutant",
+    "reporting_area",
+    "state",
+    "latitude",
+    "longitude",
+    "timestamp",
+    "provider"
   ],
 
   DAILY_PROPS: [
-    'aqi',
-    'category_key',
-    'category_label',
-    'category_color',
-    'category_min',
-    'category_max',
-    'health_description',
-    'health_recommendation',
-    'health_sensitive_groups',
-    'primary_pollutant'
+    "date",
+    "aqi",
+    "min",
+    "max",
+    "avg",
+    "category_key",
+    "category_label",
+    "category_color",
+    "category_min",
+    "category_max",
+    "health_description",
+    "health_recommendation",
+    "health_sensitive_groups",
+    "primary_pollutant",
+    "provider"
   ],
 
   HELP_TEXT_BY_PROP: {
