@@ -2,7 +2,7 @@ import airQualityMixin from "./air_quality_mixin.js"
 
 
 export default {
-  type: "airQuality",
+  type: "air_quality",
   bytecodeKey: "airQuality",
   name: "Air Quality",
   colour: 360,
@@ -114,7 +114,7 @@ export default {
       const payload = blockObject.airQuality
 
       return {
-        type: "airQuality",
+        type: "air_quality",
         fields: {
           POWER_UP_ID: String(payload.powerUpId),
           AIR_QUALITY_TIME: payload.airQualityTime,

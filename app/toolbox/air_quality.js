@@ -3,6 +3,6 @@ export default {
   colour: 360,
 
   contents: [
-    'airQuality'
+    'air_quality'
   ],
 }

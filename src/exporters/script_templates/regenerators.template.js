@@ -31,6 +31,7 @@ const BYTECODE_BLOCK_TYPE_MAP = {
   getVariable: 'io_variables_get',
   getFeedValue: 'feed_get_value',
   setFeedValue: 'feed_set_value',
+  airQuality: 'air_quality',
   webhookAction: 'action_webhook',
   emailAction: 'action_email',
   smsAction: 'action_sms',
