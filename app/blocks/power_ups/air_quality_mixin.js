@@ -26,7 +26,12 @@ export default {
     }
   },
 
+  autoDisable: true,
+
   setEnabledByLocation: function() {
+    // bail if this behavior has been disabled
+    if(!this.autoDisable) { return }
+
     // must have a location and a parent (copacetic with disableOrphans)
     if(this.getFieldValue("POWER_UP_ID") === "" || !this.getParent()) {
       this.disabled || this.setEnabled(false)
