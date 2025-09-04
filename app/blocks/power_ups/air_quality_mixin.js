@@ -40,7 +40,7 @@ export default {
     }
   },
 
-  KEY_LABEL_MAP = {
+  KEY_LABEL_MAP: {
     aqi: "AQI",
     category_key: "Category Key",
     category_label: "Category Label",
