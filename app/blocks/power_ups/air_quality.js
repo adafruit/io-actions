@@ -78,10 +78,6 @@ export default {
         [ "Now", "current" ],
         [ "Today", "forecast_today" ],
         [ "Tomorrow", "forecast_tomorrow" ],
-        [ "In 2 days", "forecast_day_2" ],
-        [ "In 3 days", "forecast_day_3" ],
-        [ "In 4 days", "forecast_day_4" ],
-        [ "In 5 days", "forecast_day_5" ]
       ]
     },
 
