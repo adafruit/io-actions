@@ -85,9 +85,12 @@ class BlockDefinition {
   documentationPath() {
     const
       blockMdFilename = this.definitionPath.split("/").at(-1).replace(/.js$/, '.md'),
-      primaryCategory = this.getPrimaryCategory()
+      primaryCategory = this.getPrimaryCategory(),
+      rawPath = `blocks/${primaryCategory}/${blockMdFilename}`,
+      // lowercase and no whitespace
+      urlPath = rawPath.toLowerCase().replaceAll(/\s/g, "_")
 
-    return `blocks/${primaryCategory}/${blockMdFilename}`.toLowerCase()
+    return urlPath
   }
 
   toBlocklyJSON() {
