@@ -31,7 +31,7 @@ const
         exportItem.toolbox("toolbox.json")
         exportItem.workspace("workspace.json")
         exportItem.blocks("blocks.json")
-        exportItem.script("blockly_app.js")
+        exportItem.script("blockly.js")
       })
     },
 
