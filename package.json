@@ -21,6 +21,7 @@
     "lint-export": "eslint export/",
 
     "export:app": "node export.js app",
+    "export:app:to-rails": "npm run export:app && node --env-file-if-exists=.env copy_to_rails.js",
     "export:block-images": "node export.js blockImages",
 
     "docs:export": "node export.js docs",
