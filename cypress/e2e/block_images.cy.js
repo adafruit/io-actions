@@ -4,11 +4,16 @@ describe("Block Images", () => {
 
     // any extra setup to do before taking screenshots
     cy.window().then(win => {
-      // disable the weather block's automatic disabling behavior
-      const weatherBlock = win.blocklyWorkspace.getBlockById('block-type-weather')
-      weatherBlock.autoDisable = false
-      // enable it
-      weatherBlock.setEnabled(true)
+      const autoDisableBlockTypes = [ 'weather', 'air_quality' ]
+      autoDisableBlockTypes.forEach(blockType => {
+        // look up the block in the workspace
+        const blockToEnable = win.blocklyWorkspace.getBlockById(`block-type-${blockType}`)
+        // disable the auto-disable behavior
+        blockToEnable.autoDisable = false
+        // enable the block
+        blockToEnable.setEnabled(true)
+        // ready to take a picture now
+      })
     })
 
     cy.get("[data-id^='block-type-']").each(($el) => {
