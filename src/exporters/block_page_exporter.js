@@ -1,3 +1,4 @@
+import { existsSync, readFileSync } from "node:fs"
 import { forEach, identity, pickBy } from 'lodash-es'
 
 import { writeFileIfDifferent } from '#src/util.js'
@@ -23,11 +24,16 @@ export default class BlockPageExporter {
 
     forEach(this.definitionSet.blocks, blockDefinition => {
       const
+        sourceDocPath = blockDefinition.documentationSourcePath(),
         docPath = options.filenameFunc(blockDefinition),
-        fullPath = `${this.destination}/${docPath}`,
-        newContent = toBlockMarkdown(blockDefinition)
+        fullPath = `${this.destination}/${docPath}`
 
-      writeFileIfDifferent(fullPath, newContent)
+      if(existsSync(sourceDocPath)) {
+        writeFileIfDifferent(fullPath, readFileSync(sourceDocPath))
+
+      } else {
+        writeFileIfDifferent(fullPath, toBlockMarkdown(blockDefinition))
+      }
     })
   }
 
