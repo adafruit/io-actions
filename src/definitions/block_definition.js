@@ -82,8 +82,12 @@ class BlockDefinition {
     return firstCategoryName
   }
 
-  documentationSourcePath() {
-    const blockMdPeerPath = this.definitionPath.replace(/.js$/, '.md')
+  documentationSourcePath(section=null) {
+    let blockMdPeerPath = this.definitionPath.replace(/.js$/, '.md')
+
+    if(section) {
+      blockMdPeerPath = blockMdPeerPath.replace(".md", `.${section}.md`)
+    }
 
     return `app/blocks/${blockMdPeerPath}`
   }

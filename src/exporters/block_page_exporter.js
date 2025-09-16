@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from "node:fs"
-import { forEach, identity, pickBy } from 'lodash-es'
+import { forEach, identity, mapValues, pickBy } from 'lodash-es'
 
 import { writeFileIfDifferent } from '#src/util.js'
 import toBlockMarkdown from "#src/docs/render_block.js"
@@ -24,15 +24,22 @@ export default class BlockPageExporter {
 
     forEach(this.definitionSet.blocks, blockDefinition => {
       const
-        sourceDocPath = blockDefinition.documentationSourcePath(),
         docPath = options.filenameFunc(blockDefinition),
-        fullPath = `${this.destination}/${docPath}`
+        fullPath = `${this.destination}/${docPath}`,
+        fullDoc = readFileIfPresent(blockDefinition.documentationSourcePath())
 
-      if(existsSync(sourceDocPath)) {
-        writeFileIfDifferent(fullPath, readFileSync(sourceDocPath))
+      // full block doc already exists, just use it
+      if(fullDoc) {
+        writeFileIfDifferent(fullPath, fullDoc)
 
       } else {
-        writeFileIfDifferent(fullPath, toBlockMarkdown(blockDefinition))
+        const sections = {
+          description: readFileIfPresent(blockDefinition.documentationSourcePath("description")),
+          inputs: readFileIfPresent(blockDefinition.documentationSourcePath("inputs")),
+          fields: readFileIfPresent(blockDefinition.documentationSourcePath("fields")),
+        }
+
+        writeFileIfDifferent(fullPath, toBlockMarkdown(blockDefinition, sections))
       }
     })
   }
@@ -47,3 +54,13 @@ export default class BlockPageExporter {
   }
 }
 
+const readFileIfPresent = filename => {
+  try {
+    return readFileSync(filename).toString()
+  } catch(error) {
+    // no file? no problem, return falsy
+    if(error.code === "ENOENT") { return }
+    // otherwise we need to see the error
+    throw error
+  }
+}
