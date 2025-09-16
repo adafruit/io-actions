@@ -2,28 +2,32 @@
 export default {
   type: 'text_compare',
   bytecodeKey: 'textCompare',
-  name: "Compare Text",
+  name: "Text Compare",
+
   colour: 180,
   inputsInline: true,
   primaryCategory: "Logic",
-  description: "Compare any two pieces of text or data to build conditional logic in your Actions. Perfect for creating if/then statements like 'if device status equals online', 'if user name is not guest', or 'if error message contains timeout'. Works with feed values, variables, user input, or any text-based data.",
+
   connections: {
     mode: "value",
     output: "expression",
   },
-  template: `%A %OP %B`,
+
+  template: "%A %OP %B",
+
   inputs: {
     A: {
-      description: "The first value to compare (left side). Can be feed data, variable content, user input, or any text. Numbers and other data types will be automatically converted to text for comparison.",
+      description: "Left text value to compare",
       check: "expression",
-      shadow: 'io_text'
+      shadow: "io_text"
     },
     B: {
-      description: "The second value to compare (right side). Can be literal text like 'online', variable content, feed values, or any data you want to compare against the first input. Also automatically converted to text.",
+      description: "Right text value to compare",
       check: "expression",
-      shadow: 'io_text'
-    },
+      shadow: "io_text"
+    }
   },
+
   fields: {
     OP: {
       description: "Choose how to compare the two text inputs:",
@@ -34,6 +38,7 @@ export default {
       ]
     }
   },
+
   generators: {
     json: (block, generator) => {
       const
@@ -50,6 +55,7 @@ export default {
       return [ blockPayload, 0 ]
     }
   },
+
   regenerators: {
     json: (blockObject, helpers) => {
       const
