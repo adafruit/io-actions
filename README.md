@@ -36,12 +36,14 @@ When you're done working simply press `CTRL + C` to terminate the processes.
 
 To generate a new block file:
 ```sh
-npm run generate:block path/block_type # generates block named "Block Type" at app/blocks/path/block_type.js
+# generates block named "Block Type" at app/blocks/path/block_type.js
+npm run generate:block path/block_type
 ```
 
 To generate a complete markdown document for a block:
 ```sh
-npm run generate:block:doc path/block_type # generates app/blocks/path/block_type.md
+# generates app/blocks/path/block_type.md
+npm run generate:block:doc path/block_type
 ```
 The above will generate an entire block documentation page using the embedded documenation in the `block_type.js` file, if present. The documentation exporter will ignore the block definition and use this file instead.
 
