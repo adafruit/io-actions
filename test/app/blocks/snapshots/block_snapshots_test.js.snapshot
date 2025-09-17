@@ -3981,7 +3981,7 @@ exports[`Block Snapshots > Blockly JSON > text_compare 1`] = `
   "inputsInline": true,
   "type": "text_compare",
   "colour": 180,
-  "tooltip": "Compare any two pieces of text or data to build conditional logic in your Actions.",
+  "tooltip": "Compare two text values using different comparison operations.",
   "output": "expression",
   "message0": "%1",
   "args0": [
