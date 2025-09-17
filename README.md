@@ -47,9 +47,12 @@ The above will generate an entire block documentation page using the embedded do
 
 You can also export certain sections of documentation:
 ```sh
-npm run generate:block:doc path/block_type description # generates app/blocks/path/block_type.description.md
-npm run generate:block:doc path/block_type inputs # generates app/blocks/path/block_type.inputs.md
-npm run generate:block:doc path/block_type fields # generates app/blocks/path/block_type.fields.md
+# generates app/blocks/path/block_type.description.md
+npm run generate:block:doc path/block_type description
+# generates app/blocks/path/block_type.inputs.md
+npm run generate:block:doc path/block_type inputs
+# generates app/blocks/path/block_type.fields.md
+npm run generate:block:doc path/block_type fields
 ```
 
 These files are markdown fragments, generated from embedded docs in `block_type.js`, that will be used only for their particular sections.
