@@ -1,6 +1,8 @@
 import { capitalize, filter, isString, isEmpty, mapValues, forEach, pickBy, identity } from 'lodash-es'
 
+import { readFileIfPresent } from '#src/util.js'
 import BlockExporter from "#src/exporters/block_exporter.js"
+import blockToMarkdown, { renderInputsSection, renderFieldsSection } from "#src/docs/render_block.js"
 import { niceTemplate } from '#src/util.js'
 
 
@@ -82,7 +84,19 @@ class BlockDefinition {
     return firstCategoryName
   }
 
+  documentationSourcePath(section=null) {
+    if(!this.definitionPath) { return }
+    let blockMdPeerPath = this.definitionPath.replace(/.js$/, '.md')
+
+    if(section) {
+      blockMdPeerPath = blockMdPeerPath.replace(".md", `.${section}.md`)
+    }
+
+    return `app/blocks/${blockMdPeerPath}`
+  }
+
   documentationPath() {
+    if(!this.definitionPath) { return }
     const
       blockMdFilename = this.definitionPath.split("/").at(-1).replace(/.js$/, '.md'),
       primaryCategory = this.getPrimaryCategory(),
@@ -91,6 +105,55 @@ class BlockDefinition {
       urlPath = rawPath.toLowerCase().replaceAll(/\s/g, "_")
 
     return urlPath
+  }
+
+  fullDocumentationFromFile() {
+    return readFileIfPresent(this.documentationSourcePath())
+  }
+
+  descriptionFromFile() {
+    return readFileIfPresent(this.documentationSourcePath("description"))
+  }
+
+  inputDescriptionsFromFile() {
+    return readFileIfPresent(this.documentationSourcePath("inputs"))
+  }
+
+  fieldDescriptionsFromFile() {
+    return readFileIfPresent(this.documentationSourcePath("fields"))
+  }
+
+  documentationSections() {
+    return {
+      description: this.descriptionFromFile(),
+      inputs: this.inputDescriptionsFromFile(),
+      fields:  this.fieldDescriptionsFromFile()
+    }
+  }
+
+  inputsToMarkdown() {
+    // dedicated external file?
+    return this.inputDescriptionsFromFile() ||
+      // docOverrides?
+      this.docOverrides?.inputs ||
+      // generate fresh
+      renderInputsSection(this)
+  }
+
+  fieldsToMarkdown() {
+    // dedicated external file?
+    return this.fieldDescriptionsFromFile() ||
+      // docOverrides?
+      this.docOverrides?.fields ||
+      // generate fresh
+      renderFieldsSection(this)
+  }
+
+  toMarkdown() {
+    // return the full external mardkown doc if it's present
+    return this.fullDocumentationFromFile() ||
+      // otherwise render fresh
+      blockToMarkdown(this, this.documentationSections())
   }
 
   toBlocklyJSON() {
@@ -189,16 +252,16 @@ BlockDefinition.parseRawDefinition = function(rawBlockDefinition, definitionPath
   blockDef.type = rawBlockDefinition.type
   blockDef.name = rawBlockDefinition.name
   blockDef.primaryCategory = rawBlockDefinition.primaryCategory
-  blockDef.docOverrides = rawBlockDefinition.docOverrides
+  blockDef.docOverrides = rawBlockDefinition.docOverrides &&
+    mapValues(rawBlockDefinition.docOverrides, v => niceTemplate(v))
   blockDef.description = rawBlockDefinition.description
     ? niceTemplate(rawBlockDefinition.description)
-    : ""
+    : blockDef.descriptionFromFile() || ""
   blockDef.ioPlus = rawBlockDefinition.ioPlus
-  // take the first line of the description
-  // blockDef.tooltip = blockDef.description.split("\n")[0]
   // take the first sentence of the description
-  blockDef.tooltip = blockDef.description.split(/\.(\s|$)/)[0]
-  if(!blockDef.tooltip.endsWith("?")) { blockDef.tooltip += "." }
+  blockDef.tooltip = blockDef.description.split(/\.(\s|$)/)[0] || ""
+  // ensure end of sentence punctaution
+  if(blockDef.tooltip && !blockDef.tooltip.endsWith("?")) { blockDef.tooltip += "." }
   blockDef.disabled = !!rawBlockDefinition.disabled
   blockDef.connections = rawBlockDefinition.connections
   blockDef.template = rawBlockDefinition.template

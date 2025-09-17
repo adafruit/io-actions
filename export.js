@@ -65,6 +65,14 @@ const
       })
     },
 
+    "blockMdPages": async () => {
+      await exportTo(".", definitions, exportItem => {
+        exportItem.blockPages(blockDef => {
+          return blockDef.documentationSourcePath()
+        })
+      })
+    },
+
     // Create png images of all blocks by:
     // - creating a temporary app with no toolbox and all blocks on the workspace
     // - serving that application

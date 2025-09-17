@@ -3,7 +3,7 @@ exports[`Block Snapshots > Blockly JSON > action_email 1`] = `
   "inputsInline": false,
   "type": "action_email",
   "colour": "0",
-  "tooltip": "Sends an email with given subject and body templates",
+  "tooltip": "Sends an email with given subject and body templates.",
   "nextStatement": "expression",
   "previousStatement": "expression",
   "message0": "📧 Email %1",
@@ -61,7 +61,7 @@ exports[`Block Snapshots > Blockly JSON > action_root 1`] = `
   "inputsInline": false,
   "type": "action_root",
   "colour": "0",
-  "tooltip": "The foundation of every Adafruit IO Action. Connect Triggers (like 'when temperature > 80°F' or 'every morning at 8 AM') to define when your Action runs, then attach Action blocks (like 'send email', 'publish to feed', or 'if/then logic') to define what happens when triggered.",
+  "tooltip": "The foundation of every Adafruit IO Action.",
   "message0": "Triggers: %1",
   "args0": [
     {
@@ -94,7 +94,7 @@ exports[`Block Snapshots > Blockly JSON > action_root 1`] = `
       "align": "RIGHT"
     }
   ],
-  "message4": "ㅤ %1",
+  "message4": "  %1",
   "args4": [
     {
       "type": "input_dummy",
@@ -180,6 +180,95 @@ exports[`Block Snapshots > Blockly JSON > action_webhook 1`] = `
     }
   ],
   "helpUrl": "https://io.adafruit.com/actions-docs/blocks/notifications/webhook"
+}
+`;
+
+exports[`Block Snapshots > Blockly JSON > air_quality 1`] = `
+{
+  "inputsInline": false,
+  "type": "air_quality",
+  "colour": 360,
+  "tooltip": "Fetch current or forecast air quality conditions at the specified location using Open-Meteo Air Quality API.",
+  "output": "expression",
+  "message0": "Air Quality %1",
+  "args0": [
+    {
+      "type": "input_dummy",
+      "align": "CENTRE"
+    }
+  ],
+  "message1": "At: %1 %2",
+  "args1": [
+    {
+      "name": "POWER_UP_ID",
+      "type": "field_dropdown",
+      "options": [
+        [
+          "Loading locations...",
+          ""
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy",
+      "align": "RIGHT"
+    }
+  ],
+  "message2": "When: %1 %2",
+  "args2": [
+    {
+      "name": "AIR_QUALITY_TIME",
+      "type": "field_dropdown",
+      "options": [
+        [
+          "Now",
+          "current"
+        ],
+        [
+          "Today",
+          "forecast_today"
+        ],
+        [
+          "Tomorrow",
+          "forecast_tomorrow"
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy",
+      "align": "RIGHT"
+    }
+  ],
+  "message3": "Metric: %1 %2",
+  "args3": [
+    {
+      "name": "AIR_QUALITY_PROPERTY",
+      "type": "field_label",
+      "text": ""
+    },
+    {
+      "type": "input_dummy",
+      "align": "RIGHT"
+    }
+  ],
+  "message4": "%1 %2",
+  "args4": [
+    {
+      "name": "AIR_QUALITY_PROPERTY_HELP",
+      "type": "field_label",
+      "text": ""
+    },
+    {
+      "type": "input_dummy",
+      "align": "RIGHT"
+    }
+  ],
+  "extensions": [
+    "replaceDropdownOptions",
+    "airQualityMixin",
+    "prepareAirQuality"
+  ],
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/air_quality/air_quality"
 }
 `;
 
@@ -344,7 +433,7 @@ exports[`Block Snapshots > Blockly JSON > delay_days 1`] = `
   "inputsInline": false,
   "type": "delay_days",
   "colour": "0",
-  "tooltip": "1 day is the maximum delay available",
+  "tooltip": "1 day is the maximum delay available.",
   "output": "delay_period",
   "message0": "1 day %1",
   "args0": [
@@ -362,7 +451,7 @@ exports[`Block Snapshots > Blockly JSON > delay_hours 1`] = `
   "inputsInline": false,
   "type": "delay_hours",
   "colour": "0",
-  "tooltip": "Set a delay between 1 and 23 hours",
+  "tooltip": "Set a delay between 1 and 23 hours.",
   "output": "delay_period",
   "message0": "%1 hours %2",
   "args0": [
@@ -478,7 +567,7 @@ exports[`Block Snapshots > Blockly JSON > delay_minutes 1`] = `
   "inputsInline": false,
   "type": "delay_minutes",
   "colour": "0",
-  "tooltip": "Set a delay between 1 and 59 minutes",
+  "tooltip": "Set a delay between 1 and 59 minutes.",
   "output": "delay_period",
   "message0": "%1 minutes %2",
   "args0": [
@@ -756,7 +845,7 @@ exports[`Block Snapshots > Blockly JSON > delay_seconds 1`] = `
   "inputsInline": false,
   "type": "delay_seconds",
   "colour": "0",
-  "tooltip": "Set a delay between 1 and 59 seconds (or 0 for no delay)",
+  "tooltip": "Set a delay between 1 and 59 seconds (or 0 for no delay).",
   "output": "delay_period",
   "message0": "%1 seconds %2",
   "args0": [
@@ -1016,7 +1105,7 @@ exports[`Block Snapshots > Blockly JSON > delay_settings 1`] = `
   "inputsInline": false,
   "type": "delay_settings",
   "colour": "0",
-  "tooltip": "Causes a delay between this Action's trigger and its execution",
+  "tooltip": "Causes a delay between this Action's trigger and its execution.",
   "message0": "Delay Settings %1",
   "args0": [
     {
@@ -2354,7 +2443,7 @@ exports[`Block Snapshots > Blockly JSON > feed_get_value 1`] = `
   "inputsInline": false,
   "type": "feed_get_value",
   "colour": 300,
-  "tooltip": "Resolves to the last value of this feed or component, always a String",
+  "tooltip": "Resolves to the last value of this feed or component, always a String.",
   "output": "expression",
   "message0": "Get %1 %2",
   "args0": [
@@ -2440,7 +2529,7 @@ exports[`Block Snapshots > Blockly JSON > io_controls_if 1`] = `
   "inputsInline": false,
   "type": "io_controls_if",
   "colour": 60,
-  "tooltip": "Execute different block diagrams based on the outcome of conditional checks.",
+  "tooltip": "Create smart decision-making logic for your IoT Actions using if/then/else statements.",
   "nextStatement": "expression",
   "previousStatement": "expression",
   "message0": "if %1",
@@ -2487,7 +2576,7 @@ exports[`Block Snapshots > Blockly JSON > io_logic_boolean 1`] = `
   "inputsInline": false,
   "type": "io_logic_boolean",
   "colour": 60,
-  "tooltip": "A true or false value.",
+  "tooltip": "A simple true or false value for building logic conditions and controlling digital outputs.",
   "output": [
     "expression",
     "boolean"
@@ -2522,7 +2611,7 @@ exports[`Block Snapshots > Blockly JSON > io_logic_compare 1`] = `
   "inputsInline": true,
   "type": "io_logic_compare",
   "colour": 120,
-  "tooltip": "Build mathematical conditions by comparing any two numerical values in your Action logic. Perfect for creating if/then statements like 'if temperature is greater than target temp', 'if battery level equals low threshold', or 'if sensor reading is between two values'. Works with feed data, variables, calculations, or any numerical inputs.",
+  "tooltip": "Build mathematical conditions by comparing any two numerical values in your Action logic.",
   "output": "expression",
   "message0": "%1",
   "args0": [
@@ -2581,7 +2670,7 @@ exports[`Block Snapshots > Blockly JSON > io_logic_negate 1`] = `
   "inputsInline": false,
   "type": "io_logic_negate",
   "colour": 60,
-  "tooltip": "Flip any condition to its opposite - turns true into false and false into true. Essential for creating inverse logic like 'if NOT raining', 'if door is NOT open', or 'if temperature is NOT above 75°F'. Perfect for building exception handling, safety conditions, and reverse automation logic in your IoT Actions.",
+  "tooltip": "Flip any condition to its opposite - turns true into false and false into true.",
   "output": "expression",
   "message0": "not %1",
   "args0": [
@@ -2601,7 +2690,7 @@ exports[`Block Snapshots > Blockly JSON > io_logic_operation 1`] = `
   "inputsInline": true,
   "type": "io_logic_operation",
   "colour": 60,
-  "tooltip": "Combine multiple conditions to create sophisticated decision logic in your Actions. Perfect for complex automation like 'if temperature is high AND humidity is low', 'if motion detected OR door opened', or any scenario where you need multiple criteria to work together. Essential for building smart, multi-factor IoT control systems.",
+  "tooltip": "Combine multiple conditions to create sophisticated decision logic in your Actions.",
   "output": "expression",
   "message0": "%1",
   "args0": [
@@ -2644,7 +2733,7 @@ exports[`Block Snapshots > Blockly JSON > io_math_arithmetic 1`] = `
   "inputsInline": true,
   "type": "io_math_arithmetic",
   "colour": 120,
-  "tooltip": "Perform the specified arithmetic operation on two specified operands.",
+  "tooltip": "Perform mathematical calculations using sensor data, feed values, or any numbers in your Actions.",
   "output": "expression",
   "message0": "%1",
   "args0": [
@@ -2699,8 +2788,11 @@ exports[`Block Snapshots > Blockly JSON > io_math_constrain 1`] = `
   "inputsInline": false,
   "type": "io_math_constrain",
   "colour": 120,
-  "tooltip": "Constrain a given number to fall within a given range.",
-  "output": "number",
+  "tooltip": "Keep any number within specified minimum and maximum boundaries.",
+  "output": [
+    "expression",
+    "number"
+  ],
   "message0": "Constrain %1",
   "args0": [
     {
@@ -2728,7 +2820,7 @@ exports[`Block Snapshots > Blockly JSON > io_math_number 1`] = `
   "inputsInline": false,
   "type": "io_math_number",
   "colour": 120,
-  "tooltip": "A numeric value, whole or decimal.",
+  "tooltip": "Enter any numerical value for use in your IoT Actions - whole numbers, decimals, positive, or negative.",
   "output": [
     "expression",
     "number"
@@ -2757,7 +2849,7 @@ exports[`Block Snapshots > Blockly JSON > io_math_round 1`] = `
   "inputsInline": false,
   "type": "io_math_round",
   "colour": 120,
-  "tooltip": "Round a value to the nearest whole number via round, floor, or ceiling functions",
+  "tooltip": "Convert decimal numbers to whole numbers using different rounding strategies.",
   "output": "expression",
   "message0": "%1 %2",
   "args0": [
@@ -2795,7 +2887,7 @@ exports[`Block Snapshots > Blockly JSON > io_text 1`] = `
   "inputsInline": false,
   "type": "io_text",
   "colour": 180,
-  "tooltip": "A String of text",
+  "tooltip": "Enter any text content for use in your Actions - words, phrases, device commands, or messages.",
   "output": [
     "expression",
     "string"
@@ -2821,7 +2913,7 @@ exports[`Block Snapshots > Blockly JSON > io_text_join 1`] = `
   "inputsInline": true,
   "type": "io_text_join",
   "colour": 180,
-  "tooltip": "Join two pieces of text into one.",
+  "tooltip": "Join two pieces of text into one combined string.",
   "output": "expression",
   "message0": "%1",
   "args0": [
@@ -2850,7 +2942,7 @@ exports[`Block Snapshots > Blockly JSON > io_text_multiline 1`] = `
   "inputsInline": false,
   "type": "io_text_multiline",
   "colour": 180,
-  "tooltip": "A String of longer-form text with newlines.",
+  "tooltip": "Create formatted text content with multiple lines, paragraphs, and line breaks.",
   "output": [
     "expression",
     "string"
@@ -2876,7 +2968,7 @@ exports[`Block Snapshots > Blockly JSON > io_variables_get 1`] = `
   "inputsInline": false,
   "type": "io_variables_get",
   "colour": 240,
-  "tooltip": "Retrieve the value stored in a variable that was previously set using a Set Variable block. Use this to access stored feed values, calculation results, or any data saved earlier in your Action.",
+  "tooltip": "Retrieve the value stored in a variable that was previously set using a Set Variable block.",
   "output": "expression",
   "message0": "Get variable %1 %2",
   "args0": [
@@ -2898,7 +2990,7 @@ exports[`Block Snapshots > Blockly JSON > io_variables_set 1`] = `
   "inputsInline": true,
   "type": "io_variables_set",
   "colour": 240,
-  "tooltip": "Store a value in a named variable for later use in your Action. Variables let you remember feed values, calculation results, or any data to use in subsequent action blocks.",
+  "tooltip": "Store a value in a named variable for later use in your Action.",
   "nextStatement": "expression",
   "previousStatement": "expression",
   "message0": "Set variable %1 = %2",
@@ -2923,7 +3015,7 @@ exports[`Block Snapshots > Blockly JSON > matcher_compare 1`] = `
   "inputsInline": true,
   "type": "matcher_compare",
   "colour": 224,
-  "tooltip": "Create smart triggers based on numerical sensor data and thresholds. Perfect for temperature alerts ('notify when above 80°F'), battery monitoring ('warn when below 20%'), humidity control ('turn on fan when over 60%'), or any sensor-based automation that depends on numerical comparisons.",
+  "tooltip": "Create smart triggers based on numerical sensor data and thresholds.",
   "output": "matcher",
   "message0": "%1 %2",
   "args0": [
@@ -2973,7 +3065,7 @@ exports[`Block Snapshots > Blockly JSON > matcher_text_compare 1`] = `
   "inputsInline": true,
   "type": "matcher_text_compare",
   "colour": 180,
-  "tooltip": "Compare text-based feed data using smart text matching. Perfect for triggers based on status messages ('door opened', 'motion detected'), device states ('online', 'offline'), or any text-based sensor data. Works with exact matches, exclusions, or partial text detection within longer messages.",
+  "tooltip": "Compare text-based feed data using smart text matching.",
   "output": "matcher",
   "message0": "%1 %2",
   "args0": [
@@ -3011,8 +3103,11 @@ exports[`Block Snapshots > Blockly JSON > math_map 1`] = `
   "inputsInline": false,
   "type": "math_map",
   "colour": 120,
-  "tooltip": "Scale a value from one range of numbers to another",
-  "output": "number",
+  "tooltip": "Transform sensor readings and data values by scaling them from one number range to another.",
+  "output": [
+    "expression",
+    "number"
+  ],
   "message0": "Map %1",
   "args0": [
     {
@@ -3130,7 +3225,7 @@ exports[`Block Snapshots > Blockly JSON > on_schedule 1`] = `
   "inputsInline": false,
   "type": "on_schedule",
   "colour": 30,
-  "tooltip": "Create powerful time-based automation that runs your Actions on a schedule - from simple daily reminders to complex patterns like 'every 15 minutes during weekdays' or 'first Monday of each quarter'. Works like a smart alarm clock for your IoT devices, automatically triggering actions without any manual intervention. Perfect for turning lights on/off, sending regular reports, or controlling devices based on time patterns.",
+  "tooltip": "Create powerful time-based automation that runs your Actions on a schedule - from simple daily reminders to complex patterns like 'every 15 minutes during weekdays' or 'first Monday of each quarter'.",
   "nextStatement": "trigger",
   "previousStatement": "trigger",
   "message0": "Schedule %1",
@@ -3886,7 +3981,7 @@ exports[`Block Snapshots > Blockly JSON > text_compare 1`] = `
   "inputsInline": true,
   "type": "text_compare",
   "colour": 180,
-  "tooltip": "Compare any two pieces of text or data to build conditional logic in your Actions. Perfect for creating if/then statements like 'if device status equals online', 'if user name is not guest', or 'if error message contains timeout'. Works with feed values, variables, user input, or any text-based data.",
+  "tooltip": "Compare two text values using different comparison operations.",
   "output": "expression",
   "message0": "%1",
   "args0": [
@@ -3933,7 +4028,7 @@ exports[`Block Snapshots > Blockly JSON > text_template 1`] = `
   "inputsInline": true,
   "type": "text_template",
   "colour": 180,
-  "tooltip": "Render a text template.",
+  "tooltip": "Create dynamic, personalized messages by combining static text with live data from your IoT system.",
   "output": [
     "expression",
     "string"
@@ -4109,7 +4204,7 @@ exports[`Block Snapshots > Blockly JSON > when_data 1`] = `
   "inputsInline": true,
   "type": "when_data",
   "colour": 30,
-  "tooltip": "The simplest trigger - runs your Action every single time ANY new data arrives at a feed, regardless of what the value is. Perfect for logging all activity ('record every sensor reading'), acknowledging data receipt ('send confirmation for every message'), or triggering workflows that need to process all incoming data. No conditions, no filtering - just pure data arrival detection.",
+  "tooltip": "The simplest trigger - runs your Action every single time ANY new data arrives at a feed, regardless of what the value is.",
   "nextStatement": "trigger",
   "previousStatement": "trigger",
   "message0": "When %1 gets any data %2",
@@ -4142,7 +4237,7 @@ exports[`Block Snapshots > Blockly JSON > when_data_matching 1`] = `
   "inputsInline": true,
   "type": "when_data_matching",
   "colour": 30,
-  "tooltip": "The most common trigger type - runs your Action immediately whenever new data arrives at a feed that meets your specified condition. Perfect for real-time responses like 'send alert when temperature exceeds 85°F', 'turn on lights when motion detected', or 'notify me when battery drops below 20%'. This trigger fires every single time the condition is met.",
+  "tooltip": "The most common trigger type - runs your Action immediately whenever new data arrives at a feed that meets your specified condition.",
   "nextStatement": "trigger",
   "previousStatement": "trigger",
   "message0": "When %1 gets data matching: %2",
@@ -4177,7 +4272,7 @@ exports[`Block Snapshots > Blockly JSON > when_data_matching_state 1`] = `
   "inputsInline": true,
   "type": "when_data_matching_state",
   "colour": 30,
-  "tooltip": "Advanced trigger that watches for changes in how your feed data matches a condition over time. Unlike basic triggers that just check if data equals a value, this compares the current data point with the previous one to detect when conditions START being true, STOP being true, or CONTINUE being true. Perfect for detecting state changes like 'temperature just went above 80°' or 'door just closed after being open'.",
+  "tooltip": "Advanced trigger that watches for changes in how your feed data matches a condition over time.",
   "nextStatement": "trigger",
   "previousStatement": "trigger",
   "message0": "When %1 gets data that %2 matching %3",
