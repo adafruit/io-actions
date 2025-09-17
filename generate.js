@@ -85,19 +85,29 @@ if(toGenerate === "block") {
     console.log(`Generating block description doc at: ${descriptionDocPath}`)
 
     checkCanWriteFile(descriptionDocPath)
-
     writeFileSync(descriptionDocPath, blockToDoc.description)
 
-    // TODO: also allow inputs and fields sections
+  } else if(taskArgs[0] === "inputs") {
+    const inputsDocPath = fullBlockDocPath.replace(".md", ".inputs.md")
+    console.log(`Generating block input descriptions doc at: ${inputsDocPath}`)
 
-  } else if(taskArgs[0]) {
+    checkCanWriteFile(inputsDocPath)
+    writeFileSync(inputsDocPath, blockToDoc.inputsToMarkdown())
+
+  } else if(taskArgs[0] === "fields") {
+    const fieldsDocPath = fullBlockDocPath.replace(".md", ".fields.md")
+    console.log(`Generating block field descriptions doc at: ${fieldsDocPath}`)
+
+    checkCanWriteFile(fieldsDocPath)
+    writeFileSync(fieldsDocPath, blockToDoc.fieldsToMarkdown())
+
+  } else if(taskArgs[0] && taskArgs[0] !== "force") {
     throw new Error(`Unknown documentation section: "${taskArgs[0]}"`)
 
   } else {
     console.log(`Generating block doc at: app/blocks/${blockPath}.md`)
 
     checkCanWriteFile(fullBlockDocPath)
-
     writeFileSync(fullBlockDocPath, blockToDoc.toMarkdown())
 
     console.log(`Wrote new block doc file to ${fullBlockDocPath}`)

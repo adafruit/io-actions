@@ -2,7 +2,7 @@ import { capitalize, filter, isString, isEmpty, mapValues, forEach, pickBy, iden
 
 import { readFileIfPresent } from '#src/util.js'
 import BlockExporter from "#src/exporters/block_exporter.js"
-import blockToMarkdown from "#src/docs/render_block.js"
+import blockToMarkdown, { renderInputsSection, renderFieldsSection } from "#src/docs/render_block.js"
 import { niceTemplate } from '#src/util.js'
 
 
@@ -131,6 +131,24 @@ class BlockDefinition {
     }
   }
 
+  inputsToMarkdown() {
+    // dedicated external file?
+    return this.inputDescriptionsFromFile() ||
+      // docOverrides?
+      this.docOverrides?.inputs ||
+      // generate fresh
+      renderInputsSection(this)
+  }
+
+  fieldsToMarkdown() {
+    // dedicated external file?
+    return this.fieldDescriptionsFromFile() ||
+      // docOverrides?
+      this.docOverrides?.fields ||
+      // generate fresh
+      renderFieldsSection(this)
+  }
+
   toMarkdown() {
     // return the full external mardkown doc if it's present
     return this.fullDocumentationFromFile() ||
@@ -234,7 +252,8 @@ BlockDefinition.parseRawDefinition = function(rawBlockDefinition, definitionPath
   blockDef.type = rawBlockDefinition.type
   blockDef.name = rawBlockDefinition.name
   blockDef.primaryCategory = rawBlockDefinition.primaryCategory
-  blockDef.docOverrides = rawBlockDefinition.docOverrides
+  blockDef.docOverrides = rawBlockDefinition.docOverrides &&
+    mapValues(rawBlockDefinition.docOverrides, v => niceTemplate(v))
   blockDef.description = rawBlockDefinition.description
     ? niceTemplate(rawBlockDefinition.description)
     : blockDef.descriptionFromFile() || ""
