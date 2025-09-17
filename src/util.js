@@ -46,4 +46,16 @@ export const
       mkdirSync(dirname(filename), { recursive: true })
       writeFileSync(filename, content)
     }
+  },
+
+  readFileIfPresent = filename => {
+    if(!filename) { return }
+    try {
+      return readFileSync(filename).toString()
+    } catch(error) {
+      // no file? no problem, return falsy
+      if(error.code === "ENOENT") { return }
+      // otherwise we need to see the error
+      throw error
+    }
   }

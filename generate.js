@@ -2,7 +2,6 @@ import { spawn, spawnSync } from 'node:child_process'
 import { copyFileSync, cpSync, existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 
 import DefinitionSet from '#src/definitions/definition_set.js'
-import toBlockMarkdown from "#src/docs/render_block.js"
 
 
 const
@@ -89,6 +88,8 @@ if(toGenerate === "block") {
 
     writeFileSync(descriptionDocPath, blockToDoc.description)
 
+    // TODO: also allow inputs and fields sections
+
   } else if(taskArgs[0]) {
     throw new Error(`Unknown documentation section: "${taskArgs[0]}"`)
 
@@ -97,7 +98,7 @@ if(toGenerate === "block") {
 
     checkCanWriteFile(fullBlockDocPath)
 
-    writeFileSync(fullBlockDocPath, toBlockMarkdown(blockToDoc))
+    writeFileSync(fullBlockDocPath, blockToDoc.toMarkdown())
 
     console.log(`Wrote new block doc file to ${fullBlockDocPath}`)
   }
