@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from "node:fs"
 import { forEach, identity, mapValues, pickBy } from 'lodash-es'
 
-import { readFileIfPresent, writeFileIfDifferent } from '#src/util.js'
+import { writeFileIfDifferent } from '#src/util.js'
 
 
 export default class BlockPageExporter {

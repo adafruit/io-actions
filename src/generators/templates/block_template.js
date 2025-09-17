@@ -11,6 +11,12 @@ export default {
     output: "expression",
   },
 
+  template: `
+    A center-aligned line of text |CENTER
+    A line with a field %FIELD_A in it
+    A line with an input %INPUT_A
+  `,
+
   inputs: {
     INPUT_A: {
       description: "documentation about this input",
