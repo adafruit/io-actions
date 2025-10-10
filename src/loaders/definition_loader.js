@@ -1,9 +1,10 @@
 import { glob } from 'glob'
 import { camelCase, fromPairs } from 'lodash-es'
+import { pathToFileURL } from 'node:url'
 
 
 const
-  PROJECT_ROOT = process.cwd(),
+  PROJECT_ROOT = pathToFileURL(process.cwd()).href,
 
   APP_LOCATION = 'app',
 
