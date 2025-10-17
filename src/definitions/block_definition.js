@@ -1,4 +1,5 @@
 import { capitalize, filter, isString, isEmpty, mapValues, forEach, pickBy, identity } from 'lodash-es'
+import { basename, sep } from 'node:path'
 
 import { readFileIfPresent } from '#src/util.js'
 import BlockExporter from "#src/exporters/block_exporter.js"
@@ -86,19 +87,22 @@ class BlockDefinition {
 
   documentationSourcePath(section=null) {
     if(!this.definitionPath) { return }
+    // Use path separators correctly - definitionPath may have backslashes on Windows
     let blockMdPeerPath = this.definitionPath.replace(/.js$/, '.md')
 
     if(section) {
       blockMdPeerPath = blockMdPeerPath.replace(".md", `.${section}.md`)
     }
 
-    return `app/blocks/${blockMdPeerPath}`
+    // Normalize to forward slashes for consistent file paths
+    return `app/blocks/${blockMdPeerPath.replace(/\\/g, '/')}`
   }
 
   documentationPath() {
     if(!this.definitionPath) { return }
     const
-      blockMdFilename = this.definitionPath.split("/").at(-1).replace(/.js$/, '.md'),
+      // Use basename to get filename cross-platform (handles both / and \ separators)
+      blockMdFilename = basename(this.definitionPath, '.js') + '.md',
       primaryCategory = this.getPrimaryCategory(),
       rawPath = `blocks/${primaryCategory}/${blockMdFilename}`,
       // lowercase and no whitespace
