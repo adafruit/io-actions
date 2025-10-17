@@ -1,6 +1,7 @@
 import { glob } from 'glob'
 import { camelCase, fromPairs } from 'lodash-es'
 import { pathToFileURL } from 'node:url'
+import { sep } from 'node:path'
 
 
 const
@@ -32,7 +33,7 @@ export const DefinitionLoader = {
     // { mutatorName: Function }
     return fromPairs(await Promise.all(
       jsfiles.map( async filePath => ([
-        camelCase(filePath.split('/').at(-1).slice(0, -3)),
+        camelCase(filePath.split(sep).at(-1).slice(0, -3)),
         (await import(`${PROJECT_ROOT}/${filePath}`)).default
       ]))
     ))
@@ -45,7 +46,7 @@ export const DefinitionLoader = {
     // { mixinName: Function }
     return fromPairs(await Promise.all(
       jsfiles.map( async filePath => ([
-        camelCase(filePath.split('/').at(-1).slice(0, -3)),
+        camelCase(filePath.split(sep).at(-1).slice(0, -3)),
         (await import(`${PROJECT_ROOT}/${filePath}`)).default
       ]))
     ))
@@ -58,7 +59,7 @@ export const DefinitionLoader = {
     // { extensionName: Function }
     return fromPairs(await Promise.all(
       jsfiles.map( async filePath => ([
-        camelCase(filePath.split('/').at(-1).slice(0, -3)),
+        camelCase(filePath.split(sep).at(-1).slice(0, -3)),
         (await import(`${PROJECT_ROOT}/${filePath}`)).default
       ]))
     ))
