@@ -35,16 +35,28 @@ editLink: false
     categories.forEach(category => {
       index.push(`## ${category.name}`)
 
-      index.push(
-        this.definitionSet.blocks.reduce((acc, def) => {
-          if(category.contents?.includes(def) || category.usesBlocks?.includes(def.type)) {
-            acc.push(definitionToIndexLines(def))
+      const categoryBlocks = []
+
+      // Add blocks in the exact order they appear in category.contents
+      if(category.contents) {
+        category.contents.forEach(def => {
+          categoryBlocks.push(definitionToIndexLines(def))
+          categorized.push(def)
+        })
+      }
+
+      // Also add blocks referenced by usesBlocks
+      if(category.usesBlocks) {
+        category.usesBlocks.forEach(blockType => {
+          const def = this.definitionSet.findBlock({ type: blockType })
+          if(!categorized.includes(def)) {
+            categoryBlocks.push(definitionToIndexLines(def))
             categorized.push(def)
           }
+        })
+      }
 
-          return acc
-        }, []).join("\n")
-      )
+      index.push(categoryBlocks.join("\n"))
     })
 
     // Special "Uncategorized" category
