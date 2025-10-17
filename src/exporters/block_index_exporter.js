@@ -30,6 +30,8 @@ editLink: false
 ---
 
 # Block List`)
+    index.push(`<small>This page lists all blocks available in this Blockly application, with a brief summary, organized by category. Visit the individual block pages for more detailed documentation and usage examples.</small>`)
+    index.push(``) // Empty line for separation
     index.push(`${this.definitionSet.blocks.length} blocks and counting`)
 
     categories.forEach(category => {
