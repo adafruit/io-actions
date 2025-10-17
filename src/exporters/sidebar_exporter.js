@@ -21,6 +21,7 @@ export default class SidebarExporter {
       categories = this.definitionSet.getCategories(),
       blockSidebar = {
         text: 'Blocks',
+        link: '/blocks/',  // Absolute path from base - works from any subfolder
         items: map(categories, ({ name }) => ({
           text: name,
           collapsed: true,
