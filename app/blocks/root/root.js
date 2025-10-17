@@ -4,7 +4,7 @@ export default {
   type: "action_root",
   name: "Root",
   colour: "0",
-  description: "The foundation of every Adafruit IO Action. Connect Triggers (like 'when temperature > 80°F' or 'every morning at 8 AM') to define when your Action runs, then attach Action blocks (like 'send email', 'publish to feed', or 'if/then logic') to define what happens when triggered.",
+  description: "The Root block is the foundation of every Adafruit IO Action. Connect Triggers (like 'when temperature > 80°F' or 'every morning at 8 AM') to define when your Action runs, then attach Action blocks (like 'send email', 'publish to feed', or 'if/then logic') to define what happens when triggered.",
   connections: {},
   mutator,
   template: `
