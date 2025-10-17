@@ -106,7 +106,7 @@ const
         "--config-file", `cypress/cypress.config.js`,
         "--browser", "chromium",
         "--spec", "cypress/e2e/block_images.cy.js",
-      ], { stdio: 'inherit' })
+      ], { stdio: 'inherit', shell: true })
       console.log('Generation complete.')
 
       // kill the server
