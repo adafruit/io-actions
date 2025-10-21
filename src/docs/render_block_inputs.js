@@ -39,6 +39,13 @@ const
       lines.push(`### \`${ capitalize(inputName) }\``)
       if(input.description) { lines.push(niceTemplate(input.description)) }
 
+      if (input.seeAlso) {
+        const seeAlsoDef = definition.definitionSet.findBlock(input.seeAlso)
+        if (seeAlsoDef) {
+          lines.push(`**See Also:** [${seeAlsoDef.name}](/${seeAlsoDef.documentationPath()})`)
+        }
+      }
+
       // If the input has a check, find all blocks that can connect to it
       if (input.check) {
         const compatibleBlocks = definition.definitionSet.findBlocks(blockDef => {
