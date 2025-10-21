@@ -38,3 +38,17 @@
   margin: 0 auto;
   max-width: 95%;
 }
+.config-icon {
+  font-size: 1.8em; /* Adjusted to fit the padding */
+  float: left;
+  margin-right: 16px;
+  margin-top: 0; /* Better alignment with the text */
+  background-color: #00f; /* Dark navy blue */
+  box-shadow: 0 0 0 3px white, 0 0 0 4px black; /* 3px white border + 1px black edge */
+  border-radius: 6px; /* Rounded corners */
+  padding: 8px; /* Slightly tight padding */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1; /* Ensures icon is centered vertically */
+}
