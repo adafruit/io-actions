@@ -16,7 +16,7 @@ export default {
   `,
   inputs: {
     TRIGGERS: {
-      description: "Connect trigger blocks here to define WHEN your Action should run. Choose from Reactive triggers (respond to feed updates), Scheduled triggers (run at specific times), or Timer triggers (delayed responses). Multiple triggers can be chained together.",
+      description: "Connect trigger blocks here to define WHEN your Action should run. Choose from Reactive triggers (respond to feed updates), Scheduled triggers (run at specific times), or Timer triggers (delayed responses). Multiple triggers can be added, and any of the trigger conditions being true will cause the action to run (after an optional delay).",
       type: 'statement',
       check: 'trigger'
     },
