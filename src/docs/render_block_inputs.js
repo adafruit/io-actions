@@ -58,13 +58,14 @@ const
           const blockCards = compatibleBlocks.map(blockDef => {
             const cleanLink = blockDef.documentationPath().replace(/\.md$/i, '');
             const
-              imgSrc = `/actions-docs/block_images/${blockDef.type}.png`,
+              imgSrc = `/block_images/${blockDef.type}.png`,
               altText = `the ${blockDef.name} block`,
               linkHref = `/actions-docs/${cleanLink}`
 
             return `
   <a href="${linkHref}" class="card" title="${blockDef.name}">
-    ![${altText}](${imgSrc} "${blockDef.name}")
+    <!-- ![${altText}](${imgSrc} "${blockDef.name}") -->
+    <img alt="${altText}" src="${imgSrc}">
     <div class="card-content">
       <h4>${blockDef.name}</h4>
       <p>${blockDef.tooltip}</p>
