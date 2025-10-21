@@ -11,7 +11,7 @@ export default {
     Triggers: |LEFT
     %TRIGGERS
     Actions: |LEFT
-    %EXPRESSIONS
+    %ACTIONS
     \u00A0
   `,
   inputs: {
@@ -20,7 +20,7 @@ export default {
       type: 'statement',
       check: 'trigger'
     },
-    EXPRESSIONS: {
+    ACTIONS: {
       description: "Connect action blocks here to define WHAT happens when your triggers activate. This can include sending emails, publishing values to feeds, conditional if/then logic, mathematical operations, or webhook calls. Actions execute in sequence from top to bottom.",
       type: 'statement',
       check: 'expression'
@@ -56,7 +56,7 @@ export default {
         version: "1.0.0-beta.1",
         settings: { delay },
         triggers: parseStatementToCodeAsJson('TRIGGERS'),
-        expressions: parseStatementToCodeAsJson('EXPRESSIONS'),
+        expressions: parseStatementToCodeAsJson('ACTIONS'),
       }, null, 2)
     }
   },
@@ -75,7 +75,7 @@ export default {
         },
         inputs: {
           "TRIGGERS": helpers.arrayToStatements(triggers),
-          "EXPRESSIONS": helpers.arrayToStatements(expressions),
+          "ACTIONS": helpers.arrayToStatements(expressions),
         }
       }
     }
