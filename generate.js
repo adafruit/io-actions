@@ -7,7 +7,7 @@ import DefinitionSet from '#src/definitions/definition_set.js'
 
 const
   // constants
-  BLOCK_PATH_REGEX = /((\w\/)+)\w+/gm,
+  BLOCK_PATH_REGEX = /((\w[\/\\])+)\w+/gm,
   USAGE = `Usage: node generate.js [block|doc] [path/to/block_name]`,
 
   // parse command line stuff
@@ -42,7 +42,7 @@ const
   normalizedBlockPath = blockPath.replace(/\\/g, '/'),
   blockType = basename(normalizedBlockPath),
   blockName = blockType.split("_").map(path => path.slice(0,1).toUpperCase() + path.slice(1)).join(" "),
-  parentDir = `app/blocks/${dirname(normalizedBlockPath)}`.replace(/\\/g, '/'),
+  parentDir = `app/blocks/${dirname(normalizedBlockPath)}`,
   fullBlockPath = `app/blocks/${normalizedBlockPath}.js`,
   fullBlockDocPath = `app/blocks/${normalizedBlockPath}.md`
 
