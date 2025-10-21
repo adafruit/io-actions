@@ -64,7 +64,7 @@ const
 
             return `
   <a href="${linkHref}" class="card" title="${blockDef.name}">
-    <img src="${imgSrc}" alt="${altText}">
+    ![${altText}](${imgSrc} "${blockDef.name}")
     <div class="card-content">
       <h4>${blockDef.name}</h4>
       <p>${blockDef.tooltip}</p>
