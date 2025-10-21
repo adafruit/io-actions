@@ -12,7 +12,7 @@
   background: var(--vp-c-bg-soft);
   transition: border-color 0.25s, background-color 0.25s;
   padding: 16px;
-  text-decoration: none;
+  text-decoration: none !important;
   color: var(--vp-c-text-1);
 }
 .card:hover {
@@ -26,9 +26,15 @@
   font-size: 0.8em;
   text-align: center;
   margin: 0;
+  padding: 0 auto;
+  color: var(--vp-c-text-2);
+  line-height: 1rem;
+}
+.card-content a p {
+  text-decoration: none !important;
 }
 .card img {
   display: block;
   margin: 0 auto;
-  max-width: 200px;
+  max-width: 95%;
 }
