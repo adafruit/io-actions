@@ -1,4 +1,4 @@
-import { assign, find, forEach, isArray, isObject, isString, reject } from 'lodash-es'
+import { assign, find, forEach, isArray, isObject, isString, reject, filter } from 'lodash-es'
 
 import DefinitionLoader from '#src/loaders/definition_loader.js'
 import WorkspaceDefinition from "#src/definitions/workspace_definition.js"
@@ -31,6 +31,10 @@ export class DefinitionSet {
     }
 
     return found
+  }
+
+  findBlocks(query) {
+    return filter(this.blocks, query)
   }
 
   primaryWorkspace() {
