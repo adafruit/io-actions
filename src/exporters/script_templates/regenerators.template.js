@@ -39,6 +39,7 @@ const BYTECODE_BLOCK_TYPE_MAP = {
   // see: app/regenerators/migrations.js
   feed: 'feed_selector',
   publishAction: 'action_publish',
+  jsonPathQuery: 'advanced_json_path_query',
 }
 
 const lookupRegenerator = expressionName => {
