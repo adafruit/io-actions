@@ -50,6 +50,9 @@ const
       if (input.check) {
         const compatibleBlocks = definition.definitionSet.findBlocks(blockDef => {
           const output = blockDef.connections?.output
+          if (input.check === 'trigger') { // allow trigger blocks which are statement types
+            return output && (output === input.check || (Array.isArray(output) && output.includes(input.check)))
+          }
           const mode = blockDef.connections?.mode
           return mode && mode !== 'statement' && output && (output === input.check || (Array.isArray(output) && output.includes(input.check)))
         })
