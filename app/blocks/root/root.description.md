@@ -2,7 +2,7 @@ The Root block is the foundation of every Adafruit IO Action. Connect Triggers (
 
 ## Configuration
 
-<div class="config-icon">⚙️</div>
+<div title="Settings Cog / Gear" class="config-icon">⚙️</div>
 
 The Root block has special configuration settings that control how your action's triggers behave. You can access these by clicking the gear icon on the block.
 
@@ -22,4 +22,4 @@ As well as setting the duration, there are two delay modes:
 -   **Keep (Ignore)**: _"keeps the existing delay and ignore new triggers"_
 
     The action runs the very first time the trigger condition is met, after the delay period. It ignores all subsequent trigger events until the delay period has passed and actions executed.
-    -   *Example*: With a 5-minute delay, the action runs immediately when the temperature first goes above 80°F. It will ignore any change in trigger conditions, regardless of what the temperature does during that time.
+    -   *Example*: After a 5-minute delay the action runs, from when the temperature first goes above 80°F. It will ignore any change in trigger conditions, regardless of what the temperature does during that time.
