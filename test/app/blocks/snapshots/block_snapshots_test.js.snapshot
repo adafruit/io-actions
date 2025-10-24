@@ -61,7 +61,7 @@ exports[`Block Snapshots > Blockly JSON > action_root 1`] = `
   "inputsInline": false,
   "type": "action_root",
   "colour": "0",
-  "tooltip": "The foundation of every Adafruit IO Action.",
+  "tooltip": "The Root block is the foundation of every Adafruit IO Action.",
   "message0": "Triggers: %1",
   "args0": [
     {
@@ -89,7 +89,7 @@ exports[`Block Snapshots > Blockly JSON > action_root 1`] = `
   "args3": [
     {
       "type": "input_statement",
-      "name": "EXPRESSIONS",
+      "name": "ACTIONS",
       "check": "expression",
       "align": "RIGHT"
     }

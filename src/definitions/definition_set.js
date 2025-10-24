@@ -1,4 +1,4 @@
-import { assign, find, forEach, isArray, isObject, isString, reject } from 'lodash-es'
+import { assign, find, forEach, isArray, isObject, isString, reject, filter } from 'lodash-es'
 
 import DefinitionLoader from '#src/loaders/definition_loader.js'
 import WorkspaceDefinition from "#src/definitions/workspace_definition.js"
@@ -24,13 +24,19 @@ export class DefinitionSet {
   regenerators = {}
 
   findBlock(query) {
-    const found = find(this.blocks, query)
+    const blockQuery = isString(query) ? { type: query } : query
+    const found = find(this.blocks, blockQuery)
 
     if(!found) {
-      throw new Error(`No block found for query: ${ JSON.stringify(query) }`)
+      console.log(`No block found for query: ${JSON.stringify(blockQuery)}`)
+      return
     }
 
     return found
+  }
+
+  findBlocks(query) {
+    return filter(this.blocks, query)
   }
 
   primaryWorkspace() {

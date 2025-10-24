@@ -94,7 +94,7 @@ const
 
       // serve the screenshot app
       console.log('Serving workspace for screenshots...')
-      const viteProcess = spawn("npx", ["vite", "serve", tmpAppDestination])
+      const viteProcess = spawn("npx", ["vite", "serve", tmpAppDestination], { stdio: 'inherit', shell: true })
 
       // prepare the image location
       cleanDir(imageDestination)
@@ -106,7 +106,7 @@ const
         "--config-file", `cypress/cypress.config.js`,
         "--browser", "chromium",
         "--spec", "cypress/e2e/block_images.cy.js",
-      ], { stdio: 'inherit' })
+      ], { stdio: 'inherit', shell: true })
       console.log('Generation complete.')
 
       // kill the server

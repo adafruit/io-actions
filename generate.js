@@ -1,12 +1,13 @@
 import { spawn, spawnSync } from 'node:child_process'
 import { copyFileSync, cpSync, existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'
+import { basename, dirname, sep } from 'node:path'
 
 import DefinitionSet from '#src/definitions/definition_set.js'
 
 
 const
   // constants
-  BLOCK_PATH_REGEX = /((\w\/)+)\w+/gm,
+  BLOCK_PATH_REGEX = /((\w[\/\\])+)\w+/gm,
   USAGE = `Usage: node generate.js [block|doc] [path/to/block_name]`,
 
   // parse command line stuff
@@ -37,11 +38,13 @@ if(!blockPath.match(BLOCK_PATH_REGEX)) {
 
 // block lookup, expected file paths, etc
 const
-  blockType = blockPath.split("/").at(-1),
+  // Normalize blockPath to use forward slashes for consistency
+  normalizedBlockPath = blockPath.replace(/\\/g, '/'),
+  blockType = basename(normalizedBlockPath),
   blockName = blockType.split("_").map(path => path.slice(0,1).toUpperCase() + path.slice(1)).join(" "),
-  parentDir = `app/blocks/${blockPath.split("/").slice(0,-1).join("/")}`,
-  fullBlockPath = `app/blocks/${blockPath}.js`,
-  fullBlockDocPath = `app/blocks/${blockPath}.md`
+  parentDir = `app/blocks/${dirname(normalizedBlockPath)}`,
+  fullBlockPath = `app/blocks/${normalizedBlockPath}.js`,
+  fullBlockDocPath = `app/blocks/${normalizedBlockPath}.md`
 
 const
   checkCanWriteFile = fullPath => {
