@@ -1,4 +1,4 @@
-import { writeFileSync } from 'fs'
+import { writeFileSync, mkdirSync } from 'fs'
 import { isString, without } from 'lodash-es'
 
 import { renderBlockImage } from '../docs/render_block.js'
@@ -80,7 +80,10 @@ editLink: false
       ? options.toFile
       : `index.md`
 
-    writeFileSync(`${this.destination}/${filename}`, finalMarkdown)
+    const fullPath = `${this.destination}/${filename}`
+    const dirName = fullPath.split("/").slice(0, -1).join("/")
+    mkdirSync(dirName, { recursive: true })
+    writeFileSync(fullPath, finalMarkdown)
   }
 
   exportToFile = (toFile=true) => {

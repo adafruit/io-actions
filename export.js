@@ -101,21 +101,22 @@ const
 
       // extract the screenshots
       console.log('Generating screenshots...')
+      const browser = process.platform === 'win32' ? 'chrome' : 'chromium'
       await spawnSync("npx", ["cypress", "run",
         "--config", `downloadsFolder=${imageDestination}`,
         "--config-file", `cypress/cypress.config.js`,
-        "--browser", "chromium",
+        "--browser", browser,
         "--spec", "cypress/e2e/block_images.cy.js",
       ], { stdio: 'inherit', shell: true })
       console.log('Generation complete.')
 
       // kill the server
-      if(!viteProcess.kill()) {
-        console.log("Vite failed to exit gracefully")
-        process.exit(1)
+      try {
+        viteProcess.kill('SIGTERM')
+        console.log('Server closed.')
+      } catch (err) {
+        console.log("Vite process already closed")
       }
-
-      console.log('Server closed.')
     }
   },
   exporterNames = Object.keys(exporters)
