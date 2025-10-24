@@ -8,5 +8,6 @@ export default {
     "io_logic_negate",
     "io_logic_compare",
     "text_compare",
+    "current_trigger"
   ]
 }
