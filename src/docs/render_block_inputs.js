@@ -57,7 +57,7 @@ const
         if (compatibleBlocks.length) {
           lines.push('::: details Compatible Blocks   (click to expand)')
           const blockCards = compatibleBlocks.map(blockDef => {
-            const cleanLink = blockDef.documentationPath().replace(/\.md$/i, '');
+            const cleanLink = blockDef.documentationPath().replace(/\.md$/i, '.html');
             const
               imgSrc = `/block_images/${blockDef.type}.png`,
               altText = `the ${blockDef.name} block`,
