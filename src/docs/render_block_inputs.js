@@ -54,7 +54,12 @@ const
             return output && (output === input.check || (Array.isArray(output) && output.includes(input.check)))
           }
           const mode = blockDef.connections?.mode
-          return mode && mode !== 'statement' && output && (output === input.check || (Array.isArray(output) && output.includes(input.check)))
+          if (input.type === 'statement') {
+            // match when parent type=statement + check=expression, i.e. root->actions
+            return mode && mode === 'statement' && output && (output === input.check || (Array.isArray(output) && output.includes(input.check)))
+          } else {
+            return mode && mode !== 'statement' && output && (output === input.check || (Array.isArray(output) && output.includes(input.check)))
+          }
         })
 
         if (compatibleBlocks.length) {
