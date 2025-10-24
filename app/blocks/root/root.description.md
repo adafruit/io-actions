@@ -8,7 +8,7 @@ The Root block has special configuration settings that control how your action's
 
 ### `Delay Setting`
 
-The [Delay Setting](/blocks/uncategorized/delay_settings) adds a cooldown period after a trigger fires, before the Actions are executed, preventing the action from running too frequently. This is useful for rate-limiting notifications or avoiding noisy data that might cause rapid re-triggers.
+The [Delay Setting](/blocks/uncategorized/delay_settings) allows adding a delay period after a trigger fires, before the Actions are executed, preventing the action from running too frequently. This is useful for rate-limiting notifications or avoiding noisy data that might cause rapid re-triggers.
 
 ![Delay Settings workspace](/block_images/delay_settings.png "Delay Settings")
 
