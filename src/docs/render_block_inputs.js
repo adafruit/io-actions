@@ -50,11 +50,12 @@ const
       if (input.check) {
         const compatibleBlocks = definition.definitionSet.findBlocks(blockDef => {
           const output = blockDef.connections?.output
-          return output && (output === input.check || (Array.isArray(output) && output.includes(input.check)))
+          const mode = blockDef.connections?.mode
+          return mode && mode !== 'statement' && output && (output === input.check || (Array.isArray(output) && output.includes(input.check)))
         })
 
         if (compatibleBlocks.length) {
-          lines.push('**Compatible Blocks:**')
+          lines.push('::: details Compatible Blocks   (click to expand)')
           const blockCards = compatibleBlocks.map(blockDef => {
             const cleanLink = blockDef.documentationPath().replace(/\.md$/i, '');
             const
@@ -77,6 +78,7 @@ const
 <div class="card-grid">
 ${blockCards.join('\n')}
 </div>
+:::
 `)
         }
       }
