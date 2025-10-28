@@ -21,92 +21,8 @@ const
     "field_multilinetext",
   ]
 
-const processTemplateWithEndRow = (blockDefinition, givenLines, covered) => {
-  const { inputs={}, fields={} } = blockDefinition
-
-  let combinedMessage = ""
-  const allArgs = []
-  let argIndex = 1
-
-  givenLines.forEach((lineWithAlignment, lineIdx) => {
-    const [line, alignment] = breakLineAndAlignment(lineWithAlignment)
-
-    // Add line break after previous line (except for first line)
-    if (lineIdx > 0) {
-      combinedMessage += ` %${argIndex} `
-      allArgs.push({ type: "input_end_row" })
-      argIndex++
-    }
-
-    // Parse the line for fields and inputs
-    const matches = line.match(ARG_REGEX) || []
-    let processedLine = line
-
-    matches.forEach(match => {
-      const matchName = trim(match.slice(1))
-
-      if (covered.includes(matchName)) {
-        throw new Error(`Duplicate input/field name (${matchName}) referenced in template (for block: ${blockDefinition.type})`)
-      }
-
-      const inputMatch = inputs[matchName]
-      const fieldMatch = fields[matchName]
-
-      if (inputMatch) {
-        // Replace with arg index
-        processedLine = processedLine.replace(trim(match), `%${argIndex}`)
-        allArgs.push({
-          type: inputMatch.type ? INPUT_TYPE_MAP[inputMatch.type] : "input_value",
-          name: matchName,
-          ...(inputMatch.check ? { check: inputMatch.check } : {})
-        })
-        argIndex++
-        covered.push(matchName)
-      } else if (fieldMatch) {
-        // Replace with arg index
-        processedLine = processedLine.replace(trim(match), `%${argIndex}`)
-        const
-          fieldData = fieldMatch,
-          type = fieldTypeFromProperties(fieldData),
-          isTextType = TEXT_FIELD_TYPES.includes(type)
-
-        allArgs.push({
-          name: matchName,
-          type,
-          checked: fieldData.checked,
-          options: fieldData.options?.map(option => option.slice(0,2)),
-          text: fieldData.text || fieldData.multiline_text || fieldData.label || (isTextType ? "" : undefined),
-          spellcheck: fieldData.spellcheck,
-          value: fieldData.value,
-        })
-        argIndex++
-        covered.push(matchName)
-      } else {
-        throw new Error(`No input or field with name ${matchName} (processing block: ${blockDefinition.type})`)
-      }
-    })
-
-    combinedMessage += processedLine
-  })
-
-  // Warn on any uncovered inputs or fields
-  const unusedInputs = without(keys(inputs), ...covered)
-  if(!isEmpty(unusedInputs)) {
-    throw new Error(`Some inputs were not used in the template: ${unusedInputs}`)
-  }
-  const unusedFields = without(keys(fields), ...covered)
-  if(!isEmpty(unusedFields)) {
-    throw new Error(`Some fields where not used in the template: ${unusedFields}`)
-  }
-
-  return {
-    message0: combinedMessage,
-    args0: allArgs
-  }
-}
-
 const processTemplate = blockDefinition => {
-  const { template, inputs={}, fields={}, inputsInline } = blockDefinition
+  const { template, inputs={}, fields={} } = blockDefinition
   if (!template) { return {} }
 
   const
@@ -114,11 +30,6 @@ const processTemplate = blockDefinition => {
     covered = [],
     // break template on newlines
     givenLines = niceTemplate(template).split("\n")
-
-  // If inputsInline is true and we have multiple lines, use input_end_row approach
-  if (inputsInline && givenLines.length > 1) {
-    return processTemplateWithEndRow(blockDefinition, givenLines, covered)
-  }
 
   let lineIndex = 0
 
