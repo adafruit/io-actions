@@ -31,6 +31,7 @@ export default {
         ['-', 'MINUS', "Subtraction: Remove B from A (e.g., 30 - 5 = 25). For calculating differences, finding deltas between readings, or subtracting baseline values."],
         ['x', 'MULTIPLY', "Multiplication: A times B (e.g., 6 x 4 = 24). For unit conversions, scaling values, calculating areas/volumes, or applying multiplication factors."],
         ['/', 'DIVIDE', "Division: A divided by B (e.g., 20 ÷ 4 = 5). For calculating averages, ratios, percentages, or converting between different unit scales."],
+        ['%', 'MODULO', "Modulo: The remainder of A divided by B (e.g., 5 % 2 = 1). For determining if one number divides evenly by another, or working with the remainder directly."],
         ['^', 'POWER', "Exponentiation: A raised to the power of B (e.g., 2^3 = 8). For advanced calculations, exponential growth models, or complex mathematical formulas."],
       ]
     }
@@ -43,6 +44,7 @@ export default {
           MINUS: '-',
           MULTIPLY: '*',
           DIVIDE: '/',
+          MODULO: '%',
           POWER: '^'
         },
         operator = block.getFieldValue('OP'),
@@ -69,6 +71,7 @@ export default {
           '-': 'MINUS',
           '*': 'MULTIPLY',
           '/': 'DIVIDE',
+          '%': 'MODULO',
           '^': 'POWER',
         },
         fields = {
