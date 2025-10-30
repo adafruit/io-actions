@@ -20,7 +20,12 @@ export default {
     Path: %PATH
   `,
 
-  fields: {
+  inputs: {
+    DATA: {
+      description: "The JSON data source to query. This is typically a feed containing JSON data. Connect a feed value or variable that contains valid JSON. The JSONPath query will be applied to this data to extract matching values.",
+      check: "expression",
+      shadow: "io_text"
+    },
     PATH: {
       description: `
 Enter your JSONPath query string to extract data from JSON.
@@ -34,26 +39,24 @@ Examples:
 
 Query syntax follows RFC 9535 JSONPath specification. The query will be executed server-side when processing your feed data.
       `,
-      text: '$.store.book[0].title'
-    }
-  },
-
-  inputs: {
-    DATA: {
-      description: "The JSON data source to query - typically a feed containing JSON data. Connect a feed value or variable that contains valid JSON. The JSONPath query will be applied to this data to extract matching values.",
       check: "expression",
-      shadow: "io_text"
+      shadow: {
+        type: "io_text",
+        fields: {
+          TEXT: '$.store.book[0].title'
+        }
+      }
     }
   },
 
   generators: {
     json: (block, generator) => {
       const
-        path = block.getFieldValue('PATH'),
+        path = generator.valueToCode(block, 'PATH', 0) || null,
         data = generator.valueToCode(block, 'DATA', 0) || null,
         blockPayload = JSON.stringify({
           jsonPathQuery: {
-            path: path,
+            path: JSON.parse(path),
             data: JSON.parse(data)
           },
         })
@@ -66,12 +69,17 @@ Query syntax follows RFC 9535 JSONPath specification. The query will be executed
       const
         { path, data } = blockObject.jsonPathQuery,
         inputs = {
-          DATA: helpers.expressionToBlock(data, { shadow: "io_text" })
-        },
-        fields = {
-          PATH: path
+          DATA: helpers.expressionToBlock(data, { shadow: "io_text" }),
+          PATH: helpers.expressionToBlock(path, {
+            shadow: {
+              type: "io_text",
+              fields: {
+                TEXT: '$.store.book[0].title'
+              }
+            }
+          })
         }
-      return { type: 'advanced_json_path_query', inputs, fields }
+      return { type: 'advanced_json_path_query', inputs }
     }
   }
 }
