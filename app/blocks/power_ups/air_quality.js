@@ -52,7 +52,7 @@ export default {
           // re-run the things that use the data
           block.refreshPropertyOptions({})
         })
-      }, 1)
+      }, 5)
     }
   },
 
@@ -66,7 +66,7 @@ export default {
 
   fields: {
     POWER_UP_ID: {
-      description: "Select a location from those defined by the Air Quality Power-Up",
+      description: "Select a location from those defined by the Air Quality Power-Up.\n\nCreate locations via Power-Ups => Air Quality ([https://io.adafruit.com/services/air_quality](https://io.adafruit.com/services/air_quality))",
       options: [
         [ "Loading locations...", "" ],
       ]
