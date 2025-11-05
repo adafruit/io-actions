@@ -115,7 +115,8 @@ export default {
     fields: `
       ### \`Location\`
       The list of weather locations defined in the Weather Power-Up. Select
-      the location you would like weather information for.
+      the location you would like weather information for. Add new locations
+      via Power-Ups => Weather, or at [https://io.adafruit.com/services/weather](https://io.adafruit.com/services/weather)
 
       ### \`Forecast\` and \`Metric\`
       A list a weather forecasts to choose from. The weather metrics available
