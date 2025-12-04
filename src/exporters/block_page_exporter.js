@@ -1,8 +1,7 @@
-import { mkdirSync, writeFileSync } from 'fs'
-import { dirname } from 'path'
-import { forEach, identity, pickBy } from 'lodash-es'
+import { existsSync, readFileSync } from "node:fs"
+import { forEach, identity, mapValues, pickBy } from 'lodash-es'
 
-import toBlockMarkdown from "#src/docs/render_block.js"
+import { writeFileIfDifferent } from '#src/util.js'
 
 
 export default class BlockPageExporter {
@@ -27,8 +26,7 @@ export default class BlockPageExporter {
         docPath = options.filenameFunc(blockDefinition),
         fullPath = `${this.destination}/${docPath}`
 
-      mkdirSync(dirname(fullPath), { recursive: true })
-      writeFileSync(fullPath, toBlockMarkdown(blockDefinition))
+      writeFileIfDifferent(fullPath, blockDefinition.toMarkdown())
     })
   }
 

@@ -1,0 +1,54 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.card {
+  display: block;
+  border: 1px solid var(--vp-c-bg-soft);
+  border-radius: 12px;
+  height: 100%;
+  background: var(--vp-c-bg-soft);
+  transition: border-color 0.25s, background-color 0.25s;
+  padding: 16px;
+  text-decoration: none !important;
+  color: var(--vp-c-text-1);
+}
+.card:hover {
+  border-color: var(--vp-c-brand-1);
+}
+.card-content h4 {
+  margin: 10px 0 5px;
+  text-align: center;
+}
+.card-content p {
+  font-size: 0.8em;
+  text-align: center;
+  margin: 0;
+  padding: 0 auto;
+  color: var(--vp-c-text-2);
+  line-height: 1rem;
+}
+.card-content a p {
+  text-decoration: none !important;
+}
+.card img {
+  display: block;
+  margin: 0 auto;
+  max-width: 95%;
+}
+.config-icon {
+  font-size: 1.8em; /* Adjusted to fit the padding */
+  float: left;
+  margin-right: 16px;
+  margin-top: 0; /* Better alignment with the text */
+  background-color: #00f; /* Dark navy blue */
+  box-shadow: 0 0 0 3px white, 0 0 0 4px black; /* 3px white border + 1px black edge */
+  border-radius: 6px; /* Rounded corners */
+  padding: 8px; /* Slightly tight padding */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1; /* Ensures icon is centered vertically */
+}

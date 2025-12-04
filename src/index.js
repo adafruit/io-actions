@@ -74,10 +74,22 @@ const workspace = inject('blocklyDiv', {
       [ "Varick", "2" ],
       [ "Shenzhen", "3" ],
     ],
+    airQualityLocationOptions: [
+      [ "Industry City", "1" ],
+      [ "Varick", "2" ],
+      [ "Shenzhen", "3" ],
+    ],
     currentWeatherByLocation: {
       1: {
         current: {
           cloudCover: "5.4321",
+        }
+      }
+    },
+    currentAirQualityByLocation: {
+      1: {
+        current: {
+          aqi: "25",
         }
       }
     }
@@ -177,6 +189,41 @@ workspace.addChangeListener(function({ blockId, type, name, element, newValue, o
   // delay to simulate a request happening
   setTimeout(() => {
     addExtensionData("currentWeatherByLocation", newData)
+  }, 1500)
+})
+
+// air quality block live data fetcher/updater
+workspace.addChangeListener(function({ blockId, type, name, element, newValue, oldValue }) {
+  // when an air quality block changes its location
+  if(!blockId || type !== "change" || workspace.getBlockById(blockId).type !== "airQuality" || element !== "field" || name === "AIR_QUALITY_PROPERTY_HELP") {
+    return
+  }
+
+  // quick/dirty for demo
+  // if it is changing now, use newValue, otherwise fetch from field
+  const
+    block = workspace.getBlockById(blockId),
+    currentLocation = name === "POWER_UP_ID"
+      ? newValue
+      : block.getFieldValue('POWER_UP_ID'),
+    currentTimeKey = name === "AIR_QUALITY_TIME"
+      ? newValue
+      : block.getFieldValue('AIR_QUALITY_TIME'),
+    currentMetricKey = name === "AIR_QUALITY_PROPERTY"
+      ? newValue
+      : block.getFieldValue('AIR_QUALITY_PROPERTY') // this can be wrong if time changed and props haven't been replaced yet
+
+  const newData = {
+    [currentLocation]: {
+      [currentTimeKey]: {
+        [currentMetricKey]: Math.random().toString().slice(0,5)
+      }
+    }
+  }
+
+  // delay to simulate a request happening
+  setTimeout(() => {
+    addExtensionData("currentAirQualityByLocation", newData)
   }, 1500)
 })
 

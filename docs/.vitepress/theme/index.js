@@ -1,4 +1,5 @@
 import DefaultTheme from 'vitepress/theme'
+import './custom.css'
 import BlocklyWorkspace from "/components/blockly_workspace.vue"
 
 

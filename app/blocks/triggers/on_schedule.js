@@ -25,18 +25,21 @@ export default {
       description: "Choose which months to run the schedule. Options include 'All months' for year-round automation, specific months like 'January only' for seasonal control, or patterns like 'Every 3 months starting in March' for quarterly tasks.",
       check: "cron_month",
       block: "all_months",
+      seeAlso: "month_settings"
     },
 
     DAY: {
       description: "Select which days to trigger your schedule. You can choose specific calendar dates (1-31) for monthly events like 'every 15th', or days of the week (Monday-Sunday) for weekly patterns like 'every Tuesday and Thursday'. Cannot mix both date and weekday options.",
       check: "cron_day",
-      block: "all_days"
+      block: "all_days",
+      seeAlso: "day_settings"
     },
 
     HOUR: {
       description: "Set the hour(s) when your Action should run, using 24-hour format (0-23). Examples: '9' for 9 AM, '14' for 2 PM, '21' for 9 PM, or 'Every 4 hours' for repeated intervals throughout the day.",
       check: "cron_hour",
-      block: "all_hours"
+      block: "all_hours",
+      seeAlso: "hour_settings"
     },
 
     MINUTE: {
@@ -47,7 +50,8 @@ export default {
         fields: {
           MINUTE: '15'
         }
-      }
+      },
+      seeAlso: "minute_settings"
     },
   },
 

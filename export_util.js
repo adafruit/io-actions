@@ -1,4 +1,5 @@
 import fs from 'fs'
+import { dirname } from 'node:path'
 
 
 export let totalBytesWritten = 0
@@ -19,7 +20,7 @@ export const
 
   write = (filename, fileContents) => {
     const
-      dirName = filename.split("/").slice(0, -1).join("/"),
+      dirName = dirname(filename),
       bytesToWrite = fileContents.length/1000
 
     // ensure dir is present before writing

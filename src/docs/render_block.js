@@ -20,20 +20,20 @@ This Block requires an IO+ subscription to use. [Learn more about IO+](https://i
   // ![alt](url "title")
   renderBlockImage = ({ name, type }) => `![the ${name} block](/block_images/${type}.png "${name}")`,
 
-  renderDescription = ({ description }) => description || "No docs for this block, yet.",
+  renderDescription = ({ description }, override=null) => override || description || "No docs for this block, yet.",
 
   renderIOPlusAlert = ({ ioPlus }) => ioPlus ? IO_PLUS_ALERT : "",
 
-  renderFieldsSection = definition => {
-    const fieldsMarkdown = renderFields(definition)
+  renderFieldsSection = (definition, override=null) => {
+    const fieldsMarkdown = override || renderFields(definition)
 
     return fieldsMarkdown
      ? `## Fields\n\n${ fieldsMarkdown }`
      : ""
   },
 
-  renderInputsSection = definition => {
-    const inputsMarkdown = renderInputs(definition)
+  renderInputsSection = (definition, override=null) => {
+    const inputsMarkdown = override || renderInputs(definition)
 
     return inputsMarkdown
      ? `## Inputs\n\n${ inputsMarkdown }`
@@ -62,7 +62,7 @@ This Block requires an IO+ subscription to use. [Learn more about IO+](https://i
     // `
   }
 
-export default definition =>
+export default (definition, sectionOverrides={}) =>
 `---
 title: "Block: ${definition.name}"
 editLink: true
@@ -75,13 +75,13 @@ Type: \`${definition.type}\`
 
 ${ renderBlockImage(definition) }
 
-${ renderDescription(definition) }
+${ renderDescription(definition, sectionOverrides.description) }
 
 ${ renderIOPlusAlert(definition) }
 
-${ renderFieldsSection(definition) }
+${ renderFieldsSection(definition, sectionOverrides.fields) }
 
-${ renderInputsSection(definition) }
+${ renderInputsSection(definition, sectionOverrides.inputs) }
 
 ${ renderOutput(definition) }
 

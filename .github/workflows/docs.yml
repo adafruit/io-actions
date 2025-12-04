@@ -41,6 +41,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Export Block Images
+        run: npm run export:block-images
+
       - name: Export Block Definitions to Markdown
         run: npm run docs:export
 

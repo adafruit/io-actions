@@ -11,17 +11,22 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "vite --force",
+    "start": "node dev_server.js",
+
     "test": "node --test",
     "test-watch": "node --test --watch",
     "test-snapshots": "node --test test/app/blocks/snapshots/block_snapshots_test.js",
     "test-update-snapshots": "node --test --test-update-snapshots test/app/blocks/snapshots/block_snapshots_test.js",
     "lint": "eslint src/",
     "lint-export": "eslint export/",
+
+    "generate:block": "node generate.js block",
+    "generate:block:doc": "node generate.js doc",
+
     "export:app": "node export.js app",
-    "build": "npm run export:app && vite build",
-    "build-all-branches": "node build_all_branches.js",
-    "preview": "npm run build && vite preview",
+    "export:app:to-rails": "npm run export:app && node --env-file-if-exists=.env copy_to_rails.js",
+    "export:block-images": "node export.js blockImages",
+
     "docs:export": "node export.js docs",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",

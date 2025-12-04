@@ -1,3 +1,4 @@
+import AirQuality from './air_quality.js'
 import Feeds from './feeds.js'
 import Logic from './logic.js'
 import Math from './math.js'
@@ -7,6 +8,7 @@ import Text from './text.js'
 import Time from './time.js'
 import Triggers from './triggers.js'
 import Utility from './utility.js'
+import Advanced from './advanced.js'
 import Variables from './variables.js'
 
 // specify toolbox categories in the order we wish them to appear
@@ -21,5 +23,7 @@ export default [
   Feeds,
   Notifications,
   Weather,
-  Utility
+  AirQuality,
+  Utility,
+  Advanced
 ]

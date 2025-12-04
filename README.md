@@ -20,8 +20,44 @@ Node v22.x is expected, but other versions may work.
 git clone https://github.com/adafruit/io-actions
 cd io-actions
 npm i
+npm run export:block-images # run once, and whenever images need updating
 npm start
 ```
+
+Now 2 processes should be running:
+- a builder process that:
+    - does a full build of the docs from the app files
+    - watches app files for changes and updates matching docs
+- the docs dev server where you can see your changes rendered live as you save them
+
+When you're done working simply press `CTRL + C` to terminate the processes.
+
+### Generating Blocks and Docs
+
+To generate a new block file:
+```sh
+# generates block named "Block Type" at app/blocks/path/block_type.js
+npm run generate:block path/block_type
+```
+
+To generate a complete markdown document for a block:
+```sh
+# generates app/blocks/path/block_type.md
+npm run generate:block:doc path/block_type
+```
+The above will generate an entire block documentation page using the embedded documenation in the `block_type.js` file, if present. The documentation exporter will ignore the block definition and use this file instead.
+
+You can also export certain sections of documentation:
+```sh
+# generates app/blocks/path/block_type.description.md
+npm run generate:block:doc path/block_type description
+# generates app/blocks/path/block_type.inputs.md
+npm run generate:block:doc path/block_type inputs
+# generates app/blocks/path/block_type.fields.md
+npm run generate:block:doc path/block_type fields
+```
+
+These files are markdown fragments, generated from embedded docs in `block_type.js`, that will be used only for their particular sections.
 
 ### Exporting
 

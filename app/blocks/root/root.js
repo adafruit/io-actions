@@ -4,23 +4,23 @@ export default {
   type: "action_root",
   name: "Root",
   colour: "0",
-  description: "The foundation of every Adafruit IO Action. Connect Triggers (like 'when temperature > 80°F' or 'every morning at 8 AM') to define when your Action runs, then attach Action blocks (like 'send email', 'publish to feed', or 'if/then logic') to define what happens when triggered.",
+  description: "The Root block is the foundation of every Adafruit IO Action. Connect Triggers (like 'when temperature > 80°F' or 'every morning at 8 AM') to define when your Action runs, then attach Action blocks (like 'send email', 'publish to feed', or 'if/then logic') to define what happens when triggered.",
   connections: {},
   mutator,
   template: `
     Triggers: |LEFT
     %TRIGGERS
     Actions: |LEFT
-    %EXPRESSIONS
+    %ACTIONS
     \u00A0
   `,
   inputs: {
     TRIGGERS: {
-      description: "Connect trigger blocks here to define WHEN your Action should run. Choose from Reactive triggers (respond to feed updates), Scheduled triggers (run at specific times), or Timer triggers (delayed responses). Multiple triggers can be chained together.",
+      description: "Connect trigger blocks here to define WHEN your Action should run. Choose from Reactive triggers (respond to feed updates), Scheduled triggers (run at specific times), or Timer triggers (delayed responses). Multiple triggers can be added, and any of the trigger conditions being true will cause the action to run (after an optional delay).",
       type: 'statement',
       check: 'trigger'
     },
-    EXPRESSIONS: {
+    ACTIONS: {
       description: "Connect action blocks here to define WHAT happens when your triggers activate. This can include sending emails, publishing values to feeds, conditional if/then logic, mathematical operations, or webhook calls. Actions execute in sequence from top to bottom.",
       type: 'statement',
       check: 'expression'
@@ -56,7 +56,7 @@ export default {
         version: "1.0.0-beta.1",
         settings: { delay },
         triggers: parseStatementToCodeAsJson('TRIGGERS'),
-        expressions: parseStatementToCodeAsJson('EXPRESSIONS'),
+        expressions: parseStatementToCodeAsJson('ACTIONS'),
       }, null, 2)
     }
   },
@@ -75,7 +75,7 @@ export default {
         },
         inputs: {
           "TRIGGERS": helpers.arrayToStatements(triggers),
-          "EXPRESSIONS": helpers.arrayToStatements(expressions),
+          "ACTIONS": helpers.arrayToStatements(expressions),
         }
       }
     }

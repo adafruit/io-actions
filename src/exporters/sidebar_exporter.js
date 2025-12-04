@@ -1,5 +1,6 @@
-import { writeFileSync } from 'fs'
-import { find, forEach, isString, map } from 'lodash-es'
+import { find, forEach, isString, map, sortBy } from 'lodash-es'
+
+import { writeFileIfDifferent } from '#src/util.js'
 
 
 export default class SidebarExporter {
@@ -19,7 +20,8 @@ export default class SidebarExporter {
       },
       categories = this.definitionSet.getCategories(),
       blockSidebar = {
-        text: 'Blocks',
+        text: 'All Blocks',
+        link: '/blocks/',  // Absolute path from base - works from any subfolder
         items: map(categories, ({ name }) => ({
           text: name,
           collapsed: true,
@@ -34,31 +36,54 @@ export default class SidebarExporter {
 
     blockSidebar.items.push(uncategorizedCategory)
 
-    forEach(this.definitionSet.blocks, blockDefinition => {
-      const
-        sidebarEntry = {
-          text: blockDefinition.name,
-          link: blockDefinition.documentationPath()
-        },
-        blockCategories = blockDefinition.getCategories()
+    // Track which blocks have been categorized
+    const categorized = []
 
-      // put into Uncategorized if no category
-      if(!blockCategories.length) {
-        uncategorizedCategory.items.push(sidebarEntry)
+    // Iterate through categories in order, adding blocks as they appear in category.contents
+    forEach(categories, category => {
+      const sidebarCategory = find(blockSidebar.items, { text: category.name })
+
+      if(!sidebarCategory) {
+        throw new Error(`Block category (${ category.name }) not present in sidebar!`)
       }
 
-      // add links to each sidebar category we're a part of
-      forEach(blockCategories, category => {
-        // if category contains this block, add to its sidebar
-        const sidebarCategory = find(blockSidebar.items, { text: category.name })
+      // Add blocks in the exact order they appear in the toolbox category
+      if(category.contents) {
+        forEach(category.contents, blockDefinition => {
+          const sidebarEntry = {
+            text: blockDefinition.name,
+            link: blockDefinition.documentationPath()
+          }
+          sidebarCategory.items.push(sidebarEntry)
+          categorized.push(blockDefinition)
+        })
+      }
 
-        if(!sidebarCategory) {
-          throw new Error(`Block category (${ category.name }) not present in sidebar!`)
+      // Also add blocks referenced by usesBlocks (in the order they appear there)
+      if(category.usesBlocks) {
+        forEach(category.usesBlocks, blockType => {
+          const blockDefinition = this.definitionSet.findBlock({ type: blockType })
+          if(!categorized.includes(blockDefinition)) {
+            const sidebarEntry = {
+              text: blockDefinition.name,
+              link: blockDefinition.documentationPath()
+            }
+            sidebarCategory.items.push(sidebarEntry)
+            categorized.push(blockDefinition)
+          }
+        })
+      }
+    })
+
+    // Add uncategorized blocks (sorted by type for consistency)
+    forEach(sortBy(this.definitionSet.blocks, 'type'), blockDefinition => {
+      if(!categorized.includes(blockDefinition)) {
+        const sidebarEntry = {
+          text: blockDefinition.name,
+          link: blockDefinition.documentationPath()
         }
-
-        // ADD TO SIDEBAR
-        sidebarCategory.items.push(sidebarEntry)
-      })
+        uncategorizedCategory.items.push(sidebarEntry)
+      }
     })
 
     if(!options.toFile) {
@@ -69,7 +94,7 @@ export default class SidebarExporter {
       ? options.toFile
       : `_blocks_sidebar.json`
 
-    writeFileSync(`${this.destination}/${filename}`, JSON.stringify(blockSidebar, null, 2))
+    writeFileIfDifferent(`${this.destination}/${filename}`, JSON.stringify(blockSidebar, null, 2))
   }
 
   exportToFile = (toFile=true) => {
