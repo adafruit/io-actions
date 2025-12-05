@@ -8,7 +8,12 @@ const execAsync = promisify(exec)
 
 // run a clean documentation build, wait for it to complete
 console.log("Building docs from scratch...")
-spawnSync("node", ["export.js", "docs"], { stdio: 'inherit', shell: true })
+const buildResult = spawnSync("node", ["export.js", "docs"], { stdio: 'inherit', shell: true })
+if(buildResult.status !== 0) {
+  // we should probably just run them here if necessary
+  console.log("\n⚠️  Initial docs build failed (see error above)")
+  console.log("⚠️  The dev server will still start, but you may need to run: npm run export:block-images\n")
+}
 
 // start the file watcher and incremental builder
 console.log("Starting incremental builder and file watcher...")

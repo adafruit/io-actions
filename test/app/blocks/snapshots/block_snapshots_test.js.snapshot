@@ -353,7 +353,7 @@ exports[`Block Snapshots > Blockly JSON > day_settings 1`] = `
   "inputsInline": false,
   "type": "day_settings",
   "colour": 30,
-  "tooltip": "How would you like to specify days of the month for your schedule?",
+  "tooltip": "How would you like to specify days of the month for your schedule?.",
   "message0": "Day: %1",
   "args0": [
     {
@@ -2510,7 +2510,7 @@ exports[`Block Snapshots > Blockly JSON > hour_settings 1`] = `
   "inputsInline": false,
   "type": "hour_settings",
   "colour": 30,
-  "tooltip": "How would you like to specify hours of the day for your schedule?",
+  "tooltip": "How would you like to specify hours of the day for your schedule?.",
   "message0": "Hour: %1",
   "args0": [
     {
@@ -2963,6 +2963,396 @@ exports[`Block Snapshots > Blockly JSON > io_text_multiline 1`] = `
 }
 `;
 
+exports[`Block Snapshots > Blockly JSON > io_utility_current_time 1`] = `
+{
+  "inputsInline": false,
+  "type": "io_utility_current_time",
+  "colour": 360,
+  "tooltip": "Get the current system time in 24-hour format for use in time comparisons and conditions.",
+  "output": [
+    "expression",
+    "time"
+  ],
+  "message0": "Current Time %1",
+  "args0": [
+    {
+      "type": "input_dummy",
+      "align": "RIGHT"
+    }
+  ],
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/time/current_time"
+}
+`;
+
+exports[`Block Snapshots > Blockly JSON > io_utility_time 1`] = `
+{
+  "inputsInline": false,
+  "type": "io_utility_time",
+  "colour": 360,
+  "tooltip": "Create a time value in 24-hour format for use in comparisons and conditions.",
+  "output": [
+    "expression",
+    "time"
+  ],
+  "message0": "%1 : %2 %3",
+  "args0": [
+    {
+      "name": "HOUR",
+      "type": "field_dropdown",
+      "options": [
+        [
+          "0",
+          "00"
+        ],
+        [
+          "1",
+          "01"
+        ],
+        [
+          "2",
+          "02"
+        ],
+        [
+          "3",
+          "03"
+        ],
+        [
+          "4",
+          "04"
+        ],
+        [
+          "5",
+          "05"
+        ],
+        [
+          "6",
+          "06"
+        ],
+        [
+          "7",
+          "07"
+        ],
+        [
+          "8",
+          "08"
+        ],
+        [
+          "9",
+          "09"
+        ],
+        [
+          "10",
+          "10"
+        ],
+        [
+          "11",
+          "11"
+        ],
+        [
+          "12",
+          "12"
+        ],
+        [
+          "13",
+          "13"
+        ],
+        [
+          "14",
+          "14"
+        ],
+        [
+          "15",
+          "15"
+        ],
+        [
+          "16",
+          "16"
+        ],
+        [
+          "17",
+          "17"
+        ],
+        [
+          "18",
+          "18"
+        ],
+        [
+          "19",
+          "19"
+        ],
+        [
+          "20",
+          "20"
+        ],
+        [
+          "21",
+          "21"
+        ],
+        [
+          "22",
+          "22"
+        ],
+        [
+          "23",
+          "23"
+        ]
+      ]
+    },
+    {
+      "name": "MINUTE",
+      "type": "field_dropdown",
+      "options": [
+        [
+          "0",
+          "00"
+        ],
+        [
+          "1",
+          "01"
+        ],
+        [
+          "2",
+          "02"
+        ],
+        [
+          "3",
+          "03"
+        ],
+        [
+          "4",
+          "04"
+        ],
+        [
+          "5",
+          "05"
+        ],
+        [
+          "6",
+          "06"
+        ],
+        [
+          "7",
+          "07"
+        ],
+        [
+          "8",
+          "08"
+        ],
+        [
+          "9",
+          "09"
+        ],
+        [
+          "10",
+          "10"
+        ],
+        [
+          "11",
+          "11"
+        ],
+        [
+          "12",
+          "12"
+        ],
+        [
+          "13",
+          "13"
+        ],
+        [
+          "14",
+          "14"
+        ],
+        [
+          "15",
+          "15"
+        ],
+        [
+          "16",
+          "16"
+        ],
+        [
+          "17",
+          "17"
+        ],
+        [
+          "18",
+          "18"
+        ],
+        [
+          "19",
+          "19"
+        ],
+        [
+          "20",
+          "20"
+        ],
+        [
+          "21",
+          "21"
+        ],
+        [
+          "22",
+          "22"
+        ],
+        [
+          "23",
+          "23"
+        ],
+        [
+          "24",
+          "24"
+        ],
+        [
+          "25",
+          "25"
+        ],
+        [
+          "26",
+          "26"
+        ],
+        [
+          "27",
+          "27"
+        ],
+        [
+          "28",
+          "28"
+        ],
+        [
+          "29",
+          "29"
+        ],
+        [
+          "30",
+          "30"
+        ],
+        [
+          "31",
+          "31"
+        ],
+        [
+          "32",
+          "32"
+        ],
+        [
+          "33",
+          "33"
+        ],
+        [
+          "34",
+          "34"
+        ],
+        [
+          "35",
+          "35"
+        ],
+        [
+          "36",
+          "36"
+        ],
+        [
+          "37",
+          "37"
+        ],
+        [
+          "38",
+          "38"
+        ],
+        [
+          "39",
+          "39"
+        ],
+        [
+          "40",
+          "40"
+        ],
+        [
+          "41",
+          "41"
+        ],
+        [
+          "42",
+          "42"
+        ],
+        [
+          "43",
+          "43"
+        ],
+        [
+          "44",
+          "44"
+        ],
+        [
+          "45",
+          "45"
+        ],
+        [
+          "46",
+          "46"
+        ],
+        [
+          "47",
+          "47"
+        ],
+        [
+          "48",
+          "48"
+        ],
+        [
+          "49",
+          "49"
+        ],
+        [
+          "50",
+          "50"
+        ],
+        [
+          "51",
+          "51"
+        ],
+        [
+          "52",
+          "52"
+        ],
+        [
+          "53",
+          "53"
+        ],
+        [
+          "54",
+          "54"
+        ],
+        [
+          "55",
+          "55"
+        ],
+        [
+          "56",
+          "56"
+        ],
+        [
+          "57",
+          "57"
+        ],
+        [
+          "58",
+          "58"
+        ],
+        [
+          "59",
+          "59"
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy",
+      "align": "RIGHT"
+    }
+  ],
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/time/time"
+}
+`;
+
 exports[`Block Snapshots > Blockly JSON > io_variables_get 1`] = `
 {
   "inputsInline": false,
@@ -3187,7 +3577,7 @@ exports[`Block Snapshots > Blockly JSON > minute_settings 1`] = `
   "inputsInline": false,
   "type": "minute_settings",
   "colour": 30,
-  "tooltip": "How would you like to specify minutes of the hour for your schedule?",
+  "tooltip": "How would you like to specify minutes of the hour for your schedule?.",
   "message0": "Minute: %1",
   "args0": [
     {
@@ -3206,7 +3596,7 @@ exports[`Block Snapshots > Blockly JSON > month_settings 1`] = `
   "inputsInline": false,
   "type": "month_settings",
   "colour": 30,
-  "tooltip": "How would you like to specify the months portion of your schedule?",
+  "tooltip": "How would you like to specify the months portion of your schedule?.",
   "message0": "Month: %1",
   "args0": [
     {
