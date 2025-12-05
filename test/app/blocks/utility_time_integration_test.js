@@ -68,12 +68,18 @@ describe("Time Blocks Integration", () => {
   it("Current Time block generates compatible JSON structure", () => {
     const currentTimeDefinition = BlockDefinition.parseRawDefinition(currentTimeBlockDefObject)
     
-    const [result] = currentTimeDefinition.generators.json()
+    // Generator now expects a block object with timezoneType
+    const mockBlock = {
+      timezoneType: 'tz_io_account'
+    }
+    
+    const [result] = currentTimeDefinition.generators.json(mockBlock)
     const parsedResult = JSON.parse(result)
     
     // Should have currentTime object (structure will be handled by backend)
     assert.exists(parsedResult.currentTime)
     assert.isObject(parsedResult.currentTime)
+    assert.deepEqual(parsedResult.currentTime.timezone, { type: 'tz_io_account' })
   })
 
   it("supports common time comparison scenarios", () => {
