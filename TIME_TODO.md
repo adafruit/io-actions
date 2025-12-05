@@ -116,4 +116,5 @@ Update `app/toolbox/time.js` contents array:
 - [ ] Consider merging the two extract blocks into one with combined time+date segment dropdown (Hour, Minute, Second, Year, Month, Day, Day of Week, Week Number)
 - [ ] Confirm Duration block works with weather block timestamps e.g. `Sunset - Duration(2 hours)`
 - [ ] Extend "DateTime block" to also allow Day = -1 for last day of month (end of list, called "Last Day of Month (-1)")
-  
+- [ ] Need a feed property block, to extract feed key/last_value aka previous value/updated_at/created_at[utc]/unit-type/unit-symbol/status/etc (check api)
+- [ ] Future work - Try to ensure all timestamps are UTC/usertime.
