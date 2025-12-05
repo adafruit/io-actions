@@ -15,26 +15,25 @@ export default {
   },
 
   template: `
-    Get property %PROPERTY |CENTER
-    from %FEED_KEY
+    Get property: %PROPERTY |CENTER
+    from: %FEED_KEY
   `,
 
   fields: {
     PROPERTY: {
       description: "Which property to retrieve from the feed.",
       options: [
-        ['Current Value', 'current_value'],
-        ['Previous/Last Value', 'last_value'],
-        ['Key', 'key'],
+        ['Feed Key', 'key'],
         ['Name', 'name'],
         ['Description', 'description'],
+        ['Current Value', 'current_value'],
+        ['Previous/Last Value', 'last_value'],
         ['Updated At (UTC)', 'updated_at'],
         ['Created At (UTC)', 'created_at'],
         ['Unit Type', 'unit_type'],
         ['Unit Symbol', 'unit_symbol'],
         ['Status', 'status'],
         ['Visibility', 'visibility'],
-        ['License', 'license'],
       ]
     },
     FEED_KEY: {

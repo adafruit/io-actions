@@ -32,18 +32,17 @@ describe("Feed Get Property Block", () => {
     assert.equal(propertyArg.type, 'field_dropdown')
     
     const optionValues = propertyArg.options.map(opt => opt[1])
-    assert.include(optionValues, 'current_value')
-    assert.include(optionValues, 'last_value')
     assert.include(optionValues, 'key')
     assert.include(optionValues, 'name')
     assert.include(optionValues, 'description')
+    assert.include(optionValues, 'current_value')
+    assert.include(optionValues, 'last_value')
     assert.include(optionValues, 'updated_at')
     assert.include(optionValues, 'created_at')
     assert.include(optionValues, 'unit_type')
     assert.include(optionValues, 'unit_symbol')
     assert.include(optionValues, 'status')
     assert.include(optionValues, 'visibility')
-    assert.include(optionValues, 'license')
   })
 
   it("has FEED_KEY dropdown", () => {
