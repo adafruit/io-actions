@@ -101,18 +101,19 @@ Update `app/toolbox/time.js` contents array:
 - [x] DateTime to Text block with timezone + format mutator
 - [x] Text to DateTime block with timezone + format mutator
 - [x] Format option blocks (`fmt_iso8601`, `fmt_rfc2822`, `fmt_unix`, `fmt_preset`, `fmt_custom`)
+- [x] Duration block with timezone mutator (seconds/minutes/hours/days/weeks/months/years)
 - [x] All blocks registered in Time toolbox
 - [x] Block images generated
 - [x] Comprehensive tests including historical dates (Battle of Hastings, Millennium, Y2038, 2050, 2070)
 
 ### Remaining 🔲
 
-- [ ] Convert Seconds to DateTime block with **dual timezone slots** (input + output)
+- [ ] Add "Convert Seconds to DateTime block" with **dual timezone slots** (input + output), or just use parse block with unit time.
 - [ ] `tz_io_server.js` - "IO Server Time (EST)" option
 - [ ] `tz_location_coords.js` - Location-based timezone from coordinates
 - [ ] Auto timezone inheritance from child blocks
 - [ ] Icon SVGs for blocks (currently using default icons)
-- [ ] Consider merging the two extract time blocks, add Week number, Day of Week (Mon 0-6 Sun). 
-- [ ] Also a "Create Duration" block, to Add Days/Weeks/Years/ or verify if possible with existing blocks in seconds + Math e.g. +3hrs to a string time/date.
-- [ ] Confirm it works with weather block timestamps e.g. Sunset - 2hrs
- 
+- [ ] Consider merging the two extract blocks into one with combined time+date segment dropdown (Hour, Minute, Second, Year, Month, Day, Day of Week, Week Number)
+- [ ] Confirm Duration block works with weather block timestamps e.g. `Sunset - Duration(2 hours)`
+- [ ] Extend "DateTime block" to also allow Day = -1 for last day of month (end of list, called "Last Day of Month (-1)")
+  
