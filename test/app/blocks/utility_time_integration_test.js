@@ -61,8 +61,8 @@ describe("Time Blocks Integration", () => {
     
     // Verify mathematical comparison works
     assert.isTrue(parsedEarly.time.value < parsedLate.time.value, '09:00 should be less than 17:30')
-    assert.equal(parsedEarly.time.value, 540) // 9 * 60 = 540
-    assert.equal(parsedLate.time.value, 1050) // 17 * 60 + 30 = 1050
+    assert.equal(parsedEarly.time.value, 540 * 60) // 9 * 60 = 540
+    assert.equal(parsedLate.time.value, 1050 * 60) // 17 * 60 + 30 = 1050
   })
 
   it("Current Time block generates compatible JSON structure", () => {
@@ -118,9 +118,9 @@ describe("Time Blocks Integration", () => {
     assert.isTrue(startTime < endTime, 'Start should be before end')
     
     // Verify specific values for common times
-    assert.equal(startTime, 540) // 9:00 = 9 * 60
-    assert.equal(lunchTime, 720) // 12:00 = 12 * 60  
-    assert.equal(endTime, 1020) // 17:00 = 17 * 60
+    assert.equal(startTime, 540 * 60) // 9:00 = 9 * 60 = 540
+    assert.equal(lunchTime, 720 * 60) // 12:00 = 12 * 60 = 720
+    assert.equal(endTime, 1020 * 60) // 17:00 = 17 * 60 = 1020
   })
 
   it("handles edge cases correctly", () => {
@@ -152,7 +152,7 @@ describe("Time Blocks Integration", () => {
     
     // Verify edge case values
     assert.equal(midnightValue, 0, 'Midnight should be 0')
-    assert.equal(endOfDayValue, 1439, 'End of day should be 1439 minutes')
+    assert.equal(endOfDayValue, 1439 * 60, 'End of day should be 1439 minutes')
     assert.isTrue(midnightValue < endOfDayValue, 'Midnight should be less than end of day')
   })
 

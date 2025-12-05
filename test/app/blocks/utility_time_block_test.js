@@ -58,7 +58,7 @@ describe("Utility Time Block", () => {
     assert.equal(precedence, 0)
     assert.exists(parsedResult.time)
     assert.equal(parsedResult.time.display, '14:30')
-    assert.equal(parsedResult.time.value, 870) // 14 * 60 + 30 = 870 minutes since midnight
+    assert.equal(parsedResult.time.value, 870*60) // 14 * 60 + 30 = 870 minutes since midnight
   })
 
   it("regenerates correctly from JSON", () => {
@@ -67,7 +67,7 @@ describe("Utility Time Block", () => {
     const blockObject = {
       time: {
         display: '09:15',
-        value: 555 // 9 * 60 + 15 = 555 minutes since midnight
+        value: 555*60 // 9 * 60 + 15 = 555 minutes since midnight
       }
     }
     
@@ -109,7 +109,7 @@ describe("Utility Time Block", () => {
     const parsedEndDay = JSON.parse(endDayResult)
     
     assert.equal(parsedEndDay.time.display, '23:59')
-    assert.equal(parsedEndDay.time.value, 1439) // 23 * 60 + 59 = 1439 minutes since midnight
+    assert.equal(parsedEndDay.time.value, 1439*60) // 23 * 60 + 59 = 1439 minutes since midnight
   })
 
   it("integrates correctly with comparison blocks", () => {
@@ -140,8 +140,8 @@ describe("Utility Time Block", () => {
     
     // Verify that the numeric values can be compared
     assert.isTrue(parsedA.time.value < parsedB.time.value, '09:30 should be less than 17:45')
-    assert.equal(parsedA.time.value, 570) // 9 * 60 + 30
-    assert.equal(parsedB.time.value, 1065) // 17 * 60 + 45
+    assert.equal(parsedA.time.value, 570*60) // 9 * 60 + 30 = 570
+    assert.equal(parsedB.time.value, 1065*60) // 17 * 60 + 45 = 1065
     
     // Verify display formats are correct
     assert.equal(parsedA.time.display, '09:30')

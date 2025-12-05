@@ -34,12 +34,12 @@ export default {
         minute = block.getFieldValue('MINUTE'),
         timeValue = `${hour}:${minute}`,
         // Convert to minutes since midnight for numeric comparison
-        totalMinutes = parseInt(hour, 10) * 60 + parseInt(minute, 10)
+        totalSeconds = (parseInt(hour, 10) * 60 + parseInt(minute, 10)) * 60
       
       return [JSON.stringify({
         time: {
           display: timeValue,
-          value: totalMinutes
+          value: totalSeconds
         }
       }), 0]
     }
@@ -51,9 +51,9 @@ export default {
         throw new Error("No time data for io_utility_time regenerator")
       }
       
-      const totalMinutes = timeData.value
-      const hour = Math.floor(totalMinutes / 60).toString().padStart(2, '0')
-      const minute = (totalMinutes % 60).toString().padStart(2, '0')
+      const totalSeconds = timeData.value
+      const hour = Math.floor(totalSeconds / 3600).toString().padStart(2, '0')
+      const minute = Math.floor((totalSeconds % 3600) / 60).toString().padStart(2, '0')
       
       return {
         type: 'io_utility_time',
