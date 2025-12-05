@@ -84,3 +84,35 @@ Update `app/toolbox/time.js` contents array:
 1. **Mutator flyout blocks** - Each mutator needs a container block (`timezone_settings.js` for single, `timezone_conversion_settings.js` for dual). These can be shared since the timezone option blocks inside the mutators are shared, but some mutators have two (input + output) timezones needed, and others just one.
 
 2. **Icon SVGs** - Generate base64-encoded clock+scissors, calendar+scissors, and clock+arrows SVGs during implementation.
+
+3. **Auto Timezone Option** - Blocks with time-related inputs should have an "Auto" timezone option that inherits the timezone from the connected child input block. If the child block doesn't specify a timezone, fall back to user's IO Account timezone. This allows seamless chaining of time blocks without manual timezone configuration at each step.
+
+4. **Simple Time Comparisons (Current Time + Time blocks)** - The `time.js` and `current_time.js` blocks are designed for simple time-of-day comparisons like "is it after 5:30?" or "is current time between 9:00 and 17:00?". These blocks work in the user's local timezone context by default. See Justin's POC docs for confirmed use cases. The time block outputs seconds-since-midnight for easy numeric comparison.
+
+## Implementation Status
+
+### Completed ✅
+
+- [x] Timezone option blocks (`tz_io_account`, `tz_utc`, `tz_device`, `tz_preset`, `tz_fixed_offset`)
+- [x] Extract Time Segment block with timezone mutator
+- [x] Extract Date Segment block with timezone mutator  
+- [x] DateTime block with timezone mutator
+- [x] Current Time block with timezone mutator
+- [x] DateTime to Text block with timezone + format mutator
+- [x] Text to DateTime block with timezone + format mutator
+- [x] Format option blocks (`fmt_iso8601`, `fmt_rfc2822`, `fmt_unix`, `fmt_preset`, `fmt_custom`)
+- [x] All blocks registered in Time toolbox
+- [x] Block images generated
+- [x] Comprehensive tests including historical dates (Battle of Hastings, Millennium, Y2038, 2050, 2070)
+
+### Remaining 🔲
+
+- [ ] Convert Seconds to DateTime block with **dual timezone slots** (input + output)
+- [ ] `tz_io_server.js` - "IO Server Time (EST)" option
+- [ ] `tz_location_coords.js` - Location-based timezone from coordinates
+- [ ] Auto timezone inheritance from child blocks
+- [ ] Icon SVGs for blocks (currently using default icons)
+- [ ] Consider merging the two extract time blocks, add Week number, Day of Week (Mon 0-6 Sun). 
+- [ ] Also a "Create Duration" block, to Add Days/Weeks/Years/ or verify if possible with existing blocks in seconds + Math e.g. +3hrs to a string time/date.
+- [ ] Confirm it works with weather block timestamps e.g. Sunset - 2hrs
+ 
