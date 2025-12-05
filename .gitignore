@@ -48,6 +48,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+win_node_modules/
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
@@ -140,3 +141,6 @@ docs/blockly/*
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# random trash
+.playwright-mcp/

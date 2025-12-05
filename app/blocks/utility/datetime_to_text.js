@@ -9,7 +9,7 @@ export default {
 
   connections: {
     mode: 'value',
-    output: 'String'
+    output: ['expression', 'string']
   },
 
   mutator,

@@ -21,8 +21,8 @@ describe("Utility DateTime to Text Block", () => {
     assert.exists(blockJSON.message0)
     assert.exists(blockJSON.args0)
 
-    // has proper output type - outputs String for text formatting
-    assert.equal(blockJSON.output, 'String')
+    // has proper output type - outputs expression+string for text formatting
+    assert.deepEqual(blockJSON.output, ['expression', 'string'])
 
     // has correct color
     assert.equal(blockJSON.colour, 20)
@@ -121,5 +121,16 @@ describe("Utility DateTime to Text Block", () => {
     // Should include format option blocks
     assert.include(definition.mutator.flyoutBlockTypes, 'fmt_iso8601')
     assert.include(definition.mutator.flyoutBlockTypes, 'fmt_custom')
+  })
+
+  it("output type is compatible with log block input", () => {
+    const definition = BlockDefinition.parseRawDefinition(datetimeToTextBlockDefObject)
+    const blockJSON = definition.toBlocklyJSON()
+    
+    // Log block checks for 'expression', and this block outputs ['expression', 'string']
+    // so it should be connectable to log blocks
+    assert.isArray(blockJSON.output)
+    assert.include(blockJSON.output, 'expression', 'should include expression for log block compatibility')
+    assert.include(blockJSON.output, 'string', 'should include string for text operations')
   })
 })
