@@ -14,7 +14,7 @@ head:
       content: "website"
   - - meta
     - property: "og:url"
-      content: "https://io.adafruit.com/actions-docs/oembed"
+      content: "https://io.adafruit.com/actions-docs/oembed/"
   - - meta
     - name: "twitter:card"
       content: "summary_large_image"
