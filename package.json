@@ -49,8 +49,8 @@
     "vitepress": "^1.6.3"
   },
   "dependencies": {
-    "@blockly/theme-modern": "^5.0.5",
-    "blockly": "^10.4.3",
+    "@blockly/theme-modern": "^7.0.4",
+    "blockly": "^12.5.1",
     "lodash-es": "^4.17.21"
   }
 }

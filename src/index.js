@@ -1,4 +1,4 @@
-import Blockly from 'blockly'
+import * as Blockly from 'blockly'
 import { compact, filter } from 'lodash-es'
 
 // for building static:
