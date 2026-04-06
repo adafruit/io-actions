@@ -1,4 +1,4 @@
-import Blockly from 'blockly'
+import * as Blockly from 'blockly'
 
 import BLOCKLY_CSS from "#src/blockly_css.js"
 

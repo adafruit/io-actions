@@ -34,9 +34,9 @@ export default {
 
     // must have a location and a parent (copacetic with disableOrphans)
     if(this.getFieldValue("POWER_UP_ID") === "" || !this.getParent()) {
-      this.disabled || this.setEnabled(false)
+      this.setDisabledReason(true, 'no_location')
     } else {
-      this.disabled && this.setEnabled(true)
+      this.setDisabledReason(false, 'no_location')
     }
   },
 

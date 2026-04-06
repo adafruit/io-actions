@@ -183,6 +183,42 @@ exports[`Block Snapshots > Blockly JSON > action_webhook 1`] = `
 }
 `;
 
+exports[`Block Snapshots > Blockly JSON > advanced_json_path_query 1`] = `
+{
+  "inputsInline": true,
+  "type": "advanced_json_path_query",
+  "colour": 360,
+  "tooltip": "Extract specific values from JSON data using JSONPath query syntax.",
+  "output": "expression",
+  "message0": "JSONPath Query %1",
+  "args0": [
+    {
+      "type": "input_dummy",
+      "align": "CENTRE"
+    }
+  ],
+  "message1": "Data: %1",
+  "args1": [
+    {
+      "type": "input_value",
+      "name": "DATA",
+      "check": "expression",
+      "align": "RIGHT"
+    }
+  ],
+  "message2": "Path: %1",
+  "args2": [
+    {
+      "type": "input_value",
+      "name": "PATH",
+      "check": "expression",
+      "align": "RIGHT"
+    }
+  ],
+  "helpUrl": "https://io.adafruit.com/actions-docs/blocks/advanced/json_path_query"
+}
+`;
+
 exports[`Block Snapshots > Blockly JSON > air_quality 1`] = `
 {
   "inputsInline": false,
@@ -2765,6 +2801,10 @@ exports[`Block Snapshots > Blockly JSON > io_math_arithmetic 1`] = `
         [
           "/",
           "DIVIDE"
+        ],
+        [
+          "%",
+          "MODULO"
         ],
         [
           "^",

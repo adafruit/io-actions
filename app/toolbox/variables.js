@@ -15,7 +15,7 @@ export default {
 
     // pull the existing variables out of the workspace
     const
-      variableIds = workspace.getAllVariables().map(v => v.getId()),
+      variableIds = workspace.getVariableMap().getAllVariables().map(v => v.getId()),
       variableBlocks = variableIds.flatMap(id => ([
         { // setter block for this variable
           kind: 'block',

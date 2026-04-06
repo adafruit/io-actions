@@ -58,7 +58,7 @@ export default `
   box-shadow: 0 0 3px 1px rgba(0,0,0,.3);
 }
 
-.blocklyDropDownDiv.blocklyFocused {
+.blocklyDropDownDiv:focus {
   box-shadow: 0 0 6px 1px rgba(0,0,0,.3);
 }
 
@@ -189,7 +189,7 @@ export default `
   font-family: monospace;
 }
 
-.blocklyNonEditableText>text {
+.blocklyNonEditableField>text {
   pointer-events: none;
 }
 
@@ -381,7 +381,7 @@ input[type=number] {
   z-index: 20000;  /* Arbitrary, but some apps depend on it... */
 }
 
-.blocklyWidgetDiv .blocklyMenu.blocklyFocused {
+.blocklyWidgetDiv .blocklyMenu:focus {
   box-shadow: 0 0 6px 1px rgba(0,0,0,.3);
 }
 
@@ -445,14 +445,14 @@ font: normal 11pt sans-serif;
 .blocklyText {
 fill: #fff;
 }
-.blocklyNonEditableText>rect,
-.blocklyEditableText>rect {
+.blocklyNonEditableField>rect,
+.blocklyEditableField>rect {
 fill: #fff;
 fill-opacity: .6;
 stroke: none;
 }
-.blocklyNonEditableText>text,
-.blocklyEditableText>text {
+.blocklyNonEditableField>text,
+.blocklyEditableField>text {
 fill: #000;
 }
 .blocklyFlyoutLabelText {
@@ -461,7 +461,7 @@ fill: #000;
 .blocklyText.blocklyBubbleText {
 fill: #000;
 }
-.blocklyEditableText:not(.editing):hover>rect {
+.blocklyEditableField:not(.editing):hover>rect {
 stroke: #fff;
 stroke-width: 2;
 }

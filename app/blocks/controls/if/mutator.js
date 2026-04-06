@@ -1,4 +1,4 @@
-import Blockly from 'blockly'
+import * as Blockly from 'blockly'
 
 /** Dynamic else-if and else support */
 export default {
