@@ -124,9 +124,18 @@ export const
     return regenerators.json.codeToWorkspace(parsedJson)
   }
 
+const theme = Blockly.Theme.defineTheme('io', {
+  base: Blockly.Themes.Classic,
+  componentStyles: {
+    toolboxForegroundColour: '#000',
+    flyoutForegroundColour: '#000',
+  }
+})
+
 const buildInjectOptions = options => {
   const injectOptions = {
     toolbox,
+    theme,
     ...options.injectOptions
   }
 
