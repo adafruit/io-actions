@@ -1,5 +1,6 @@
 import * as Blockly from 'blockly'
-import '@blockly/field-multilineinput'
+import { registerFieldMultilineInput } from '@blockly/field-multilineinput'
+registerFieldMultilineInput()
 import { compact, filter } from 'lodash-es'
 
 // for building static:

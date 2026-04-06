@@ -28,7 +28,7 @@ export default class ScriptExporter {
         ...givenOptions
       },
       scriptContents = [
-        "import * as Blockly from 'blockly'\nimport '@blockly/field-multilineinput'\n\n",
+        "import * as Blockly from 'blockly'\nimport { registerFieldMultilineInput } from '@blockly/field-multilineinput'\nregisterFieldMultilineInput()\n\n",
         section("Toolbox", exportToolboxJs(this.definitionSet.primaryToolbox())),
         section("Mixins", exportMixinJs(this.definitionSet.mixins)),
         section("Extensions", exportExtensionJs(this.definitionSet.extensions)),
