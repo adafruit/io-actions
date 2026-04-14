@@ -1,4 +1,5 @@
 import mutator from './convert_seconds_datetime/mutator.js'
+import { TIME_ICON } from '#app/util/time_icon.js'
 
 /** @type {import('#types').BlockDefinitionRaw} */
 export default {
@@ -16,9 +17,13 @@ export default {
   mutator,
 
   template: `
-    Convert Timezone |CENTER
+    %ICON Convert Timezone |CENTER
     %SECONDS
   `,
+
+  fields: {
+    ICON: { image: TIME_ICON, width: 16, height: 16, alt: "Convert" }
+  },
 
   inputs: {
     SECONDS: {

@@ -1,4 +1,5 @@
 import mutator from './duration/mutator.js'
+import { TIME_ICON } from '#app/util/time_icon.js'
 
 /** @type {import('#types').BlockDefinitionRaw} */
 export default {
@@ -16,10 +17,11 @@ export default {
   mutator,
 
   template: `
-    Duration: %AMOUNT %UNIT
+    %ICON Duration: %AMOUNT %UNIT
   `,
 
   fields: {
+    ICON: { image: TIME_ICON, width: 16, height: 16, alt: "Duration" },
     UNIT: {
       description: "The unit of time for the duration.",
       options: [

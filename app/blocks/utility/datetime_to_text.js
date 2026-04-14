@@ -1,4 +1,5 @@
 import mutator from './datetime_to_text/mutator.js'
+import { TIME_ICON } from '#app/util/time_icon.js'
 
 /** @type {import('#types').BlockDefinitionRaw} */
 export default {
@@ -14,7 +15,11 @@ export default {
 
   mutator,
 
-  template: "format %INPUT as text",
+  template: "%ICON format %INPUT as text",
+
+  fields: {
+    ICON: { image: TIME_ICON, width: 16, height: 16, alt: "Format" }
+  },
 
   inputs: {
     INPUT: {

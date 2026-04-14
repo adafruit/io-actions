@@ -1,4 +1,5 @@
 import mutator from './current_time/mutator.js'
+import { TIME_ICON } from '#app/util/time_icon.js'
 
 /** @type {import('#types').BlockDefinitionRaw} */
 export default {
@@ -11,7 +12,10 @@ export default {
     output: ["expression", "time"],
   },
   mutator,
-  template: "Current Time",
+  template: "%ICON Current Time",
+  fields: {
+    ICON: { image: TIME_ICON, width: 16, height: 16, alt: "Time" }
+  },
   generators: {
     json: (block) => {
       const timezoneType = block.timezoneType || 'tz_io_account'

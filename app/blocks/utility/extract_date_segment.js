@@ -1,4 +1,5 @@
 import mutator from './extract_date_segment/mutator.js'
+import { TIME_ICON } from '#app/util/time_icon.js'
 
 /** @type {import('#types').BlockDefinitionRaw} */
 export default {
@@ -16,11 +17,12 @@ export default {
   mutator,
 
   template: `
-    Extract %SEGMENT |CENTER
+    %ICON Extract %SEGMENT |CENTER
     from %DATE
   `,
 
   fields: {
+    ICON: { image: TIME_ICON, width: 16, height: 16, alt: "Extract Date" },
     SEGMENT: {
       description: "Which date component to extract from the input timestamp.",
       options: [
