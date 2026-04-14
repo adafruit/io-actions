@@ -94,7 +94,8 @@ const processTemplate = blockDefinition => {
           const
             fieldData = fields[matchName],
             type = fieldTypeFromProperties(fieldData),
-            isTextType = TEXT_FIELD_TYPES.includes(type)
+            isTextType = TEXT_FIELD_TYPES.includes(type),
+            isImageType = type === "field_image"
 
           args.push({
             name: matchName,
@@ -104,6 +105,11 @@ const processTemplate = blockDefinition => {
             text: fieldData.text || fieldData.multiline_text || fieldData.label || (isTextType ? "" : undefined),
             spellcheck: fieldData.spellcheck,
             value: fieldData.value,
+            // image-specific properties
+            src: isImageType ? fieldData.image : undefined,
+            width: isImageType ? (fieldData.width || 40) : undefined,
+            height: isImageType ? (fieldData.height || 40) : undefined,
+            alt: isImageType ? (fieldData.alt || "*") : undefined,
           })
 
         } else {
@@ -168,6 +174,7 @@ const fieldTypeFromProperties = fieldData => {
     || (includes(fieldKeys, "label") && "field_label")
     || (includes(fieldKeys, "serializable_label") && "field_label_serializable")
     || (includes(fieldKeys, "multiline_text") && "field_multilinetext")
+    || (includes(fieldKeys, "image") && "field_image")
 
   if(fieldData.type) {
     if(finalType && finalType !== fieldData.type) {

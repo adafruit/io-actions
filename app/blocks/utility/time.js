@@ -1,4 +1,5 @@
 import { makeOptions } from "#app/util/fields.js"
+import { TIME_ICON } from '#app/util/time_icon.js'
 
 /** @type {import('#types').BlockDefinitionRaw} */
 export default {
@@ -10,8 +11,9 @@ export default {
     mode: "value",
     output: ["expression", "time"],
   },
-  template: "%HOUR : %MINUTE",
+  template: "%ICON %HOUR : %MINUTE",
   fields: {
+    ICON: { image: TIME_ICON, width: 16, height: 16, alt: "Time" },
     HOUR: {
       description: "Select the hour in 24-hour format (00-23). Examples: 00 for midnight, 12 for noon, 14 for 2 PM, 23 for 11 PM. This military time format ensures precise time comparisons without AM/PM confusion.",
       options: makeOptions({ 

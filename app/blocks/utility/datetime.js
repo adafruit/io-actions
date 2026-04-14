@@ -1,5 +1,6 @@
 import mutator from './datetime/mutator.js'
 import { makeOptions } from "#app/util/fields.js"
+import { TIME_ICON } from '#app/util/time_icon.js'
 
 // Generate year options from 2020 to 2035
 const yearOptions = makeOptions({
@@ -24,11 +25,12 @@ export default {
   mutator,
 
   template: `
-    DateTime |CENTER
+    %ICON DateTime |CENTER
     %DAY / %MONTH / %YEAR at %TIME
   `,
 
   fields: {
+    ICON: { image: TIME_ICON, width: 16, height: 16, alt: "DateTime" },
     DAY: {
       description: "Day of the month (1-31). The value will be validated against the selected month.",
       options: makeOptions({
