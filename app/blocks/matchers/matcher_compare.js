@@ -24,7 +24,7 @@ export default {
   inputs: {
     B: {
       description: "Set your comparison threshold or target value. Examples: 80 for temperature alerts, 20 for battery percentage warnings, 1000 for pressure readings, or any numerical value that's meaningful for your sensor data.",
-      check: "expression",
+      check: "number",
       shadow: 'io_math_number'
     }
   },

@@ -11,7 +11,7 @@ export default {
   inputs: {
     B: {
       description: "The text to compare against your feed data. Examples: 'open' to detect door status, 'motion' for PIR sensors, 'online' for device connectivity, or any specific word/phrase you're monitoring for.",
-      check: "expression",
+      check: "string",
       shadow: 'io_text'
     }
   },

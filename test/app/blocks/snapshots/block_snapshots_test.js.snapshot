@@ -3052,7 +3052,7 @@ exports[`Block Snapshots > Blockly JSON > matcher_compare 1`] = `
     {
       "type": "input_value",
       "name": "B",
-      "check": "expression",
+      "check": "number",
       "align": "RIGHT"
     }
   ],
@@ -3090,7 +3090,7 @@ exports[`Block Snapshots > Blockly JSON > matcher_text_compare 1`] = `
     {
       "type": "input_value",
       "name": "B",
-      "check": "expression",
+      "check": "string",
       "align": "RIGHT"
     }
   ],
