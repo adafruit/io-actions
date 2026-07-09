@@ -2,7 +2,7 @@
 export default {
   type: "minute_settings",
   name: "Minute Settings",
-  colour: 30,
+  colour: 16,
   description: "How would you like to specify minutes of the hour for your schedule?",
 
   connections: {},

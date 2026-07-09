@@ -5,7 +5,7 @@ import mutator from "./day_mutator.js"
 export default {
   type: "days_of_week",
   name: "Days of the Week",
-  colour: 30,
+  colour: 16,
   description: "Runs during certain days of the week.",
 
   connections: {

@@ -4,7 +4,7 @@ export default {
   bytecodeKey: "logic",
   name: "Logic Operation",
   inputsInline: true,
-  colour: 60,
+  colour: 270,
   description: "Combine multiple conditions to create sophisticated decision logic in your Actions. Perfect for complex automation like 'if temperature is high AND humidity is low', 'if motion detected OR door opened', or any scenario where you need multiple criteria to work together. Essential for building smart, multi-factor IoT control systems.",
   connections: {
     mode: "value",

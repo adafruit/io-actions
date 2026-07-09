@@ -3,7 +3,7 @@ export default {
   type: "when_data_matching",
   bytecodeKey: "whenDataMatching",
   name: "Data Matching",
-  colour: 30,
+  colour: 16,
   inputsInline: true,
   description: "The most common trigger type - runs your Action immediately whenever new data arrives at a feed that meets your specified condition. Perfect for real-time responses like 'send alert when temperature exceeds 85°F', 'turn on lights when motion detected', or 'notify me when battery drops below 20%'. This trigger fires every single time the condition is met.",
   connections: {

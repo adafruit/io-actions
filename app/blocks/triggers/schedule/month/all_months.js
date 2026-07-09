@@ -5,7 +5,7 @@ import mutator from './month_mutator.js'
 export default {
   type: "all_months",
   name: "All Months",
-  colour: 30,
+  colour: 16,
   description: "Runs during all months.",
 
   connections: {

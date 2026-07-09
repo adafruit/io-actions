@@ -2,7 +2,7 @@
 export default {
   type: "month_settings",
   name: "Month Settings",
-  colour: 30,
+  colour: 16,
   description: "How would you like to specify the months portion of your schedule?",
 
   connections: {},

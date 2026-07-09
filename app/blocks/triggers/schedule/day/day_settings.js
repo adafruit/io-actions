@@ -2,7 +2,7 @@
 export default {
   type: "day_settings",
   name: "Day Settings",
-  colour: 30,
+  colour: 16,
   description: "How would you like to specify days of the month for your schedule?",
 
   connections: {},

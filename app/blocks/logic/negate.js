@@ -3,7 +3,7 @@ export default {
   type: 'io_logic_negate',
   bytecodeKey: "negate",
   name: "Negate",
-  colour: 60,
+  colour: 270,
   description: "Flip any condition to its opposite - turns true into false and false into true. Essential for creating inverse logic like 'if NOT raining', 'if door is NOT open', or 'if temperature is NOT above 75°F'. Perfect for building exception handling, safety conditions, and reverse automation logic in your IoT Actions.",
   connections: {
     mode: "value",

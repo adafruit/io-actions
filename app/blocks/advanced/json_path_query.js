@@ -4,7 +4,7 @@ export default {
   bytecodeKey: "jsonPathQuery",
   name: "JSONPath Query",
 
-  colour: 360,
+  colour: '#6B7280',
   inputsInline: true,
 
   description: "Extract specific values from JSON data using JSONPath query syntax. Query JSON feed data to pull out nested values, array elements, or filtered results. The actual parsing happens server-side - this block defines the query that will be executed on your JSON data.",

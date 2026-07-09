@@ -3,7 +3,7 @@ export default {
   type: "when_data",
   bytecodeKey: "whenData",
   name: "Any Data",
-  colour: 30,
+  colour: 16,
   inputsInline: true,
   description: "The simplest trigger - runs your Action every single time ANY new data arrives at a feed, regardless of what the value is. Perfect for logging all activity ('record every sensor reading'), acknowledging data receipt ('send confirmation for every message'), or triggering workflows that need to process all incoming data. No conditions, no filtering - just pure data arrival detection.",
   connections: {

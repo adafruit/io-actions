@@ -103,6 +103,13 @@ const ToolboxExporter = {
       categoryItem.custom = category.name
     }
 
+    // Pass through an optional category icon (presentation-only). The `icon`
+    // shorthand becomes a CSS class on the category's icon element, styled in
+    // blockly_api.js (.io-cat-icon-<name>).
+    if(category.icon) {
+      categoryItem.cssconfig = { icon: `io-cat-icon io-cat-icon-${category.icon}` }
+    }
+
     return categoryItem
   },
 

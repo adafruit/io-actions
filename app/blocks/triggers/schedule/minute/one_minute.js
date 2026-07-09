@@ -6,7 +6,7 @@ import mutator from './minute_mutator.js'
 export default {
   type: "one_minute",
   name: "One Minute",
-  colour: 30,
+  colour: 16,
   description: "Runs at a particular minute of the hour.",
 
   connections: {

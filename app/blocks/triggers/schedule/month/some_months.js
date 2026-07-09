@@ -5,7 +5,7 @@ import mutator from './month_mutator.js'
 export default {
   type: 'some_months',
   name: "Some Months",
-  colour: 30,
+  colour: 16,
   description: "Run during particular months.",
 
   connections: {
