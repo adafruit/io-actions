@@ -187,7 +187,6 @@ class IoConstantProvider extends Blockly.zelos.ConstantProvider {
   // identically) — only the drawn path is softened.
   makeSoftHexagonal() {
     const maxW = this.MAX_DYNAMIC_CONNECTION_SHAPE_WIDTH
-    const K = Math.SQRT1_2 // sin/cos 45°
     const f = n => Number(n.toFixed(3))
     const width = d => { const x = d / 2; return x > maxW ? maxW : x }
 
@@ -214,16 +213,21 @@ class IoConstantProvider extends Blockly.zelos.ConstantProvider {
     const profile = (span, dir, up) => {
       const s = up ? -1 : 1
       const w = width(span), half = span / 2
+      // Diagonal aims at the tip (dir*w, s*half) — NOT a fixed 45°. On tall blocks
+      // `w` is capped (< half), so the diagonal is shallower; hard-coding 45° there
+      // made the drawn tip deeper than the width the layout reserved, slicing into
+      // the block's content. Use the true diagonal direction so path == reserved box.
+      const L = Math.hypot(w, half) || 1
+      const u1 = { x: dir * w / L, y: s * half / L }   // diagonal towards the tip
+      const u2 = { x: -dir * w / L, y: s * half / L }  // diagonal away from the tip
       const rt = Math.max(2, Math.min(7, w * 0.5, half * 0.5))     // tip radius
       const rs = Math.max(2, Math.min(7.5, w * 0.55, half * 0.55)) // shoulder radius
-      const u1 = { x: dir * K, y: s * K }   // diagonal towards the tip
-      const u2 = { x: -dir * K, y: s * K }  // diagonal away from the tip
       const hIn = { x: dir, y: 0 }, hOut = { x: -dir, y: 0 } // flat edges
       const a1 = arc(hIn, u1, rs)   // start shoulder
       const tp = arc(u1, u2, rt)    // tip
       const a3 = arc(u2, hOut, rs)  // end shoulder
       const sumDy = a1.dy + tp.dy + a3.dy
-      const d = (s * span - sumDy) / (2 * s * K)  // solve straight length for closure
+      const d = (s * span - sumDy) / (u1.y + u2.y)  // solve straight length for closure
       const aStr = a => `a ${f(a.r)} ${f(a.r)} 0 ${a.large} ${a.sweep} ${f(a.dx)},${f(a.dy)}`
       return ` ${aStr(a1)} l ${f(d * u1.x)},${f(d * u1.y)} ${aStr(tp)} l ${f(d * u2.x)},${f(d * u2.y)} ${aStr(a3)} `
     }
