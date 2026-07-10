@@ -6,7 +6,7 @@ import mutator from './minute_mutator.js'
 export default {
   type: "every_minutes_between",
   name: "Every X Minutes",
-  colour: 16,
+  colour: '#8A2E52',
   description: "Runs every X minutes, between minutes Y and Z.",
 
   connections: {

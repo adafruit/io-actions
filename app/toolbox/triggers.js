@@ -1,6 +1,6 @@
 export default {
   name: 'Triggers',
-  colour: 16,
+  colour: '#8A2E52',
   icon: 'triggers',
   contents: [
     'on_schedule',

@@ -5,7 +5,7 @@ import mutator from "./hour_mutator.js"
 export default {
   type: "all_hours",
   name: "All Hours",
-  colour: 16,
+  colour: '#8A2E52',
   description: "Runs during all hours of the day.",
 
   connections: {

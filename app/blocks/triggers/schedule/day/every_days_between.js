@@ -6,7 +6,7 @@ import mutator from "./day_mutator.js"
 export default {
   type: "every_days_between",
   name: "Every X Days",
-  colour: 16,
+  colour: '#8A2E52',
   description: "Runs every X days, between days Y and Z.",
 
   connections: {

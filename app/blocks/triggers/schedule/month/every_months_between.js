@@ -6,7 +6,7 @@ import mutator from './month_mutator.js'
 export default {
   type: "every_months_between",
   name: "Every X Months",
-  colour: 16,
+  colour: '#8A2E52',
   description: "Runs every X months, between months Y and Z.",
 
   connections: {

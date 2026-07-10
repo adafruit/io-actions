@@ -337,7 +337,7 @@ exports[`Block Snapshots > Blockly JSON > all_days 1`] = `
 {
   "inputsInline": false,
   "type": "all_days",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Runs during every day of the month.",
   "output": "cron_day",
   "message0": "Every day %1",
@@ -356,7 +356,7 @@ exports[`Block Snapshots > Blockly JSON > all_hours 1`] = `
 {
   "inputsInline": false,
   "type": "all_hours",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Runs during all hours of the day.",
   "output": "cron_hour",
   "message0": "Every hour %1",
@@ -375,7 +375,7 @@ exports[`Block Snapshots > Blockly JSON > all_minutes 1`] = `
 {
   "inputsInline": false,
   "type": "all_minutes",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Runs every minute of the hour.",
   "output": "cron_minute",
   "message0": "Every minute %1",
@@ -394,7 +394,7 @@ exports[`Block Snapshots > Blockly JSON > all_months 1`] = `
 {
   "inputsInline": false,
   "type": "all_months",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Runs during all months.",
   "output": "cron_month",
   "message0": "Every month %1",
@@ -413,7 +413,7 @@ exports[`Block Snapshots > Blockly JSON > day_settings 1`] = `
 {
   "inputsInline": false,
   "type": "day_settings",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "How would you like to specify days of the month for your schedule?",
   "message0": "Day: %1",
   "args0": [
@@ -432,7 +432,7 @@ exports[`Block Snapshots > Blockly JSON > days_of_week 1`] = `
 {
   "inputsInline": false,
   "type": "days_of_week",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Runs during certain days of the week.",
   "output": "cron_day",
   "message0": "Sun: %1 Mon: %2 Tue: %3 Wed: %4 %5",
@@ -1219,7 +1219,7 @@ exports[`Block Snapshots > Blockly JSON > every_days_between 1`] = `
 {
   "inputsInline": false,
   "type": "every_days_between",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Runs every X days, between days Y and Z.",
   "output": "cron_day",
   "message0": "Every %1 days between %2 and %3 %4",
@@ -1532,7 +1532,7 @@ exports[`Block Snapshots > Blockly JSON > every_hours_between 1`] = `
 {
   "inputsInline": false,
   "type": "every_hours_between",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Runs every X hours, between hours Y and Z.",
   "output": "cron_hour",
   "message0": "Every %1 hours between %2 and %3 %4",
@@ -1789,7 +1789,7 @@ exports[`Block Snapshots > Blockly JSON > every_minutes_between 1`] = `
 {
   "inputsInline": false,
   "type": "every_minutes_between",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Runs every X minutes, between minutes Y and Z.",
   "output": "cron_minute",
   "message0": "Every %1 minutes between %2 and %3 %4",
@@ -2350,7 +2350,7 @@ exports[`Block Snapshots > Blockly JSON > every_months_between 1`] = `
 {
   "inputsInline": false,
   "type": "every_months_between",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Runs every X months, between months Y and Z.",
   "output": "cron_month",
   "message0": "Every %1 months between %2 and %3 %4",
@@ -2570,7 +2570,7 @@ exports[`Block Snapshots > Blockly JSON > hour_settings 1`] = `
 {
   "inputsInline": false,
   "type": "hour_settings",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "How would you like to specify hours of the day for your schedule?",
   "message0": "Hour: %1",
   "args0": [
@@ -3251,7 +3251,7 @@ exports[`Block Snapshots > Blockly JSON > minute_settings 1`] = `
 {
   "inputsInline": false,
   "type": "minute_settings",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "How would you like to specify minutes of the hour for your schedule?",
   "message0": "Minute: %1",
   "args0": [
@@ -3270,7 +3270,7 @@ exports[`Block Snapshots > Blockly JSON > month_settings 1`] = `
 {
   "inputsInline": false,
   "type": "month_settings",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "How would you like to specify the months portion of your schedule?",
   "message0": "Month: %1",
   "args0": [
@@ -3289,7 +3289,7 @@ exports[`Block Snapshots > Blockly JSON > on_schedule 1`] = `
 {
   "inputsInline": false,
   "type": "on_schedule",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Create powerful time-based automation that runs your Actions on a schedule - from simple daily reminders to complex patterns like 'every 15 minutes during weekdays' or 'first Monday of each quarter'.",
   "nextStatement": "trigger",
   "previousStatement": "trigger",
@@ -3344,7 +3344,7 @@ exports[`Block Snapshots > Blockly JSON > one_day 1`] = `
 {
   "inputsInline": false,
   "type": "one_day",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Runs during a particular day of the month.",
   "output": "cron_day",
   "message0": "On date: %1 %2",
@@ -3493,7 +3493,7 @@ exports[`Block Snapshots > Blockly JSON > one_hour 1`] = `
 {
   "inputsInline": false,
   "type": "one_hour",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Runs during a particular hour of the day.",
   "output": "cron_hour",
   "message0": "During hour: %1 %2",
@@ -3614,7 +3614,7 @@ exports[`Block Snapshots > Blockly JSON > one_minute 1`] = `
 {
   "inputsInline": false,
   "type": "one_minute",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Runs at a particular minute of the hour.",
   "output": "cron_minute",
   "message0": "At minute: %1 %2",
@@ -3879,7 +3879,7 @@ exports[`Block Snapshots > Blockly JSON > one_month 1`] = `
 {
   "inputsInline": false,
   "type": "one_month",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Runs during a particular month.",
   "output": "cron_month",
   "message0": "%1 %2",
@@ -3952,7 +3952,7 @@ exports[`Block Snapshots > Blockly JSON > some_months 1`] = `
 {
   "inputsInline": false,
   "type": "some_months",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Run during particular months.",
   "output": "cron_month",
   "message0": "Jan: %1 Feb: %2 Mar: %3 Apr: %4 %5",
@@ -4268,7 +4268,7 @@ exports[`Block Snapshots > Blockly JSON > when_data 1`] = `
 {
   "inputsInline": true,
   "type": "when_data",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "The simplest trigger - runs your Action every single time ANY new data arrives at a feed, regardless of what the value is.",
   "nextStatement": "trigger",
   "previousStatement": "trigger",
@@ -4301,7 +4301,7 @@ exports[`Block Snapshots > Blockly JSON > when_data_matching 1`] = `
 {
   "inputsInline": true,
   "type": "when_data_matching",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "The most common trigger type - runs your Action immediately whenever new data arrives at a feed that meets your specified condition.",
   "nextStatement": "trigger",
   "previousStatement": "trigger",
@@ -4336,7 +4336,7 @@ exports[`Block Snapshots > Blockly JSON > when_data_matching_state 1`] = `
 {
   "inputsInline": true,
   "type": "when_data_matching_state",
-  "colour": 16,
+  "colour": "#8A2E52",
   "tooltip": "Advanced trigger that watches for changes in how your feed data matches a condition over time.",
   "nextStatement": "trigger",
   "previousStatement": "trigger",
