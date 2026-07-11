@@ -401,6 +401,53 @@ Blockly.config.connectingSnapRadius = 64
   }
 })()
 
+// On the MULTI-ROW cron blocks (the month/day checkbox grids), the mutator cog
+// otherwise sits in the first row and shoves that row's checkboxes right, so the
+// rows don't line up. Park the cog vertically-centred in the block's left hexagon
+// tip and give it zero layout width, so every checkbox row starts at the same x.
+// Single-row chips (Every day, At minute…) are left alone — their cog is already
+// centred. Scoped to cron_* value blocks with more than one input row.
+;(() => {
+  const MI = Blockly.icons && Blockly.icons.MutatorIcon
+  const BS = Blockly.BlockSvg
+  const Size = Blockly.utils && Blockly.utils.Size
+  if(!MI || !BS || !Size) { return }
+  const isGrid = blk => {
+    if(!blk || !blk.outputConnection || !blk.outputConnection.getCheck) { return false }
+    const c = blk.outputConnection.getCheck()
+    return !!(c && c.some(x => typeof x === 'string' && x.startsWith('cron_')) &&
+              blk.inputList && blk.inputList.length > 1)
+  }
+  // 1) The cog takes no horizontal space in the layout, so every checkbox row starts
+  //    at the same x (the cog no longer shoves the first row right). The icon's SVG
+  //    (and thus its click target) is untouched — only its measured size.
+  const baseGetSize = MI.prototype.getSize
+  MI.prototype.getSize = function() {
+    const s = baseGetSize.call(this)
+    return isGrid(this.sourceBlock) ? new Size(0, s.height) : s
+  }
+  // 2) After the block draws, park the cog vertically-centred in the left hexagon
+  //    tip. This runs post-render (the renderer places icons during render, so this
+  //    is the last word) and re-applies on every re-render.
+  const parkCog = blk => {
+    if(!isGrid(blk) || !blk.getIcons) { return }
+    const mi = blk.getIcons().find(i =>
+      i.svgRoot && i.svgRoot.querySelector && i.svgRoot.querySelector('.io-mutator-gear'))
+    if(!mi || !mi.svgRoot) { return }
+    const h = baseGetSize.call(mi).height
+    mi.svgRoot.setAttribute('transform', `translate(14, ${Number((blk.height / 2 - h / 2).toFixed(2))})`)
+  }
+  ;['render', 'renderEfficiently'].forEach(name => {
+    if(typeof BS.prototype[name] !== 'function') { return }
+    const base = BS.prototype[name]
+    BS.prototype[name] = function(...args) {
+      const r = base.apply(this, args)
+      try { parkCog(this) } catch(_) { /* never let a cosmetic tweak break render */ }
+      return r
+    }
+  })
+})()
+
 // Close an open mutator popup when the user clicks anywhere outside it. Blockly
 // leaves the bubble open until you click the cog again (and there's no close
 // button), which feels sticky. We track the open mutator icon and dismiss it on
