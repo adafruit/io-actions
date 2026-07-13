@@ -1,6 +1,7 @@
 export default {
   name: 'Weather',
-  colour: 360,
+  colour: 205,
+  icon: 'weather',
 
   contents: [
     'weather'
