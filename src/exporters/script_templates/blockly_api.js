@@ -3,6 +3,7 @@ import toolbox from './toolbox.json'
 import initialWorkspace from './workspace.json'
 
 
+INJECT_OPTIONS.toolbox = INJECT_OPTIONS.toolbox || toolbox
 Blockly.defineBlocksWithJsonArray(blocks)
 
 let currentWorkspace
@@ -44,7 +45,7 @@ export const
       Blockly.VerticalFlyout.prototype.getFlyoutScale = () => 1
     }
 
-    const blocklyInjectOptions = buildInjectOptions(options)
+    const blocklyInjectOptions = buildInjectOptions(options.injectOptions)
 
     // do normal Blockly injection here
     currentWorkspace = Blockly.inject(blocklyDivId, blocklyInjectOptions)
@@ -134,15 +135,9 @@ export const
     return regenerators.json.codeToWorkspace(parsedJson)
   }
 
-const buildInjectOptions = options => {
-  const injectOptions = {
-    toolbox,
-    renderer: IO_RENDERER,
-    theme: ioModernTheme,
-    grid: { spacing: 26, length: 2, colour: '#c7ced8', snap: true },
-    move: { smoothScrolling: true },
-    ...options.injectOptions
-  }
-
-  return injectOptions
-}
+// combine the INJECT_OPTIONS constant built up within the exported scripts
+// with the optional runtime options given through inject(_, { injectOptions })
+const buildInjectOptions = ( options={} ) => ({
+  ...INJECT_OPTIONS,
+  ...options
+})
