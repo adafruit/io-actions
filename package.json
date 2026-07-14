@@ -27,6 +27,10 @@
     "export:app:to-rails": "npm run export:app && node --env-file-if-exists=.env copy_to_rails.js",
     "export:block-images": "node export.js blockImages",
 
+    "dev:app": "node dev_app.js",
+    "dev:app:watch": "node --watch-path=./app --watch-path=./src dev_app.js",
+    "dev:app:serve": "vite",
+
     "docs:export": "node export.js docs",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
