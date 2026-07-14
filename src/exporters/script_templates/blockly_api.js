@@ -98,15 +98,11 @@ export const
       throw error
     }
 
-    // Copy each category's resolved accent colour (Blockly sets it as the row's
-    // inline border-left) into a CSS custom property, so the sidebar stylesheet
-    // can paint the full-row hover fill in that exact colour.
-    setTimeout(() => {
-      document.querySelectorAll('.blocklyTreeRow').forEach(row => {
-        const accent = getComputedStyle(row).borderLeftColor
-        if(accent) { row.style.setProperty('--io-cat-colour', accent) }
+    if(AFTER_FIRST_RENDER_CALLBACKS.length) {
+      Blockly.renderManagement.finishQueuedRenders().then(() => {
+        AFTER_FIRST_RENDER_CALLBACKS.forEach(callback => callback())
       })
-    }, 0)
+    }
 
     return currentWorkspace
   },
