@@ -28,7 +28,7 @@ export default class ScriptExporter {
         ...givenOptions
       },
       scriptContents = [
-        "import Blockly from 'blockly'\n\n",
+        section("Imports & Constants", readFileSync(`./src/exporters/script_templates/imports_and_constants.js`)),
         section("Toolbox", exportToolboxJs(this.definitionSet.primaryToolbox())),
         section("Mixins", exportMixinJs(this.definitionSet.mixins)),
         section("Extensions", exportExtensionJs(this.definitionSet.extensions)),
