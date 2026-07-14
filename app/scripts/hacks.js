@@ -132,6 +132,8 @@ class IoRenderer extends Blockly.zelos.Renderer {
 }
 Blockly.blockRendering.register(IO_RENDERER, IoRenderer)
 
+INJECT_OPTIONS.renderer = IO_RENDERER
+
 // Brighter, more saturated block colours so the palette reads fresh and vibrant
 // instead of the muddy/dark defaults (this is what turns e.g. a dull brown into
 // a clean orange). Applies to every hue-based block colour NOT remapped below.
@@ -312,6 +314,8 @@ Blockly.config.connectingSnapRadius = 64
   })
 })()
 
+INJECT_OPTIONS.grid = { spacing: 26, length: 2, colour: '#c7ced8', snap: true }
+
 // Close an open mutator popup when the user clicks anywhere outside it. Blockly
 // leaves the bubble open until you click the cog again (and there's no close
 // button), which feels sticky. We track the open mutator icon and dismiss it on
@@ -408,6 +412,9 @@ const ioModernTheme = Blockly.Theme.defineTheme('ioModern', {
     markerColour: '#0a6cff',
   },
 })
+
+INJECT_OPTIONS.theme = ioModernTheme
+INJECT_OPTIONS.move = { smoothScrolling: true }
 
 // MakeCode-style category sidebar: roomier rows, larger readable labels, a bold
 // colour accent bar per category, and clear hover/selected states. Blockly keeps
