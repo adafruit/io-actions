@@ -151,49 +151,64 @@ Blockly.config.connectingSnapRadius = 64
 // inner square inset within the (rounded) field box, with a white gap between.
 // We extend FieldCheckbox so every checkbox in every block gets the new look.
 ;(() => {
+  const
+    CHECKBOX_SIZE = 22,
+    CHECKED_INSET = 5,
+    CHECKED_CORNER_RADIUS = 3,
+    CHECKED_SIZE = CHECKBOX_SIZE - (CHECKED_INSET*2),
+    CHECKED_X = CHECKED_INSET,
+    CHECKED_Y = CHECKED_INSET,
+    CHECKED_WIDTH = CHECKED_SIZE,
+    CHECKED_HEIGHT = CHECKED_SIZE
+
   const FC = Blockly.FieldCheckbox
-  const positionInner = field => {
-    const inner = field.ioInnerSquare_, box = field.borderRect_
-    if(!inner || !box) { return }
-    const
-      w = Number(box.getAttribute('width')) || 0,
-      h = Number(box.getAttribute('height')) || 0,
-      gap = 5,                                   // thick white border between box and fill
-      size = Math.max(0, Math.min(w, h) - gap * 2)
-    inner.setAttribute('width', size)
-    inner.setAttribute('height', size)
-    inner.setAttribute('x', (w - size) / 2)
-    inner.setAttribute('y', (h - size) / 2)
-    const v = field.getValue()
-    inner.style.display = (v === true || v === 'TRUE') ? '' : 'none'
+
+  // helper to hide/show our checked square based on the field's value
+  const renderCheckedStatus = field => {
+    if(!field.ioInnerSquare_) { return }
+
+    const value = field.getValue()
+    field.ioInnerSquare_.style.display = (value === true || value === 'TRUE') ? '' : 'none'
   }
 
+  // override updateSize_ to set checkbox dimensions
   // make the checkbox box square (default is a tall rectangle)
-  const baseSize = FC.prototype.updateSize_
+  const baseUpdateSize_ = FC.prototype.updateSize_
   FC.prototype.updateSize_ = function(margin) {
-    baseSize.call(this, margin)
-    const S = 22 // small square checkbox
-    this.size_.width = S
-    this.size_.height = S
-    if(this.borderRect_) {
-      this.borderRect_.setAttribute('width', String(S))
-      this.borderRect_.setAttribute('height', String(S))
-    }
+    baseUpdateSize_.call(this, margin)
+    this.size_.width = CHECKBOX_SIZE
+    this.size_.height = CHECKBOX_SIZE
+    this.borderRect_?.setAttribute('width', String(CHECKBOX_SIZE))
+    this.borderRect_?.setAttribute('height', String(CHECKBOX_SIZE))
   }
 
-  const baseInit = FC.prototype.initView
+  // override initView to hide old check and insert new check SVG
+  const baseInitView = FC.prototype.initView
   FC.prototype.initView = function() {
-    baseInit.call(this)
+    baseInitView.call(this)
     // hide the default checkmark glyph (kept for field sizing, just transparent)
     if(this.textElement_) { this.textElement_.style.fill = 'transparent' }
     this.ioInnerSquare_ = Blockly.utils.dom.createSvgElement(
-      'rect', { 'class': 'io-checkbox-inner', rx: 3, ry: 3 }, this.fieldGroup_)
-    positionInner(this)
+      'rect',
+      {
+        'class': 'io-checkbox-inner',
+        x: CHECKED_X,
+        y: CHECKED_Y,
+        width: CHECKED_WIDTH,
+        height: CHECKED_HEIGHT,
+        rx: CHECKED_CORNER_RADIUS,
+        ry: CHECKED_CORNER_RADIUS
+      },
+      this.fieldGroup_)
+    renderCheckedStatus(this)
   }
-  const baseRender = FC.prototype.render_
-  FC.prototype.render_ = function() { baseRender.call(this); positionInner(this) }
-  const baseUpdate = FC.prototype.doValueUpdate_
-  FC.prototype.doValueUpdate_ = function(v) { baseUpdate.call(this, v); positionInner(this) }
+
+  // override doValueUpdate_
+  const baseDoValueUpdate_ = FC.prototype.doValueUpdate_
+  FC.prototype.doValueUpdate_ = function(v) {
+    baseDoValueUpdate_.call(this, v)
+    renderCheckedStatus(this)
+  }
 })()
 
 // Long-form text: cap the multiline field's on-block PREVIEW to a few lines (so
