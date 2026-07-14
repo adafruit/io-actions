@@ -416,6 +416,19 @@ const ioModernTheme = Blockly.Theme.defineTheme('ioModern', {
 INJECT_OPTIONS.theme = ioModernTheme
 INJECT_OPTIONS.move = { smoothScrolling: true }
 
+
+AFTER_FIRST_RENDER_CALLBACKS.push(
+  () => {
+    // Copy each category's resolved accent colour (Blockly sets it as the row's
+    // inline border-left) into a CSS custom property, so the sidebar stylesheet
+    // can paint the full-row hover fill in that exact colour.
+    document.querySelectorAll('.blocklyTreeRow').forEach(row => {
+      const accent = getComputedStyle(row).borderLeftColor
+      if(accent) { row.style.setProperty('--io-cat-colour', accent) }
+    })
+  }
+)
+
 // MakeCode-style category sidebar: roomier rows, larger readable labels, a bold
 // colour accent bar per category, and clear hover/selected states. Blockly keeps
 // the per-category accent colour as an inline `border-left`, so we only restyle
