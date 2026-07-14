@@ -35,7 +35,8 @@ export default class ScriptExporter {
         section("Mutators", exportMutatorJs(this.definitionSet.mutators)),
         section("Generators", exportGeneratorJs(this.definitionSet.generators)),
         section("Regenerators", exportRegeneratorJs(this.definitionSet.regenerators)),
-        section("Blockly API Wrapper", readFileSync(`./src/exporters/script_templates/blockly_api.js`))
+        section("Custom Configuration", readFileSync('./app/scripts/hacks.js')),
+        section("Blockly API Wrapper", readFileSync(`./src/exporters/script_templates/blockly_api.js`)),
       ].join("")
 
     if(!options.toFile) {
