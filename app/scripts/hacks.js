@@ -233,18 +233,21 @@ Blockly.config.connectingSnapRadius = 64
     render_() {
       super.render_()
 
+      // subtract the X padding from the white rectangle width to
+      // get the full width of our text previews
+      const insetWidth = WHITE_W - (this.getConstants().FIELD_BORDER_RECT_X_PADDING * 2)
       // get all the <text> nodes super.render_() just created
       const textNodes = this.getSvgRoot().querySelectorAll("g.blocklyEditableText text")
 
       textNodes.forEach(node => {
         // skip nodes that fit inside the field already
-        if(node.getComputedTextLength() <= 200) { return }
+        if(node.getComputedTextLength() <= insetWidth) { return }
 
         // set textLength and lengthAdjust settings, which squeezes the text
         // the text is already truncated by the maxDisplayLength setting, so
         // if it's still too long, it shouldn't be by very much, so the squeezing
         // doesn't look too bad
-        node.setAttribute("textLength", WHITE_W - 20)
+        node.setAttribute("textLength", insetWidth)
         node.setAttribute("lengthAdjust", "spacingAndGlyphs")
       })
     }
@@ -286,9 +289,9 @@ Blockly.config.connectingSnapRadius = 64
     }
   }
 
-  // unregister the usual checkbox
+  // unregister the usual multiline input
   Blockly.fieldRegistry.unregister('field_multilinetext')
-  // register our checkbox with overrides
+  // register our multiline input with overrides
   Blockly.fieldRegistry.register('field_multilinetext', IoFieldMultilineInput)
 })()
 
@@ -301,19 +304,50 @@ Blockly.config.connectingSnapRadius = 64
     WHITE_W = 220, // the visible white text box stays this fixed width
     FIELD_W = 234  // ...just a bit wider, so the box sits fully inside the teal
                    //    wrapper (small teal margin) rather than filling it edge-to-edge
-  const widen = field => {
-    const parent = field.getSourceBlock && field.getSourceBlock()?.getParent?.()
-    if(parent && parent.type === 'text_template' && field.size_) {
-      field.size_.width = FIELD_W
-      if(field.borderRect_) { field.borderRect_.setAttribute('width', String(WHITE_W)) }
+  class IoFieldTextInput extends Blockly.FieldTextInput {
+    maxDisplayLength = 34
+
+    // override render_ to apply a better preview truncation algorithm
+    render_() {
+      super.render_()
+
+      // subtract the X padding from the white rectangle width to
+      // get the full width of our text previews
+      const insetWidth = WHITE_W - (this.getConstants().FIELD_BORDER_RECT_X_PADDING * 2)
+      // get all the <text> nodes super.render_() just created
+      const textNodes = this.getSvgRoot().querySelectorAll("g.blocklyEditableText text")
+
+      textNodes.forEach(node => {
+        // skip nodes that fit inside the field already
+        if(node.getComputedTextLength() <= insetWidth) { return }
+
+        // set textLength and lengthAdjust settings, which squeezes the text
+        // the text is already truncated by the maxDisplayLength setting, so
+        // if it's still too long, it shouldn't be by very much, so the squeezing
+        // doesn't look too bad
+        node.setAttribute("textLength", insetWidth)
+        node.setAttribute("lengthAdjust", "spacingAndGlyphs")
+      })
+    }
+
+    updateSize_(margin) {
+      super.updateSize_(margin)
+
+      // eary out if we don't have a size or we aren't parented by a text template block
+      if(!this.size_ || this.getSourceBlock?.()?.getParent?.()?.type !== 'text_template') {
+        return
+      }
+
+      this.size_.width = FIELD_W
+      this.borderRect_?.setAttribute('width', String(WHITE_W))
     }
   }
-  ;[Blockly.FieldTextInput].forEach(Cls => {
-    if(!Cls) { return }
-    const base = Cls.prototype.updateSize_
-    Cls.prototype.updateSize_ = function(margin) { base.call(this, margin); widen(this) }
-  })
-})()
+
+  // unregister the usual text input
+  Blockly.fieldRegistry.unregister('field_input')
+  // register our text input with overrides
+  Blockly.fieldRegistry.register('field_input', IoFieldTextInput)
+ })()
 
 // Replace the busy default mutator gear (reads as a snowflake at icon size) with
 // a clean, bold 8-lobe cog.
