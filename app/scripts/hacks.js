@@ -451,25 +451,45 @@ Blockly.config.connectingSnapRadius = 64
 // button), which feels sticky. We track the open mutator icon and dismiss it on
 // any pointerdown that isn't inside the popup (its bubble canvas) or on a cog.
 ;(() => {
-  const MI = Blockly.icons && Blockly.icons.MutatorIcon
-  if(!MI || !MI.prototype.setBubbleVisible) { return }
-  let openIcon = null
-  const baseSet = MI.prototype.setBubbleVisible
+  const MI = Blockly.icons?.MutatorIcon
+  if(!MI) { return }
+
+  // track which bubble is open
+  const openIcons = []
+
+  // hook setBubbleVisible to update our bubble tracker
+  const baseSetBubbleVisible = MI.prototype.setBubbleVisible
   MI.prototype.setBubbleVisible = function(visible) {
-    const ret = baseSet.call(this, visible)
-    if(visible) { openIcon = this }
-    else if(openIcon === this) { openIcon = null }
-    return ret
+    // add the icon when bubbles open
+    if(visible) {
+      openIcons.push(this)
+
+      // remove the icon when it closes, if present
+    } else if(openIcons.indexOf(this) > -1) {
+      openIcons.splice(openIcons.indexOf(this), 1)
+    }
+
+    return baseSetBubbleVisible.call(this, visible)
   }
+
   document.addEventListener('pointerdown', e => {
-    if(!openIcon) { return }
-    const t = e.target
-    if(!t || typeof t.closest !== 'function') { return }
+    // early out if we aren't tracking any open bubbles
+    if(!openIcons.length) { return }
+
+    // early out if we don't have an event target with a closest function
+    const { target } = e
+    if(typeof target?.closest !== 'function') { return }
+
     // inside the popup itself (bubble content + its mini-workspace/flyout)
-    if(t.closest('.blocklyBubbleCanvas')) { return }
+    if(target.closest('.blocklyBubbleCanvas')) { return }
+
     // on a mutator cog — let Blockly's own toggle handle open/close
-    if(t.closest('.blockly-icon-mutator')) { return }
-    openIcon.setBubbleVisible(false)
+    if(target.closest('.blockly-icon-mutator')) { return }
+
+    // iterate backwards since we remove items while we work
+    for(let i=openIcons.length-1; i>=0; i--) {
+      openIcons[i].setBubbleVisible(false)
+    }
   }, true)
 })()
 
