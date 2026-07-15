@@ -216,9 +216,9 @@ Blockly.config.connectingSnapRadius = 64
   Blockly.fieldRegistry.register('field_checkbox', IoCheckbox)
 })()
 
-// Long-form text: cap the multiline field's on-block PREVIEW to a few lines (so
-// a long email body can't blow up the block) while keeping the full value, and
-// give a roomy, resizable editor when the field is clicked.
+// Custom Multiline Text Field
+// - set minimum and maximum dimensions so they don't warp their parent blocks
+// - applies to previews and editors
 ;(() => {
   const PREVIEW_LINES = 4
   const
@@ -295,10 +295,8 @@ Blockly.config.connectingSnapRadius = 64
   Blockly.fieldRegistry.register('field_multilinetext', IoFieldMultilineInput)
 })()
 
-// Template text fields (the Subject / Body inside a text_template wrapper) get a
-// generous fixed minimum width, so they start "full length" and don't keep
-// resizing the block as you type. Scoped to text_template content so unrelated
-// short inputs (feed values, etc.) are unaffected.
+// Custom Text Input Field
+// - minimum and maximum dimensions to they don't warp their parent block
 ;(() => {
   const
     WHITE_W = 220, // the visible white text box stays this fixed width
