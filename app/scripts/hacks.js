@@ -220,30 +220,59 @@ Blockly.config.connectingSnapRadius = 64
 // a long email body can't blow up the block) while keeping the full value, and
 // give a roomy, resizable editor when the field is clicked.
 ;(() => {
-  const FMI = Blockly.FieldMultilineInput
-  if(!FMI) { return }
   const PREVIEW_LINES = 4
-  const baseInit = FMI.prototype.initView
-  FMI.prototype.initView = function() {
-    if(!isFinite(this.maxLines_)) { this.maxLines_ = PREVIEW_LINES }
-    baseInit.call(this)
+  const
+    WHITE_W = 220, // the visible white text box stays this fixed width
+    FIELD_W = 234  // ...just a bit wider, so the box sits fully inside the teal
+
+  class IoFieldMultilineInput extends Blockly.FieldMultilineInput {
+
+    initView() {
+      if(!isFinite(this.maxLines_)) { this.maxLines_ = PREVIEW_LINES }
+
+      super.initView()
+    }
+
+    widgetCreate_() {
+      const ta = super.widgetCreate_()
+      // Hard-cap the editor to the field's width so opening it never stretches the
+      // field (and the whole block). Only grow vertically; the textarea word-wraps.
+      const fw = this.borderRect_
+        ? Number(this.borderRect_.getAttribute('width'))
+        : (this.size_?.width)
+
+      Object.assign(ta.style, {
+        boxSizing: 'border-box',
+        ...(fw
+          ? { width: fw + 'px', maxWidth: fw + 'px' }
+          : {}
+        ),
+        minHeight: '160px',
+        maxHeight: '55vh',
+        resize: 'vertical',
+        overflow: 'auto',
+      })
+
+      return ta
+    }
+
+    updateSize_(margin) {
+      super.updateSize_(margin)
+
+      const parent = this.getSourceBlock?.()?.getParent?.()
+
+      if(parent?.type === 'text_template' && this.size_) {
+        this.size_.width = FIELD_W
+
+        this.borderRect_?.setAttribute('width', String(WHITE_W))
+      }
+    }
   }
-  const baseWidget = FMI.prototype.widgetCreate_
-  FMI.prototype.widgetCreate_ = function() {
-    const ta = baseWidget.call(this)
-    // Hard-cap the editor to the field's width so opening it never stretches the
-    // field (and the whole block). Only grow vertically; the textarea word-wraps.
-    const fw = this.borderRect_ ? Number(this.borderRect_.getAttribute('width')) : (this.size_ && this.size_.width)
-    Object.assign(ta.style, {
-      boxSizing: 'border-box',
-      ...(fw ? { width: fw + 'px', maxWidth: fw + 'px' } : {}),
-      minHeight: '160px',
-      maxHeight: '55vh',
-      resize: 'vertical',
-      overflow: 'auto',
-    })
-    return ta
-  }
+
+  // unregister the usual checkbox
+  Blockly.fieldRegistry.unregister('field_multilinetext')
+  // register our checkbox with overrides
+  Blockly.fieldRegistry.register('field_multilinetext', IoFieldMultilineInput)
 })()
 
 // Template text fields (the Subject / Body inside a text_template wrapper) get a
@@ -262,7 +291,7 @@ Blockly.config.connectingSnapRadius = 64
       if(field.borderRect_) { field.borderRect_.setAttribute('width', String(WHITE_W)) }
     }
   }
-  ;[Blockly.FieldTextInput, Blockly.FieldMultilineInput].forEach(Cls => {
+  ;[Blockly.FieldTextInput].forEach(Cls => {
     if(!Cls) { return }
     const base = Cls.prototype.updateSize_
     Cls.prototype.updateSize_ = function(margin) { base.call(this, margin); widen(this) }
