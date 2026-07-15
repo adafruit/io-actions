@@ -123,6 +123,8 @@ class IoRenderer extends Blockly.zelos.Renderer {
 Blockly.blockRendering.register(IO_RENDERER, IoRenderer)
 
 INJECT_OPTIONS.renderer = IO_RENDERER
+INJECT_OPTIONS.grid = { spacing: 26, length: 2, colour: '#c7ced8', snap: true }
+INJECT_OPTIONS.move = { smoothScrolling: true }
 
 ////////////////
 // Palette vibrancy + snapRadius.
@@ -443,7 +445,6 @@ Blockly.config.connectingSnapRadius = 64
   })
 })()
 
-INJECT_OPTIONS.grid = { spacing: 26, length: 2, colour: '#c7ced8', snap: true }
 
 // Close an open mutator popup when the user clicks anywhere outside it. Blockly
 // leaves the bubble open until you click the cog again (and there's no close
@@ -547,7 +548,6 @@ const ioModernTheme = Blockly.Theme.defineTheme('ioModern', {
 })
 
 INJECT_OPTIONS.theme = ioModernTheme
-INJECT_OPTIONS.move = { smoothScrolling: true }
 
 
 AFTER_FIRST_RENDER_CALLBACKS.push(
