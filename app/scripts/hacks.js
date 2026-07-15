@@ -226,46 +226,63 @@ Blockly.config.connectingSnapRadius = 64
     FIELD_W = 234  // ...just a bit wider, so the box sits fully inside the teal
 
   class IoFieldMultilineInput extends Blockly.FieldMultilineInput {
+    maxDisplayLength = 36
+    maxLines_ = PREVIEW_LINES
 
-    initView() {
-      if(!isFinite(this.maxLines_)) { this.maxLines_ = PREVIEW_LINES }
+    // override render_ to apply a better per-line truncation algorithm
+    render_() {
+      super.render_()
 
-      super.initView()
+      // get all the <text> nodes super.render_() just created
+      const textNodes = this.getSvgRoot().querySelectorAll("g.blocklyEditableText text")
+
+      textNodes.forEach(node => {
+        // skip nodes that fit inside the field already
+        if(node.getComputedTextLength() <= 200) { return }
+
+        // set textLength and lengthAdjust settings, which squeezes the text
+        // the text is already truncated by the maxDisplayLength setting, so
+        // if it's still too long, it shouldn't be by very much, so the squeezing
+        // doesn't look too bad
+        node.setAttribute("textLength", WHITE_W - 20)
+        node.setAttribute("lengthAdjust", "spacingAndGlyphs")
+      })
     }
 
+    // Force the text editor to match the field's width so opening it never stretches the
+    // field (and the whole block). Only grow vertically; the textarea word-wraps.
     widgetCreate_() {
-      const ta = super.widgetCreate_()
-      // Hard-cap the editor to the field's width so opening it never stretches the
-      // field (and the whole block). Only grow vertically; the textarea word-wraps.
-      const fw = this.borderRect_
-        ? Number(this.borderRect_.getAttribute('width'))
-        : (this.size_?.width)
+      const
+        // parent class produces an HTML <textarea>
+        textarea = super.widgetCreate_(),
+        // scale with the current zoom level
+        scale = this.workspace_.getScale(),
+        width = `${WHITE_W*scale}px`
 
-      Object.assign(ta.style, {
+      // modify its styles to affect the visuals we're after
+      Object.assign(textarea.style, {
         boxSizing: 'border-box',
-        ...(fw
-          ? { width: fw + 'px', maxWidth: fw + 'px' }
-          : {}
-        ),
-        minHeight: '160px',
+        width,
+        maxWidth: width,
+        minHeight: `${160*scale}px`,
         maxHeight: '55vh',
         resize: 'vertical',
         overflow: 'auto',
       })
 
-      return ta
+      return textarea
     }
 
     updateSize_(margin) {
       super.updateSize_(margin)
 
-      const parent = this.getSourceBlock?.()?.getParent?.()
-
-      if(parent?.type === 'text_template' && this.size_) {
-        this.size_.width = FIELD_W
-
-        this.borderRect_?.setAttribute('width', String(WHITE_W))
+      // eary out if we don't have a size or we aren't parented by a text template block
+      if(!this.size_ || this.getSourceBlock?.()?.getParent?.()?.type !== 'text_template') {
+        return
       }
+
+      this.size_.width = FIELD_W
+      this.borderRect_?.setAttribute('width', String(WHITE_W))
     }
   }
 
