@@ -493,43 +493,42 @@ Blockly.config.connectingSnapRadius = 64
   }, true)
 })()
 
-// Orphaned value blocks (a floating reporter like a bare number/text pill) are a
-// UX trap: the editable field fills the whole block, so a single click opens the
-// field editor, and the open editor swallows Delete/Backspace — leaving no way to
-// select the block to remove it. For a FLOATING value block (an output connection
-// that isn't plugged into anything), make the first click just SELECT it (so it
-// can be deleted or dragged away) and a second click open the editor. Blocks that
-// are plugged into a socket are untouched — they still edit on a single click.
+// require 2 clicks to edit a floating number block
+// the field for these blocks fills the entire block making it hard to
+// select them for deletion (the input swallow the DELETE/BACKSPACE keypress)
 ;(() => {
   const F = Blockly.Field
-  if(!F || !F.prototype.showEditor) { return }
+  if(!F?.prototype.showEditor) { return }
+
   // id of the floating block we've selected-but-not-yet-opened for editing
   let armed = null
 
-  const isFloating = block =>
-    block && block.outputConnection && !block.outputConnection.isConnected()
+  const isFloatingNumber = block =>
+    block?.type === "io_math_number" && !block.outputConnection?.isConnected()
 
-  const baseShow = F.prototype.showEditor
+  const baseShowEditor = F.prototype.showEditor
   F.prototype.showEditor = function(e) {
-    const block = this.getSourceBlock && this.getSourceBlock()
-    if(isFloating(block) && armed !== block.id) {
-      // first click: select so it can be deleted/moved, but don't trap the user
-      // inside the field editor.
+    const block = this.getSourceBlock?.()
+
+    // only works on floating math blocks that aren't already selected
+    if(isFloatingNumber(block) && armed !== block.id) {
+      // first click: selection still happens as normal
       armed = block.id
-      try { block.select() } catch(_) { /* older API — ignore */ }
-      return
+      return // returns without opening the editor
     }
+
+    // click didn't land on a block to arm, clear the arming switch and call through
     armed = null
-    return baseShow.call(this, e)
+    return baseShowEditor.call(this, e)
   }
 
   // Re-arm whenever selection leaves the armed block (clicking empty canvas or a
   // different block), so returning to it again requires the select-first click.
-  const setSelected = Blockly.common && Blockly.common.setSelected
-  if(setSelected) {
+  const baseSetSelected = Blockly.common?.setSelected
+  if(baseSetSelected) {
     Blockly.common.setSelected = function(newSel) {
       if(!newSel || (armed && newSel.id !== armed)) { armed = null }
-      return setSelected.call(this, newSel)
+      return baseSetSelected.call(this, newSel)
     }
   }
 })()
