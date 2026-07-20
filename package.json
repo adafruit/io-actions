@@ -13,6 +13,10 @@
   "scripts": {
     "start": "node dev_server.js",
 
+    "dev:app": "node dev_app.js",
+    "dev:app:watch": "node --watch-path=./app --watch-path=./src dev_app.js",
+    "dev:app:serve": "vite",
+
     "test": "node --test",
     "test-watch": "node --test --watch",
     "test-snapshots": "node --test test/app/blocks/snapshots/block_snapshots_test.js",
