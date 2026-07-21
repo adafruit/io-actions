@@ -164,7 +164,7 @@ Blockly.config.connectingSnapRadius = 64
     CHECKED_HEIGHT = CHECKED_SIZE
 
   // extend the built-in checkbox class directly
-  class IoCheckbox extends Blockly.FieldCheckbox {
+  class IoFieldCheckbox extends Blockly.FieldCheckbox {
 
     // helper to hide/show our checked square based on the field's value
     renderCheckedStatus() {
@@ -215,7 +215,7 @@ Blockly.config.connectingSnapRadius = 64
   // unregister the usual checkbox
   Blockly.fieldRegistry.unregister('field_checkbox')
   // register our checkbox with overrides
-  Blockly.fieldRegistry.register('field_checkbox', IoCheckbox)
+  Blockly.fieldRegistry.register('field_checkbox', IoFieldCheckbox)
 })()
 
 // Custom Multiline Text Field
