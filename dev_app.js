@@ -20,6 +20,7 @@ await exportTo(destination, definitions, exportItem => {
   exportItem.workspace("workspace.json")
   exportItem.blocks("blocks.json")
   exportItem.script("blockly_app.js")
+  exportItem.blockSaveAsMenuItem()
 })
 
 console.log(`[dev_app] exported standalone app -> ${destination}/  (${new Date().toLocaleTimeString()})`)
