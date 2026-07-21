@@ -1,5 +1,8 @@
 import Blockly from 'blockly'
 
+/* LOCAL->> */
+const ALL_CSS = ""
+/* <<-LOCAL */
 
 // right-click menu items
 export const imageExportRegistryItems = [
