@@ -5,7 +5,7 @@ export const
       shadow: {
         type: 'io_text',
         fields: {
-          TEXT: '                      '
+          TEXT: ''
         }
       }
     }}
@@ -16,7 +16,7 @@ export const
       shadow: {
         type: 'io_text_multiline',
         fields: {
-          TEXT: "                     \n" // FIXME: code exporter doesn't expect newlines
+          TEXT: ""
         }
       }
     }}
