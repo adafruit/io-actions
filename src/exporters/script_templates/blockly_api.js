@@ -24,6 +24,18 @@ const
 
     // add all specified items to the registry
     register.forEach(registryItem => {
+      // grab existing item at registry id
+      const existingItem = registry.getItem(registryItem.id)
+
+      // early out if this exact item is already registered
+      if(existingItem === registryItem) { return }
+
+      // deregister the existing item if it exists
+      if(existingItem) {
+        registry.unregister(registryItem.id)
+      }
+
+      // register the new item
       registry.register(registryItem)
     })
   }
