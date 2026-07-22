@@ -472,7 +472,7 @@ Blockly.config.connectingSnapRadius = 64
     return baseSetBubbleVisible.call(this, visible)
   }
 
-  document.addEventListener('pointerdown', e => {
+  const closeOpenBubblesOnOutsideClick = e => {
     // early out if we aren't tracking any open bubbles
     if(!openIcons.length) { return }
 
@@ -490,7 +490,13 @@ Blockly.config.connectingSnapRadius = 64
     for(let i=openIcons.length-1; i>=0; i--) {
       openIcons[i].setBubbleVisible(false)
     }
-  }, true)
+  }
+
+  // defer document listeners until blockly is loaded, document is not
+  // available during SSR so this will block vitepress build if called immediately
+  AFTER_FIRST_RENDER_CALLBACKS.push(() => {
+    document.addEventListener('pointerdown', closeOpenBubblesOnOutsideClick, true)
+  })
 })()
 
 // require 2 clicks to edit a floating number block
