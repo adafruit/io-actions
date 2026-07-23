@@ -139,8 +139,8 @@ Blockly.utils.colour.setHsvValue(0.70)
 // Make connections more forgiving: a larger snap radius so blocks — especially
 // wide ones like the weather/comparison combos — don't have to be dropped
 // pixel-perfect to snap into an input.
-Blockly.config.snapRadius = 64
-Blockly.config.connectingSnapRadius = 64
+Blockly.config.snapRadius = 128
+Blockly.config.connectingSnapRadius = 128
 
 
 ////////////////
