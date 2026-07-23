@@ -281,10 +281,8 @@ Blockly.config.connectingSnapRadius = 128
     updateSize_(margin) {
       super.updateSize_(margin)
 
-      // eary out if we don't have a size or we aren't parented by a text template block
-      if(!this.size_ || this.getSourceBlock?.()?.getParent?.()?.type !== 'text_template') {
-        return
-      }
+      // eary out if we don't have a size
+      if(!this.size_) { return }
 
       this.size_.width = FIELD_W
       this.borderRect_?.setAttribute('width', String(WHITE_W))
@@ -333,8 +331,8 @@ Blockly.config.connectingSnapRadius = 128
     updateSize_(margin) {
       super.updateSize_(margin)
 
-      // eary out if we don't have a size or we aren't parented by a text template block
-      if(!this.size_ || this.getSourceBlock?.()?.getParent?.()?.type !== 'text_template') {
+      // eary out if we don't have a size or we're a number block
+      if(!this.size_ || this.getSourceBlock?.()?.type === 'io_math_number') {
         return
       }
 
