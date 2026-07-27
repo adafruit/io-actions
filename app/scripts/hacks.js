@@ -305,26 +305,40 @@ Blockly.config.connectingSnapRadius = 128
   class IoFieldTextInput extends Blockly.FieldTextInput {
     maxDisplayLength = 34
 
+    // memoize a math operation so it isn't repeated every render
+    getInsetWidth() {
+      if(!this.insetWidth) {
+        // subtract the X padding from the white rectangle width to
+        // get the full width of our text previews
+        this.insetWidth = WHITE_W - (this.getConstants().FIELD_BORDER_RECT_X_PADDING * 2)
+      }
+
+      return this.insetWidth
+    }
+
     // override render_ to apply a better preview truncation algorithm
     render_() {
       super.render_()
 
-      // subtract the X padding from the white rectangle width to
-      // get the full width of our text previews
-      const insetWidth = WHITE_W - (this.getConstants().FIELD_BORDER_RECT_X_PADDING * 2)
-      // get all the <text> nodes super.render_() just created
-      const textNodes = this.getSvgRoot().querySelectorAll("g.blocklyEditableText text")
+      const
+        INSET_WIDTH = this.getInsetWidth(),
+        // get all the <text> nodes super.render_() just created
+        textNodes = this.getSvgRoot().querySelectorAll("g.blocklyEditableText text")
 
       textNodes.forEach(node => {
-        // skip nodes that fit inside the field already
-        if(node.getComputedTextLength() <= insetWidth) { return }
+        // must remove length-affected attributes before computing text length
+        node.removeAttribute("textLength")
+        node.removeAttribute("lengthAdjust")
 
-        // set textLength and lengthAdjust settings, which squeezes the text
-        // the text is already truncated by the maxDisplayLength setting, so
-        // if it's still too long, it shouldn't be by very much, so the squeezing
-        // doesn't look too bad
-        node.setAttribute("textLength", insetWidth)
-        node.setAttribute("lengthAdjust", "spacingAndGlyphs")
+        if(node.getComputedTextLength() >= INSET_WIDTH) {
+          // set textLength and lengthAdjust settings, which squeezes the text
+          // the text is already truncated by the maxDisplayLength setting, so
+          // if it's still too long, it shouldn't be by very much, so the squeezing
+          // doesn't look too bad
+          node.setAttribute("textLength", INSET_WIDTH)
+          node.setAttribute("lengthAdjust", "spacingAndGlyphs")
+
+        }
       })
     }
 
