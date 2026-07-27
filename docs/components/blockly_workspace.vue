@@ -2,7 +2,7 @@
   import { onMounted, onUnmounted } from 'vue'
   import { dispose, inject } from "../blockly/blockly.js"
   import initialWorkspace from "../blockly/workspace.json"
-  import { imageExportRegistryItems } from '#src/image_exporter.js'
+  import { imageExportRegistryItems } from '../blockly/image_exporter.js'
 
 
   const

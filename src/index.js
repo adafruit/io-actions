@@ -10,7 +10,7 @@ import { inject, addExtensionData, jsonToWorkspace, workspaceToJson } from '../e
 // import { inject, addExtensionData, jsonToWorkspace, workspaceToJson } from './blockly_app.js'
 
 import { clear, load, save } from './serialization'
-import { imageExportRegistryItems } from './image_exporter.js'
+import { imageExportRegistryItems } from '../export/image_exporter.js'
 
 import './index.css'
 

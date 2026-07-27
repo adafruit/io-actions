@@ -5,7 +5,7 @@ export default {
   type: "air_quality",
   bytecodeKey: "airQuality",
   name: "Air Quality",
-  colour: 360,
+  colour: 155,
   ioPlus: true,
   description: "Fetch current or forecast air quality conditions at the specified location using Open-Meteo Air Quality API.",
 

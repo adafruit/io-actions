@@ -6,7 +6,7 @@ import mutator from "./hour_mutator.js"
 export default {
   type: "one_hour",
   name: "One Hour",
-  colour: 30,
+  colour: '#8A2E52',
   description: "Runs during a particular hour of the day.",
 
   connections: {

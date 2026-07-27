@@ -6,7 +6,7 @@ import mutator from "./day_mutator.js"
 export default {
   type: "one_day",
   name: "One Day",
-  colour: 30,
+  colour: '#8A2E52',
   description: `
     Runs during a particular day of the month.
 

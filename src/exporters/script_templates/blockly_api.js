@@ -3,6 +3,7 @@ import toolbox from './toolbox.json'
 import initialWorkspace from './workspace.json'
 
 
+INJECT_OPTIONS.toolbox = INJECT_OPTIONS.toolbox || toolbox
 Blockly.defineBlocksWithJsonArray(blocks)
 
 let currentWorkspace
@@ -23,6 +24,18 @@ const
 
     // add all specified items to the registry
     register.forEach(registryItem => {
+      // grab existing item at registry id
+      const existingItem = registry.getItem(registryItem.id)
+
+      // early out if this exact item is already registered
+      if(existingItem === registryItem) { return }
+
+      // deregister the existing item if it exists
+      if(existingItem) {
+        registry.unregister(registryItem.id)
+      }
+
+      // register the new item
       registry.register(registryItem)
     })
   }
@@ -44,7 +57,7 @@ export const
       Blockly.VerticalFlyout.prototype.getFlyoutScale = () => 1
     }
 
-    const blocklyInjectOptions = buildInjectOptions(options)
+    const blocklyInjectOptions = buildInjectOptions(options.injectOptions)
 
     // do normal Blockly injection here
     currentWorkspace = Blockly.inject(blocklyDivId, blocklyInjectOptions)
@@ -97,6 +110,12 @@ export const
       throw error
     }
 
+    if(AFTER_FIRST_RENDER_CALLBACKS.length) {
+      Blockly.renderManagement.finishQueuedRenders().then(() => {
+        AFTER_FIRST_RENDER_CALLBACKS.forEach(callback => callback())
+      })
+    }
+
     return currentWorkspace
   },
 
@@ -124,11 +143,9 @@ export const
     return regenerators.json.codeToWorkspace(parsedJson)
   }
 
-const buildInjectOptions = options => {
-  const injectOptions = {
-    toolbox,
-    ...options.injectOptions
-  }
-
-  return injectOptions
-}
+// combine the INJECT_OPTIONS constant built up within the exported scripts
+// with the optional runtime options given through inject(_, { injectOptions })
+const buildInjectOptions = ( options={} ) => ({
+  ...INJECT_OPTIONS,
+  ...options
+})

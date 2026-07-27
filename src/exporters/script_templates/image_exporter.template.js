@@ -1,7 +1,8 @@
 import Blockly from 'blockly'
 
-import BLOCKLY_CSS from "#src/blockly_css.js"
-
+/* LOCAL->> */
+const ALL_CSS = ""
+/* <<-LOCAL */
 
 // right-click menu items
 export const imageExportRegistryItems = [
@@ -53,7 +54,9 @@ const blockToSVGBlob = (blockId) => {
     heightAttr = `height="${height}"`,
     viewBoxAttr = `viewBox="${x} ${y} ${width} ${height}"`,
     // all css active on the svg
-    css = "<style>\n" + BLOCKLY_CSS + "\n</style>",
+    css = `<style>
+  ${ ALL_CSS }
+</style>`,
     // build a new svg of just this block
     xml =
     `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" ${widthAttr} ${heightAttr} ${viewBoxAttr}>

@@ -3,7 +3,7 @@ export default {
   type: "when_data_matching_state",
   bytecodeKey: "whenDataMatchStateChanged",
   name: "Data Match Changing",
-  colour: 30,
+  colour: '#8A2E52',
   inputsInline: true,
   description: "Advanced trigger that watches for changes in how your feed data matches a condition over time. Unlike basic triggers that just check if data equals a value, this compares the current data point with the previous one to detect when conditions START being true, STOP being true, or CONTINUE being true. Perfect for detecting state changes like 'temperature just went above 80°' or 'door just closed after being open'.",
   connections: {

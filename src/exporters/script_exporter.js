@@ -28,14 +28,16 @@ export default class ScriptExporter {
         ...givenOptions
       },
       scriptContents = [
-        "import Blockly from 'blockly'\n\n",
+        section("Imports & Constants", readFileSync(`./src/exporters/script_templates/imports_and_constants.js`)),
         section("Toolbox", exportToolboxJs(this.definitionSet.primaryToolbox())),
         section("Mixins", exportMixinJs(this.definitionSet.mixins)),
         section("Extensions", exportExtensionJs(this.definitionSet.extensions)),
         section("Mutators", exportMutatorJs(this.definitionSet.mutators)),
         section("Generators", exportGeneratorJs(this.definitionSet.generators)),
         section("Regenerators", exportRegeneratorJs(this.definitionSet.regenerators)),
-        section("Blockly API Wrapper", readFileSync(`./src/exporters/script_templates/blockly_api.js`))
+        section("Styles", `Blockly.Css.register(\`${ readFileSync('./app/styles/app.css') }\`)`),
+        section("Custom Configuration", readFileSync('./app/scripts/hacks.js')),
+        section("Blockly API Wrapper", readFileSync(`./src/exporters/script_templates/blockly_api.js`)),
       ].join("")
 
     if(!options.toFile) {
