@@ -147,4 +147,5 @@
   /* keep Blockly's computed radius so the edit box matches the field/block
       silhouette (a pill on reporter blocks) instead of poking out as a rect */
   color: #2e3440 !important;
+  background-color: #fff;
 }
