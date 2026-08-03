@@ -1,4 +1,10 @@
 export const replaceDropdownOptions = function(fieldKey, newOptions) {
+  // early out with error message if called without any options (new FieldDropdown below would throw)
+  if(!newOptions?.length) {
+    console.error(`[mixins.relaceDropdownOptions] No options given for ${this.type} block.`)
+    return
+  }
+
   const
     oldValidator = this.getField(fieldKey).getValidator(),
     oldValue = this.getFieldValue(fieldKey)

@@ -3,8 +3,9 @@
 export const populateFeedDropdown = ({ block, data, Blockly }) => {
   const { feedOptions } = data
 
-  if(!feedOptions) {
-    console.error(`[extensions.populateFeedDropdown] No feedOptions found in extension data.`)
+  if(!feedOptions?.length) {
+    block.replaceDropdownOptions("FEED_KEY", [[ "No feeds available! Visit Feeds", "" ]])
+    block.setEnabled(false)
     return
   }
 
