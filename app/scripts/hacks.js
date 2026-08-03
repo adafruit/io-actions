@@ -460,34 +460,10 @@ Blockly.config.connectingSnapRadius = 128
 
 // Close an open mutator popup when the user clicks anywhere outside it. Blockly
 // leaves the bubble open until you click the cog again (and there's no close
-// button), which feels sticky. We track the open mutator icon and dismiss it on
-// any pointerdown that isn't inside the popup (its bubble canvas) or on a cog.
+// button), which feels sticky. We listen for pointerdowns outside any popup and
+// close all open popups.
 ;(() => {
-  const MI = Blockly.icons?.MutatorIcon
-  if(!MI) { return }
-
-  // track which bubble is open
-  const openIcons = []
-
-  // hook setBubbleVisible to update our bubble tracker
-  const baseSetBubbleVisible = MI.prototype.setBubbleVisible
-  MI.prototype.setBubbleVisible = function(visible) {
-    // add the icon when bubbles open
-    if(visible) {
-      openIcons.push(this)
-
-      // remove the icon when it closes, if present
-    } else if(openIcons.indexOf(this) > -1) {
-      openIcons.splice(openIcons.indexOf(this), 1)
-    }
-
-    return baseSetBubbleVisible.call(this, visible)
-  }
-
   const closeOpenBubblesOnOutsideClick = e => {
-    // early out if we aren't tracking any open bubbles
-    if(!openIcons.length) { return }
-
     // early out if we don't have an event target with a closest function
     const { target } = e
     if(typeof target?.closest !== 'function') { return }
@@ -498,10 +474,11 @@ Blockly.config.connectingSnapRadius = 128
     // on a mutator cog — let Blockly's own toggle handle open/close
     if(target.closest('.blockly-icon-mutator')) { return }
 
-    // iterate backwards since we remove items while we work
-    for(let i=openIcons.length-1; i>=0; i--) {
-      openIcons[i].setBubbleVisible(false)
-    }
+    // close all open bubbles:
+    Blockly.getMainWorkspace().getAllBlocks()  // all blocks in the workspace
+      .flatMap(b => b.icons || [])             // grab the block icons
+      .filter(i => i.bubbleIsVisible?.())      // filter out icons invisible bubbles or no bubble viz method
+      .forEach(i => i.setBubbleVisible(false)) // close remainder
   }
 
   // defer document listeners until blockly is loaded, document is not
