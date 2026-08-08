@@ -59,7 +59,7 @@ export default {
           // @ts-ignore re-run the things that use the data
           block.refreshPropertyOptions({})
         })
-      }, 1)
+      }, 5)
     }
   },
 
@@ -116,6 +116,8 @@ export default {
       ### \`Location\`
       The list of weather locations defined in the Weather Power-Up. Select
       the location you would like weather information for.
+
+      Create locations via Power-Ups => Weather ([https://io.adafruit.com/services/weather](https://io.adafruit.com/services/weather))
 
       ### \`Forecast\` and \`Metric\`
       A list a weather forecasts to choose from. The weather metrics available
