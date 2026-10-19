@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!-- blank favicon so the browser doesn't log a 404 (tests fail on console errors) -->
+    <link rel="icon" href="data:," />
+    <title>io-actions e2e harness</title>
+
+    <style>
+      html, body {
+        margin: 0;
+        height: 100%;
+      }
+
+      #blocklyDiv {
+        position: absolute;
+        inset: 0;
+      }
+    </style>
+
+    <script type="module" src="./harness.js"></script>
+  </head>
+
+  <body>
+    <div id="blocklyDiv"></div>
+  </body>
+</html>
