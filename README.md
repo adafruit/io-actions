@@ -72,6 +72,53 @@ npm run docs:export
 ```
 
 
+## Testing
+
+Unit tests and block definition snapshots:
+```sh
+npm test
+```
+
+### End-to-end tests
+
+The Playwright suite in `/e2e` loads the exported app in Chromium, injected
+the same way io-rails does it (`e2e/fixture/harness.js`):
+
+- `e2e/behavior/`: interaction tests (toolbox and flyouts, editing fields,
+  mutator popups, disabling rules, keyboard, context menu, bytecode round-trips)
+- `e2e/visual/`: screenshot comparisons against committed baselines in
+  `e2e/__screenshots__/`: every block in its default state, plus flyouts, open
+  popups and editors, checkbox/disabled/selected states and long values
+
+Every test also fails on browser console warnings or errors (which is how
+Blockly reports deprecated APIs) and on requests to external hosts.
+
+Screenshots depend on fonts and rendering libraries, so the suite runs inside
+the official Playwright Docker image (Docker or Podman required). CI uses the
+same image:
+```sh
+npm run test-e2e                          # run everything in the container
+npm run test-e2e -- --project=visual      # pass any args to `playwright test`
+npm run test-e2e-report                   # open the HTML report with visual diffs
+```
+
+When a visual change is intentional, update the baselines and review the image
+diffs in your PR:
+```sh
+npm run test-e2e-update-snapshots
+```
+
+For quick iteration on behavior tests without Docker (visual tests skip
+themselves outside the container):
+```sh
+npx playwright install chromium-headless-shell   # once
+npm run test-e2e-local
+```
+
+When upgrading `@playwright/test`, pin the exact version and update the image
+tag in `.github/workflows/test.yml` to match (a unit test checks this).
+
+
 ## Application Files
 
 Our custom Blockly application lives at `/app`
