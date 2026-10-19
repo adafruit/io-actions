@@ -93,7 +93,7 @@
 
 /* Checkbox: hide the default tick; the FieldCheckbox extension draws a
     colour-filled inner square (with a white gap) inside the rounded box. */
-.blocklyCheckbox { fill: transparent !important; }
+.blocklyCheckboxField > text { fill: transparent !important; }
 .io-checkbox-inner { fill: #0a6cff !important; }
 
 /* Dropdown menu selected-item checkmark. Blockly draws it from a bitmap sprite

@@ -10,7 +10,7 @@ export default {
     workspace.registerButtonCallback('new-variable', () => {
       const newVariableName = prompt("What is your variable called?")
       if(newVariableName) {
-        workspace.createVariable(newVariableName)
+        workspace.getVariableMap().createVariable(newVariableName)
       }
     })
 
