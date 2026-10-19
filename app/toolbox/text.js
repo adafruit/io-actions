@@ -1,6 +1,7 @@
 export default {
   name: 'Text',
-  colour: 180,
+  colour: 185,
+  icon: 'text',
   contents: [
     "io_text",
     "io_text_multiline",

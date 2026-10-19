@@ -1,6 +1,7 @@
 export default {
   name: 'Variables',
   colour: 240,
+  icon: 'variables',
   usesBlocks: [ 'io_variables_set', 'io_variables_get' ],
   // called each time the category is opened
   callback: workspace => {

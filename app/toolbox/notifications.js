@@ -1,6 +1,7 @@
 export default {
   name: 'Notifications',
-  colour: 360,
+  colour: 0,
+  icon: 'notifications',
 
   contents: [
     'action_email',

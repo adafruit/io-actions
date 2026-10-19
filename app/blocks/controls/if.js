@@ -5,7 +5,7 @@ export default {
   bytecodeKey: "conditional",
   name: "Conditional",
   description: "Create smart decision-making logic for your IoT Actions using if/then/else statements. Perfect for building automation like 'if temperature > 80°F then turn on fan, else if temperature < 60°F then turn on heater, else turn off both'. Essential for creating intelligent responses based on sensor data, time conditions, or any combination of factors.",
-  colour: 60,
+  colour: 270,
   connections: {
     mode: "statement",
     output: "expression",

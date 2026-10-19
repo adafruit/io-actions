@@ -11,7 +11,7 @@ export default {
   type: "weather",
   bytecodeKey: "weather",
   name: "Weather",
-  colour: 360,
+  colour: 205,
   ioPlus: true,
   description: "Fetch the current or forecast weather conditions at the specified location.",
 

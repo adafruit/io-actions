@@ -5,7 +5,7 @@ import mutator from './minute_mutator.js'
 export default {
   type: "all_minutes",
   name: "All Minutes",
-  colour: 30,
+  colour: '#8A2E52',
   description: "Runs every minute of the hour.",
 
   connections: {

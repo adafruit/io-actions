@@ -6,6 +6,7 @@ import WorkspaceAllBlocksExporter from "./workspace_all_blocks_exporter.js"
 import SidebarExporter from "./sidebar_exporter.js"
 import BlockIndexExporter from "./block_index_exporter.js"
 import BlockPageExporter from "./block_page_exporter.js"
+import BlockSaveAsMenuItemExporter from "./block_save_as_menu_item_exporter.js"
 
 
 /**
@@ -29,6 +30,8 @@ export const exportTo = async (destination, definitions, exportFunc) => {
     sidebar: new SidebarExporter(definitions, destination).exportToFile,
     blockIndex: new BlockIndexExporter(definitions, destination).exportToFile,
     blockPages: new BlockPageExporter(definitions, destination).exportToFile,
+    // utility exporters
+    blockSaveAsMenuItem: new BlockSaveAsMenuItemExporter(definitions, destination).exportToFile,
   }
 
   exportFunc(exporters)

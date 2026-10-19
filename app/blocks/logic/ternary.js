@@ -3,7 +3,7 @@ export default {
   disabled: true,
   type: 'io_logic_ternary',
   name: "Ternary",
-  colour: 60,
+  colour: 270,
   description: "Simpler conditional, inline if/then/else",
 
   template: `

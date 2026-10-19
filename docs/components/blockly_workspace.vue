@@ -2,7 +2,7 @@
   import { onMounted, onUnmounted } from 'vue'
   import { dispose, inject } from "../blockly/blockly.js"
   import initialWorkspace from "../blockly/workspace.json"
-  import { imageExportRegistryItems } from '#src/image_exporter.js'
+  import { imageExportRegistryItems } from '../blockly/image_exporter.js'
 
 
   const
@@ -100,7 +100,7 @@
 
   /* category labels need a color style or
      dark mode will bleed into them unfavorably */
-  .blocklyTreeLabel {
+  .blocklyToolboxCategoryLabel {
     color: #000;
   }
 

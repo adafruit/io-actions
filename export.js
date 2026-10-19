@@ -51,6 +51,7 @@ const
         exportItem.sidebar("blocks/_blocks_sidebar.json")
         exportItem.blockIndex("blocks/index.md")
         exportItem.blockPages()
+        exportItem.blockSaveAsMenuItem("blockly/image_exporter.js")
         // exportItem.blockExamples(block => "blocks/${block.definitionPath}/examples.json")
       })
     },
@@ -88,6 +89,7 @@ const
         write(`${tmpAppDestination}/toolbox.json`, "null")
         exportItem.blocks("blocks.json")
         exportItem.script("blockly_app.js")
+        exportItem.blockSaveAsMenuItem()
         // TODO: make a DocumentExporter for generating html wrappers
         copyFileSync("src/exporters/document_templates/blockly_workspace.template.html", `${tmpAppDestination}/index.html`)
       })

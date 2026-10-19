@@ -3,7 +3,7 @@ export default {
   type: "on_schedule",
   bytecodeKey: "onSchedule",
   name: "Schedule",
-  colour: 30,
+  colour: '#8A2E52',
   description: "Create powerful time-based automation that runs your Actions on a schedule - from simple daily reminders to complex patterns like 'every 15 minutes during weekdays' or 'first Monday of each quarter'. Works like a smart alarm clock for your IoT devices, automatically triggering actions without any manual intervention. Perfect for turning lights on/off, sending regular reports, or controlling devices based on time patterns.",
 
   connections: {

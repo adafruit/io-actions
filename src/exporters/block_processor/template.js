@@ -104,6 +104,11 @@ const processTemplate = blockDefinition => {
             text: fieldData.text || fieldData.multiline_text || fieldData.label || (isTextType ? "" : undefined),
             spellcheck: fieldData.spellcheck,
             value: fieldData.value,
+            // image fields (field_image): an SVG/PNG icon shown inline in the block
+            src: fieldData.image?.src,
+            width: fieldData.image?.width,
+            height: fieldData.image?.height,
+            alt: fieldData.image?.alt,
           })
 
         } else {
@@ -164,6 +169,7 @@ const fieldTypeFromProperties = fieldData => {
 
   finalType = (fieldData.options && "field_dropdown")
     || (includes(fieldKeys, "checked") && "field_checkbox")
+    || (includes(fieldKeys, "image") && "field_image")
     || (includes(fieldKeys, "text") && "field_input")
     || (includes(fieldKeys, "label") && "field_label")
     || (includes(fieldKeys, "serializable_label") && "field_label_serializable")

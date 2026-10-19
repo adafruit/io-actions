@@ -1,6 +1,4 @@
 import * as Blockly from 'blockly'
-import { registerFieldMultilineInput } from '@blockly/field-multilineinput'
-registerFieldMultilineInput()
 import { compact, filter } from 'lodash-es'
 
 // for building static:
@@ -12,7 +10,7 @@ import { inject, addExtensionData, jsonToWorkspace, workspaceToJson } from '../e
 // import { inject, addExtensionData, jsonToWorkspace, workspaceToJson } from './blockly_app.js'
 
 import { clear, load, save } from './serialization'
-import { imageExportRegistryItems } from './image_exporter.js'
+import { imageExportRegistryItems } from '../export/image_exporter.js'
 
 import './index.css'
 

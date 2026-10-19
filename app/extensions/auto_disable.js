@@ -1,6 +1,6 @@
 // makes disabled blocks
 export const autoDisable = ({ block }) => {
-  block.disabled = true
+  block.setDisabledReason(true, 'auto_disable')
 }
 
 export default autoDisable

@@ -2,7 +2,7 @@
 export default {
   type: 'io_logic_boolean',
   name: "Boolean",
-  colour: 60,
+  colour: 270,
   description: "A simple true or false value for building logic conditions and controlling digital outputs. Use 'true' to turn things on, enable conditions, or represent 'yes' states. Use 'false' to turn things off, disable conditions, or represent 'no' states. Essential for controlling relays, LEDs, alarms, and any on/off IoT devices.",
   connections: {
     mode: "value",

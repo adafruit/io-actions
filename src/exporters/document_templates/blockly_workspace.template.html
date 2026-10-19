@@ -6,7 +6,7 @@
 
     <script type="module">
       import { inject } from './blockly_app.js'
-      import { imageExportRegistryItems } from '#src/image_exporter.js'
+      import { imageExportRegistryItems } from './image_exporter.js'
 
       // expose a handle for Cypress to get ahold of the blockly workspace
       window.blocklyWorkspace = inject("blocklyDiv", {

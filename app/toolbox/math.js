@@ -1,6 +1,7 @@
 export default {
   name: 'Math',
   colour: 120,
+  icon: 'math',
   contents: [
     "io_math_number",
     // "math_range", // may expose this later

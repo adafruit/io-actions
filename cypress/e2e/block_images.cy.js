@@ -10,8 +10,9 @@ describe("Block Images", () => {
         const blockToEnable = win.blocklyWorkspace.getBlockById(`block-type-${blockType}`)
         // disable the auto-disable behavior
         blockToEnable.autoDisable = false
-        // enable the block
-        blockToEnable.setEnabled(true)
+        // enable the block by clearing every disabled reason
+        blockToEnable.getDisabledReasons().forEach(reason =>
+          blockToEnable.setDisabledReason(false, reason))
         // ready to take a picture now
       })
     })

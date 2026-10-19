@@ -2,7 +2,7 @@
 export default {
   type: "hour_settings",
   name: "Hour Settings",
-  colour: 30,
+  colour: '#8A2E52',
   description: "How would you like to specify hours of the day for your schedule?",
 
   connections: {},

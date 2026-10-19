@@ -17,7 +17,7 @@ export default {
 
 
   template: `
-    🔗 Webhook |CENTER
+    %ICON Webhook |CENTER
     URL: %URL
     Form Encode? %FORM_ENCODE
     POST Body: %BODY
@@ -41,6 +41,14 @@ export default {
   },
 
   fields: {
+    ICON: {
+      image: {
+        src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M9.5 13.5a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1.2 1.2'/><path d='M14.5 10.5a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1.2-1.2'/></svg>",
+        width: 22,
+        height: 22,
+        alt: "Webhook",
+      }
+    },
     FORM_ENCODE: {
       description: "Encode as an HTML form input",
       checked: false
