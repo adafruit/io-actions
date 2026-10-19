@@ -24,7 +24,7 @@ export default {
       // populate air quality locations
       if(!airQualityLocationOptions?.length) {
         airQualityLocationOptions = [[ "No locations! Visit Power-Ups -> Air Quality", "" ]]
-        block.setEnabled(false)
+        block.setDisabledReason(true, 'no_locations')
 
       } else if(airQualityLocationOptions[0][1] != "") {
         airQualityLocationOptions.unshift([ "Select Location", "" ])

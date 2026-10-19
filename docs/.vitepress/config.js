@@ -7,7 +7,11 @@ const REPO = 'https://github.com/adafruit/io-actions'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   vite: {
-    clearScreen: false
+    clearScreen: false,
+    ssr: {
+      // CommonJS-only package: bundle it so its named exports resolve during SSR
+      noExternal: ['@blockly/field-multilineinput']
+    }
   },
 
   title: "IO Actions: Block Reference",

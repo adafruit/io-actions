@@ -227,7 +227,7 @@ Blockly.config.connectingSnapRadius = 128
     WHITE_W = 220, // the visible white text box stays this fixed width
     FIELD_W = 234  // ...just a bit wider, so the box sits fully inside the teal
 
-  class IoFieldMultilineInput extends Blockly.FieldMultilineInput {
+  class IoFieldMultilineInput extends FieldMultilineInput {
     maxDisplayLength = 36
     maxLines_ = PREVIEW_LINES
 
@@ -239,7 +239,7 @@ Blockly.config.connectingSnapRadius = 128
       // get the full width of our text previews
       const insetWidth = WHITE_W - (this.getConstants().FIELD_BORDER_RECT_X_PADDING * 2)
       // get all the <text> nodes super.render_() just created
-      const textNodes = this.getSvgRoot().querySelectorAll("g.blocklyEditableText text")
+      const textNodes = this.getSvgRoot().querySelectorAll("g.blocklyEditableField text")
 
       textNodes.forEach(node => {
         // skip nodes that fit inside the field already
@@ -323,7 +323,7 @@ Blockly.config.connectingSnapRadius = 128
       const
         INSET_WIDTH = this.getInsetWidth(),
         // get all the <text> nodes super.render_() just created
-        textNodes = this.getSvgRoot().querySelectorAll("g.blocklyEditableText text")
+        textNodes = this.getSvgRoot().querySelectorAll("g.blocklyEditableField text")
 
       textNodes.forEach(node => {
         // must remove length-affected attributes before computing text length
@@ -472,7 +472,7 @@ Blockly.config.connectingSnapRadius = 128
     if(target.closest('.blocklyBubbleCanvas')) { return }
 
     // on a mutator cog — let Blockly's own toggle handle open/close
-    if(target.closest('.blockly-icon-mutator')) { return }
+    if(target.closest('.blocklyMutatorIcon')) { return }
 
     // close all open bubbles:
     Blockly.getMainWorkspace().getAllBlocks()  // all blocks in the workspace
@@ -519,13 +519,14 @@ Blockly.config.connectingSnapRadius = 128
 
   // Re-arm whenever selection leaves the armed block (clicking empty canvas or a
   // different block), so returning to it again requires the select-first click.
-  const baseSetSelected = Blockly.common?.setSelected
-  if(baseSetSelected) {
-    Blockly.common.setSelected = function(newSel) {
-      if(!newSel || (armed && newSel.id !== armed)) { armed = null }
-      return baseSetSelected.call(this, newSel)
-    }
-  }
+  // Blockly 12 routes selection through its focus manager internally, so listen
+  // for SELECTED events rather than wrapping Blockly.common.setSelected
+  AFTER_FIRST_RENDER_CALLBACKS.push(() => {
+    Blockly.getMainWorkspace().addChangeListener(e => {
+      if(e.type !== Blockly.Events.SELECTED) { return }
+      if(!e.newElementId || (armed && e.newElementId !== armed)) { armed = null }
+    })
+  })
 })()
 
 ////////////////
@@ -569,7 +570,7 @@ AFTER_FIRST_RENDER_CALLBACKS.push(
     // Copy each category's resolved accent colour (Blockly sets it as the row's
     // inline border-left) into a CSS custom property, so the sidebar stylesheet
     // can paint the full-row hover fill in that exact colour.
-    document.querySelectorAll('.blocklyTreeRow').forEach(row => {
+    document.querySelectorAll('.blocklyToolboxCategory').forEach(row => {
       const accent = getComputedStyle(row).borderLeftColor
       if(accent) { row.style.setProperty('--io-cat-colour', accent) }
     })

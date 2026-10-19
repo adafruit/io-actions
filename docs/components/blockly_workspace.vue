@@ -100,7 +100,7 @@
 
   /* category labels need a color style or
      dark mode will bleed into them unfavorably */
-  .blocklyTreeLabel {
+  .blocklyToolboxCategoryLabel {
     color: #000;
   }
 

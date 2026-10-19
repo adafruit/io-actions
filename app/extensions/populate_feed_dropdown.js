@@ -5,7 +5,7 @@ export const populateFeedDropdown = ({ block, data, Blockly }) => {
 
   if(!feedOptions?.length) {
     block.replaceDropdownOptions("FEED_KEY", [[ "No feeds available! Visit Feeds", "" ]])
-    block.setEnabled(false)
+    block.setDisabledReason(true, 'no_feeds')
     return
   }
 

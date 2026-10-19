@@ -1,5 +1,8 @@
 // the real Blockly import that gets used by the exported app
-import Blockly from 'blockly'
+import * as Blockly from 'blockly'
+import { FieldMultilineInput, registerFieldMultilineInput } from '@blockly/field-multilineinput'
+
+registerFieldMultilineInput()
 
 
 // constants that other scripts can tie into before

@@ -30,7 +30,7 @@ export default {
       // populate weather locations
       if(!weatherLocationOptions?.length) {
         weatherLocationOptions = [[ "No locations! Visit Power-Ups -> Weather", "" ]]
-        block.setEnabled(false)
+        block.setDisabledReason(true, 'no_locations')
 
       } else if(weatherLocationOptions[0][1] != "") {
         weatherLocationOptions.unshift([ "Select Location", "" ])

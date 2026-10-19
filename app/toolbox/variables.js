@@ -10,13 +10,13 @@ export default {
     workspace.registerButtonCallback('new-variable', () => {
       const newVariableName = prompt("What is your variable called?")
       if(newVariableName) {
-        workspace.createVariable(newVariableName)
+        workspace.getVariableMap().createVariable(newVariableName)
       }
     })
 
     // pull the existing variables out of the workspace
     const
-      variableIds = workspace.getAllVariables().map(v => v.getId()),
+      variableIds = workspace.getVariableMap().getAllVariables().map(v => v.getId()),
       variableBlocks = variableIds.flatMap(id => ([
         { // setter block for this variable
           kind: 'block',

@@ -23,14 +23,11 @@
     "test-update-snapshots": "node --test --test-update-snapshots test/app/blocks/snapshots/block_snapshots_test.js",
     "lint": "eslint src/",
     "lint-export": "eslint export/",
-
     "generate:block": "node generate.js block",
     "generate:block:doc": "node generate.js doc",
-
     "export:app": "node export.js app",
     "export:app:to-rails": "npm run export:app && node --env-file-if-exists=.env copy_to_rails.js",
     "export:block-images": "node export.js blockImages",
-
     "docs:export": "node export.js docs",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
@@ -53,8 +50,9 @@
     "vitepress": "^2.0.0-alpha.18"
   },
   "dependencies": {
-    "@blockly/theme-modern": "^5.0.5",
-    "blockly": "^10.4.3",
+    "@blockly/field-multilineinput": "^6.0.8",
+    "@blockly/theme-modern": "^7.0.4",
+    "blockly": "^12.5.1",
     "lodash-es": "^4.17.21"
   }
 }

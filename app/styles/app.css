@@ -1,4 +1,4 @@
-.blocklyToolboxDiv {
+.blocklyToolbox {
   background-color: #ffffff;
   border-right: 1px solid #e6e9ef;
   padding: 8px 0;
@@ -6,7 +6,7 @@
 }
 
 /* one category row */
-.blocklyTreeRow {
+.blocklyToolboxCategory {
   display: flex;
   align-items: center;
   height: auto;
@@ -20,24 +20,24 @@
 
 /* On hover, fill the whole row with the category's accent colour (copied into
     --io-cat-colour after inject) and flip the label + icon to white. */
-.blocklyTreeRow:hover {
+.blocklyToolboxCategory:hover {
   background-color: var(--io-cat-colour, rgba(10, 108, 255, 0.08)) !important;
 }
 
-.blocklyTreeRow:hover .blocklyTreeLabel {
+.blocklyToolboxCategory:hover .blocklyToolboxCategoryLabel {
   color: #ffffff;
 }
 
-.blocklyTreeRow:hover .io-cat-icon {
+.blocklyToolboxCategory:hover .io-cat-icon {
   filter: brightness(0) invert(1);
 }
 
 /* the active/selected category gets the same full-width accent fill as hover */
-.blocklyTreeSelected {
+.blocklyToolboxSelected {
   background-color: var(--io-cat-colour, rgba(10, 108, 255, 0.10)) !important;
 }
 
-.blocklyTreeSelected .io-cat-icon {
+.blocklyToolboxSelected .io-cat-icon {
   filter: brightness(0) invert(1);
 }
 
@@ -50,7 +50,7 @@
 }
 
 /* category label text */
-.blocklyTreeLabel {
+.blocklyToolboxCategoryLabel {
   font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 17px;
   font-weight: 600;
@@ -58,7 +58,7 @@
   color: #2e3440;
 }
 
-.blocklyTreeSelected .blocklyTreeLabel {
+.blocklyToolboxSelected .blocklyToolboxCategoryLabel {
   color: #ffffff;
 }
 
@@ -93,7 +93,7 @@
 
 /* Checkbox: hide the default tick; the FieldCheckbox extension draws a
     colour-filled inner square (with a white gap) inside the rounded box. */
-.blocklyCheckbox { fill: transparent !important; }
+.blocklyCheckboxField > text { fill: transparent !important; }
 .io-checkbox-inner { fill: #0a6cff !important; }
 
 /* Dropdown menu selected-item checkmark. Blockly draws it from a bitmap sprite
@@ -117,7 +117,7 @@
   stroke-width: 1px;
 }
 
-.blockly-icon-mutator .blocklyIconShape {
+.blocklyMutatorIcon .blocklyIconShape {
   rx: 8px;
   ry: 8px;
   fill: rgba(0, 0, 0, 0.22);
