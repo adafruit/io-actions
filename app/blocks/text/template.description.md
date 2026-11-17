@@ -15,7 +15,8 @@ For example:
 - Becomes: "Hello John!"
 
 These templates use the Liquid templating language from Shopify, which includes many helpful built-in functions.
-Learn more: [Liquid Documentation](https://shopify.github.io/liquid/basics/introduction/)
+
+#### ℹ️ Learn more: &nbsp;[Liquid template functions and syntax documentation](https://shopify.github.io/liquid/basics/introduction/)
 
 ## Template Variables Reference
 
