@@ -15,7 +15,8 @@ For example:
 - Becomes: "Hello John!"
 
 These templates use the Liquid templating language from Shopify, which includes many helpful built-in functions.
-Learn more: [Liquid Documentation](https://shopify.github.io/liquid/basics/introduction/)
+
+#### ℹ️ Learn more: &nbsp;[Liquid template functions and syntax documentation](https://shopify.github.io/liquid/basics/introduction/)
 
 ## Template Variables Reference
 
@@ -106,10 +107,14 @@ Round numbers or add decimal places:
 `"Temperature: {{ feeds['sensors.temp'].value | round: 1 }}°F"
 "Battery: {{ vars.battery | round }}%"`
 
-### Date Formatting
+### Time / Date Formatting
 Format timestamps for readability:
 `"Last updated: {{ feeds['sensor.temp'].updated_at | date: '%B %d at %I:%M %p' }}"`
 Output: "Last updated: January 15 at 03:45 PM"
+
+Formatting the current time (using [StringFromTime](https://strftime.net/) placeholders):
+`"Last seen: {{ 'now' | date: '%H:%M:%S'}}"`
+Output: "Last seen: 15:06:20"
 
 ### Math Operations
 Perform calculations in templates:
