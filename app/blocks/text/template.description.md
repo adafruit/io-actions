@@ -106,10 +106,14 @@ Round numbers or add decimal places:
 `"Temperature: {{ feeds['sensors.temp'].value | round: 1 }}°F"
 "Battery: {{ vars.battery | round }}%"`
 
-### Date Formatting
+### Time / Date Formatting
 Format timestamps for readability:
 `"Last updated: {{ feeds['sensor.temp'].updated_at | date: '%B %d at %I:%M %p' }}"`
 Output: "Last updated: January 15 at 03:45 PM"
+
+Formatting the current time (using [StringFromTime](https://strftime.net/) placeholders):
+`"Last seen: {{ 'now' | date: '%H:%M:%S'}}"`
+Output: "Last seen: 15:06:20"
 
 ### Math Operations
 Perform calculations in templates:
