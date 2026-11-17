@@ -106,7 +106,8 @@ const
       await spawnSync("npx", ["cypress", "run",
         "--config", `downloadsFolder=${imageDestination}`,
         "--config-file", `cypress/cypress.config.js`,
-        "--browser", "chromium",
+        // Originally chromium in CI for consistency, but any browser can be used locally
+        // "--browser", "chromium",
         "--spec", "cypress/e2e/block_images.cy.js",
       ], { stdio: 'inherit', shell: true })
       console.log('Generation complete.')
