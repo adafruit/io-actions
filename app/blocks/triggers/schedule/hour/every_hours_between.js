@@ -7,7 +7,7 @@ export default {
   type: "every_hours_between",
   name: "Every X Hours",
   colour: '#8A2E52',
-  description: "Runs every X hours, between hours Y and Z.",
+  description: "Runs every X hours, between hours Y and Z (inclusive).",
 
   connections: {
     mode: 'value',
